@@ -1,0 +1,328 @@
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\appsettings.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.staticwebassets.runtime.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.staticwebassets.endpoints.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.exe
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.deps.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.runtimeconfig.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.pdb
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.AssemblyInfoInputs.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.AssemblyInfo.cs
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.RazorAssemblyInfo.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.RazorAssemblyInfo.cs
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\scopedcss\bundle\RetroGamingWorld.styles.css
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\scopedcss\projectbundle\RetroGamingWorld.bundle.scp.css
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\vu7qms1sga-b9sayid5wm.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\e0tidfov40-61n19gt1b8.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\1xubn2nkv1-xtxxf3hu2r.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\oxcd7gybv0-bqjiyaj88i.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\qkhly6gnit-c2jlpeoesf.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\oavogxres1-erw9l3u2r3.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\jgo47hwm2r-aexeepp0ev.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\0y716g39wu-d7shbmvgxk.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\8hsw59ypwt-ausgxo2sd3.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\850srv1uvg-k8d9w2qqmf.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\7veljl7v3r-cosvhxvwiu.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\390qwfax9x-ub07r2b239.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\lut6gg0xff-fvhpjtyr6v.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\t2duebhkfu-b7pk76d08c.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\erkgg9i5yi-fsbi9cje9m.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\1i7xfpoiip-rzd6atqjts.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\72kmuiua6g-ee0r1s7dh0.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\heusc2gk3b-dxx9fxp4il.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\9ayr2pzlbc-jd9uben2k1.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\x19ctgmtno-khv3u5hwcm.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\elk9nsceze-r4e9w2rdcm.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\66p1tc4o4o-lcd1t2u6c8.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\n9czft8ff3-c2oey78nd0.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\5qdmofcfl7-tdbxkamptv.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\mzrnrx1i55-j5mq2jizvt.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\1aaq5v4gp0-06098lyss8.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\eecpqwm614-nvvlpmu67g.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\qw3hxjvlkb-s35ty4nyc5.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\la3gn2n17t-pj5nd1wqec.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\vidy66y4eb-46ein0sx1k.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\qac89a2v77-v0zj4ognzu.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\y7eoyzsupr-37tfw0ft22.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\79loa8nw87-hrwsygsryq.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\h4s7ybw9m6-pk9g2wxc8p.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\u909yrm4x6-ft3s53vfgj.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\xdn7wyoomv-6cfz1n2cew.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\4r79nnpm6n-6pdc2jztkx.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\mgthumv7as-493y06b0oq.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\qvq9yjh7y4-iovd86k7lj.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\nyiyvrlqqz-vr1egmr9el.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\5xxrz89hjv-kbrnm935zg.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\k6dvlp70ct-jj8uyg4cgr.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\r6jc3d83ti-y7v9cxd14o.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\k7lqsms0mr-notf2xhcfb.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\ypz1sei2gv-h1s4sie4z3.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\dvi0sa6bm8-63fj8s7r0e.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\mjhsble599-0j3bgjxly4.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\xzy7p4mody-47otxtyo56.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\txf77lo58e-4v8eqarkd7.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\xzfnkyqibq-356vix0kms.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\615ekrrn72-83jwlth58m.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\rd6km5rdrm-mrlpezrjn3.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\iv9agcx9y8-lzl9nlhx6b.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\5xr3nebdde-ag7o75518u.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\2ac43i4ycr-x0q3zqp4vz.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\8aeycvb2n0-0i3buxo5is.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\c2es6vwqi8-o1o13a6vjx.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\0dab1o8x7s-ttgo8qnofa.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\pwpzbdxq73-2z0ns9nrw6.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\fskcdw1mkw-muycvpuwrr.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\hz8wpxcp0m-87fc7y1x7t.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\s9cydwghva-mlv21k5csn.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\9sr0g1qqr1-vh0ue1jxva.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\9b6h8n1hp6-vh0ue1jxva.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\refint\RetroGamingWorld.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.pdb
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.genruntimeconfig.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB 2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\ref\RetroGamingWorld.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\appsettings.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.staticwebassets.endpoints.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.staticwebassets.runtime.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.exe
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.deps.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.runtimeconfig.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\RetroGamingWorld.pdb
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Azure.Core.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Azure.Identity.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Humanizer.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Identity.Client.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\Mono.TextTemplating.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.ClientModel.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.CodeDom.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Composition.Convention.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Composition.Hosting.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Composition.Runtime.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Composition.TypedParts.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Drawing.Common.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Formats.Asn1.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Memory.Data.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Runtime.Caching.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Security.Permissions.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Text.Json.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\System.Windows.Extensions.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.csproj.AssemblyReference.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.AssemblyInfoInputs.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.AssemblyInfo.cs
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.RazorAssemblyInfo.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.RazorAssemblyInfo.cs
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\scopedcss\bundle\RetroGamingWorld.styles.css
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\scopedcss\projectbundle\RetroGamingWorld.bundle.scp.css
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\vu7qms1sga-b9sayid5wm.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\e0tidfov40-61n19gt1b8.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\1xubn2nkv1-xtxxf3hu2r.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\oxcd7gybv0-bqjiyaj88i.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\qkhly6gnit-c2jlpeoesf.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\oavogxres1-erw9l3u2r3.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\jgo47hwm2r-aexeepp0ev.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\0y716g39wu-d7shbmvgxk.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\8hsw59ypwt-ausgxo2sd3.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\850srv1uvg-k8d9w2qqmf.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\7veljl7v3r-cosvhxvwiu.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\390qwfax9x-ub07r2b239.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\lut6gg0xff-fvhpjtyr6v.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\t2duebhkfu-b7pk76d08c.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\erkgg9i5yi-fsbi9cje9m.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\1i7xfpoiip-rzd6atqjts.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\72kmuiua6g-ee0r1s7dh0.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\heusc2gk3b-dxx9fxp4il.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\9ayr2pzlbc-jd9uben2k1.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\x19ctgmtno-khv3u5hwcm.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\elk9nsceze-r4e9w2rdcm.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\66p1tc4o4o-lcd1t2u6c8.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\n9czft8ff3-c2oey78nd0.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\5qdmofcfl7-tdbxkamptv.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\mzrnrx1i55-j5mq2jizvt.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\1aaq5v4gp0-06098lyss8.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\eecpqwm614-nvvlpmu67g.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\qw3hxjvlkb-s35ty4nyc5.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\la3gn2n17t-pj5nd1wqec.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\vidy66y4eb-46ein0sx1k.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\qac89a2v77-v0zj4ognzu.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\y7eoyzsupr-37tfw0ft22.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\79loa8nw87-hrwsygsryq.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\h4s7ybw9m6-pk9g2wxc8p.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\u909yrm4x6-ft3s53vfgj.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\xdn7wyoomv-6cfz1n2cew.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\4r79nnpm6n-6pdc2jztkx.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\mgthumv7as-493y06b0oq.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\qvq9yjh7y4-iovd86k7lj.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\nyiyvrlqqz-vr1egmr9el.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\5xxrz89hjv-kbrnm935zg.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\k6dvlp70ct-jj8uyg4cgr.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\r6jc3d83ti-y7v9cxd14o.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\k7lqsms0mr-notf2xhcfb.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\ypz1sei2gv-h1s4sie4z3.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\dvi0sa6bm8-63fj8s7r0e.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\mjhsble599-0j3bgjxly4.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\xzy7p4mody-47otxtyo56.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\txf77lo58e-4v8eqarkd7.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\xzfnkyqibq-356vix0kms.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\615ekrrn72-83jwlth58m.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\rd6km5rdrm-mrlpezrjn3.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\iv9agcx9y8-lzl9nlhx6b.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\5xr3nebdde-ag7o75518u.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\2ac43i4ycr-x0q3zqp4vz.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\8aeycvb2n0-0i3buxo5is.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\c2es6vwqi8-o1o13a6vjx.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\0dab1o8x7s-ttgo8qnofa.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\pwpzbdxq73-2z0ns9nrw6.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\fskcdw1mkw-muycvpuwrr.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\hz8wpxcp0m-87fc7y1x7t.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\s9cydwghva-mlv21k5csn.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\9sr0g1qqr1-vh0ue1jxva.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\compressed\9b6h8n1hp6-vh0ue1jxva.gz
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGam.379C91DE.Up2Date
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\refint\RetroGamingWorld.dll
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.pdb
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\RetroGamingWorld.genruntimeconfig.cache
+C:\Users\Alex\Desktop\UniBuc\!facultate\UB2,s1\ASP.NET\RetroGamingWorld\RetroGamingWorld\obj\Debug\net9.0\ref\RetroGamingWorld.dll
