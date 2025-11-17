@@ -1,7 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using RetroGamingWorld.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// ------------------------------------------
+
+// Se adauga serviciul prin care se realizeaza conexiunea cu baza de date
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<AppDbContext>(
+    option => option.UseSqlServer(connectionString));
+
+// ------------------------------------------
 
 var app = builder.Build();
 
@@ -22,7 +36,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Articles}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 

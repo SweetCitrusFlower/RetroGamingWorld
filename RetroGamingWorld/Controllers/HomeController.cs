@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using RetroGamingWorld.Models;
+using RETROGAMINGWORLD.Models;
 
-namespace RetroGamingWorld.Controllers
+namespace RETROGAMINGWORLD.Controllers
 {
     public class HomeController : Controller
     {
