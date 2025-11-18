@@ -11,10 +11,12 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("a2723e12-07a3-405c-9aee-9a4e073c3f18")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("RETROGAMINGWORLD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c93a36d640d653e2f34a07fc1cd3ff0c87d2a620")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3cee6ff6f810cc46242ee75ba327e0f824969a29")]
 [assembly: System.Reflection.AssemblyProductAttribute("RETROGAMINGWORLD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RETROGAMINGWORLD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

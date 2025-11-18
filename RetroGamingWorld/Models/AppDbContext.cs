@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
 namespace RetroGamingWorld.Models
 {
     public class AppDbContext : DbContext
@@ -12,6 +11,7 @@ namespace RetroGamingWorld.Models
         public DbSet<Article> Articles { get; set; }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
     }
 }
