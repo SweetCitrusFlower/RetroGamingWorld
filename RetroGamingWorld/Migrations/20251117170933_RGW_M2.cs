@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace RETROGAMINGWORLD.Migrations
+namespace RetroGamingWorld.Migrations
 {
     /// <inheritdoc />
     public partial class RGW_M2 : Migration

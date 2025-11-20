@@ -1,19 +1,37 @@
-﻿<h2>Afisare categorii</h2>
-<br />
+﻿
 
-@foreach (var categ in ViewBag.Categories)
+<h2>@ViewBag.Title</h2>
+<br />  
+
+@if (ViewBag.Message != null)
 {
-    <p>@categ.CategoryName</p>
-   
-    <br />
-    <a href="/Categories/Show/@categ.Id">Afisare categorie</a>
-    <br />
-    <a href="/Categories/Edit/@categ.Id">Editare categorie</a>
-    <hr />
 
+    <h2 class="alert alert-success p-3 rounded-3 text-center mb-5">@ViewBag.Message</h2>
 }
 
-<a href="/Categories/New">Adaugare categorie</a>
+<div class="d-flex justify-content-between flex-row mt-2">
+    <a class="btn btn-success" asp-action="Index" asp-controller="Articles">Inapoi la articole</a>
+
+    <a class="btn btn-success" asp-action="New" asp-controller="Categories">Adauga o noua categorie</a>
+</div>
+
+<br />
+<br />
+<div class="d-flex justify-content-evenly flex-row mt-2">
+    @foreach (var category in ViewBag.Categories)
+    {
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title alert alert-success py-3 px-3 rounded-2 text-center">@category.CategoryName</p>
+                <div class="d-flex justify-content-between rounded-4 flex-row mt-2">
+                    <a class="btn btn-success" asp-action="Show" asp-controller="Categories" asp-route-id="@category.Id">Afisare categorie</a>
+                    <a class="btn btn-danger" asp-action="Edit" asp-controller="Categories" asp-route-id="@category.Id">Editare categorie</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 <br />
 
-<a href="/Articles/Index">Afisare articole</a>
+<br />
+

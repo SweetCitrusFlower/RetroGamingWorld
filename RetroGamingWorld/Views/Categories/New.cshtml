@@ -1,13 +1,25 @@
-﻿<h2>Formular adaugare categorie</h2>
+﻿@model RetroGamingWorld.Models.Category
 
-<form method="post" action="/Categories/New">
 
-    <label>Denumire categorie</label>
+<h2>Adaugare Categorie</h2>
 
-    <input type="text" name="CategoryName" />
+<br />
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-4 offset-3">
+            <form method="post" asp-action="New" asp-controller="Categories">
 
-    <br />
+                <div class="form-group">
+                    <label asp-for="CategoryName" class="form-label">Denumire categorie</label>
+                    <br/>
+                    <input asp-for="CategoryName" class="form-control" />
+                </div>
+                <br />
+                <button class="btn btn-success" type="submit">Adauga categorie</button>
 
-    <button type="submit">Adauga categoria</button>
+            </form>
+        </div>
+    </div>
+</div>
 
-</form>
+

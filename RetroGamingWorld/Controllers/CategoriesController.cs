@@ -3,94 +3,84 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RetroGamingWorld.Controllers
 {
-    public class CategoriesController : Controller
+    public class CategoriesController(AppDbContext context) : Controller
     {
-        private readonly AppDbContext _db;
+        private readonly AppDbContext db = context;
 
-        public CategoriesController(AppDbContext context)
+        public ActionResult Index()
         {
-            _db = context;
-        }
+            if (TempData.ContainsKey("messageCategories"))
+            {
+                ViewBag.message = TempData["messageCategories"].ToString();
+            }
 
-        public IActionResult Index()
-        {
-            var categories = from categ in _db.Categories
-                             select categ;
+            var categories = from category in db.Categories
+                             orderby category.CategoryName
+                             select category;
 
             ViewBag.Categories = categories;
-
             return View();
         }
 
         public ActionResult Show(int id)
         {
-            Category? categ = _db.Categories.Find(id);
-
-            ViewBag.Category = categ;
-
-            return View();
+            Category category = db.Categories.Find(id);
+            return View(category);
         }
 
-        public IActionResult New()
+        public ActionResult New()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult New(Category categ)
+        public ActionResult New(Category cat)
         {
             try
             {
-                _db.Categories.Add(categ);
-
-                _db.SaveChanges();
-
+                db.Categories.Add(cat);
+                db.SaveChanges();
+                TempData["messageCategories"] = "Categoria a fost adaugata";
                 return RedirectToAction("Index");
             }
-            catch (Exception)
-            {
-                return View();
-            }
 
+            catch (Exception e)
+            {
+                return View(cat);
+            }
         }
 
-        public IActionResult Edit(int id)
+        public ActionResult Edit(int id)
         {
-            Category? categ = _db.Categories.Find(id);
-
-            ViewBag.Categories = categ;
-
-            return View();
+            Category category = db.Categories.Find(id);
+            return View(category);
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, Category requestCateg)
+        public ActionResult Edit(int id, Category requestCategory)
         {
-            Category? categ = _db.Categories.Find(id);
-
+            Category category = db.Categories.Find(id);
             try
             {
-                categ.CategoryName = requestCateg.CategoryName;
+                category.CategoryName = requestCategory.CategoryName;
 
-                _db.SaveChanges();
-
+                db.SaveChanges();
+                TempData["messageCategories"] = "Categoria a fost modificata!";
                 return RedirectToAction("Index");
             }
             catch (Exception)
             {
-                return RedirectToAction("Edit", categ.Id);
+                return View(requestCategory);
             }
         }
 
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            Category? categ = _db.Categories.Find(id);
-
-            _db.Categories.Remove(categ);
-
-            _db.SaveChanges();
-
+            Category category = db.Categories.Find(id);
+            db.Categories.Remove(category);
+            db.SaveChanges();
+            TempData["messageCategories"] = "Categoria a fost stearsa";
             return RedirectToAction("Index");
         }
     }

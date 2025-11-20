@@ -1,15 +1,17 @@
-﻿
-<h2>Editare categorie</h2>
+﻿@model RetroGamingWorld.Models.Category
 
-<form method="post" action="/Categories/Edit/@ViewBag.Categories.Id">
 
-    <label>Denumire categorie</label>
+<h2>@ViewBag.Title</h2>
 
-    <br />
+<form method="post" asp-action="Edit" asp-controller="Categories" asp-route-id="@Model.Id">
 
-    <input type="text" name="CategoryName" value="@ViewBag.Categories.CategoryName" />
-    
-    <button type="submit">Modifica categoria</button>
+    <div class="form-group">
+        <label asp-for="CategoryName" class="form-label">Denumire categorie</label>
+        <input asp-for="CategoryName" class="form-control" />
+    </div>
+
+    <button class="btn btn-success" type="submit">Modifica categoria</button>
 
 </form>
+
 

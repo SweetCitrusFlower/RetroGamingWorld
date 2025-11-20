@@ -1,22 +1,48 @@
-﻿<h2>Afisare articole</h2>
+﻿<h2 class="text-center">Afisare articole</h2>
+
 <br />
 
-@foreach (var art in ViewBag.Articles)
-{
-    <p>@art.Title</p>
-    <p>@art.Content</p>
-    <p>@art.Date</p>
+@if(ViewBag.Message != null){
 
-    <br />
-    <a class="btn btn-success" href="/Articles/Show/@art.Id">Afisare articol</a>
-    <br /><br />
-    <a class="btn btn-info" href="/Articles/Edit/@art.Id">Editare articol</a>
-    <hr />
-
+    <h2 class="alert alert-success p-3 rounded-3 text-center mb-5">@ViewBag.Message</h2>
 }
 
-<a href="/Articles/New" class="btn btn-success">Adaugare articol</a>
-<br /><br />
-<a href="/Categories/Index" class="btn btn-success">Afisare categorii</a>
 
+<div class="d-flex justify-content-center">
+
+    <a class="btn btn-outline-success" href="/Categories/Index/">Afisare categorii</a>
+    <br />
+    <a class="btn btn-outline-success" href="/Articles/New">Adauga articol</a>
+    <br />
+
+</div>
+
+<br />
+
+@foreach (var article in ViewBag.Articles)
+{
+    <div class="card">
+
+        <div class="card-body">
+
+            <h3 class="card-title alert alert-success py-3 px-3 rounded-2 text-center">@article.Title</h3>
+
+            <div class="card-text">@article.Content</div>
+
+            <div class="d-flex justify-content-between flex-row mt-5">
+
+                <div><i class="bi bi-globe"></i> @article.Category.CategoryName</div>
+
+                <a class="btn btn-success" href="/Articles/Show/@article.Id">Afisare articol</a>
+
+                <span class="px-1 align-content-center">@article.Date</span>
+
+            </div>
+
+        </div>
+
+    </div>
+    <br />
+    <br />
+}
 

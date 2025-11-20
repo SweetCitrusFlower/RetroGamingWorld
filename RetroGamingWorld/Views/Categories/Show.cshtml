@@ -1,17 +1,27 @@
-﻿<h2>Afisare categorie</h2>
+﻿
+@model RetroGamingWorld.Models.Category
+
+
+<h2>@ViewBag.Title</h2>
+
 <br />
 
-<p>@ViewBag.Category.CategoryName</p>
+<p>@Model.CategoryName</p>
 
-<br />
 
-<form method="post" action="/Categories/Delete/@ViewBag.Category.Id">
+<form method="post" asp-action="Delete" asp-controller="Categories" asp-route-id="@Model.Id">
 
-    <button type="submit">Sterge categoria</button>
+    <button class="btn btn-danger" type="submit">Sterge categoria</button>
 
 </form>
 
+
 <br />
 
-<a href="/Categories/Index">Afisare categorii</a>
+<a class="btn alert-success" asp-action="Index" asp-controller="Categories">Afisare lista categorii</a>
+
+
+<br />
+<hr />
+<br />
 

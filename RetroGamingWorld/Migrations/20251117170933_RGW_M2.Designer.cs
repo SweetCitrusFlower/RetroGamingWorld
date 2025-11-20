@@ -9,7 +9,7 @@ using RetroGamingWorld.Models;
 
 #nullable disable
 
-namespace RETROGAMINGWORLD.Migrations
+namespace RetroGamingWorld.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20251117170933_RGW_M2")]

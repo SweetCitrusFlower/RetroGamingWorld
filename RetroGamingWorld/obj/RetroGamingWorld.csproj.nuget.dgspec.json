@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\RETROGAMINGWORLD.csproj": {}
+    "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\RetroGamingWorld.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\RETROGAMINGWORLD.csproj": {
+    "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\RetroGamingWorld.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\RETROGAMINGWORLD.csproj",
-        "projectName": "RETROGAMINGWORLD",
-        "projectPath": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\RETROGAMINGWORLD.csproj",
+        "projectUniqueName": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\RetroGamingWorld.csproj",
+        "projectName": "RetroGamingWorld",
+        "projectPath": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\RetroGamingWorld.csproj",
         "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\obj\\",
         "projectStyle": "PackageReference",

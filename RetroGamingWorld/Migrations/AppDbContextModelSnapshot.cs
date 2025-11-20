@@ -8,7 +8,7 @@ using RetroGamingWorld.Models;
 
 #nullable disable
 
-namespace RETROGAMINGWORLD.Migrations
+namespace RetroGamingWorld.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
