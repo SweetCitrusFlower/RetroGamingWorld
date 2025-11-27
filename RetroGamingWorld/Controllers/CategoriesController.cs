@@ -1,5 +1,6 @@
 ﻿using RetroGamingWorld.Models;
 using Microsoft.AspNetCore.Mvc;
+using RetroGamingWorld.Data;
 
 namespace RetroGamingWorld.Controllers
 {
@@ -36,20 +37,19 @@ namespace RetroGamingWorld.Controllers
         [HttpPost]
         public ActionResult New(Category cat)
         {
-            try
+            if(ModelState.IsValid)
             {
                 db.Categories.Add(cat);
                 db.SaveChanges();
                 TempData["messageCategories"] = "Categoria a fost adaugata";
                 return RedirectToAction("Index");
             }
-
-            catch (Exception e)
+            else
             {
                 return View(cat);
             }
         }
-
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             Category category = db.Categories.Find(id);
@@ -60,15 +60,14 @@ namespace RetroGamingWorld.Controllers
         public ActionResult Edit(int id, Category requestCategory)
         {
             Category category = db.Categories.Find(id);
-            try
-            {
+            if (ModelState.IsValid)
+            { 
                 category.CategoryName = requestCategory.CategoryName;
-
                 db.SaveChanges();
                 TempData["messageCategories"] = "Categoria a fost modificata!";
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            else
             {
                 return View(requestCategory);
             }

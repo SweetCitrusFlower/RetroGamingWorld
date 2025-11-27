@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using RetroGamingWorld.Data;
 
 namespace RetroGamingWorld.Controllers
 {
@@ -27,11 +28,15 @@ namespace RetroGamingWorld.Controllers
         public IActionResult Show(int id)
         {
             
-            Article article = db.Articles
+            Article? article = db.Articles
                                 .Include(a => a.Category)
                                 .Include(a => a.Comments)
                                 .Where(a => id == a.Id)
                                 .First();
+            if(article is null)
+            {
+                return NotFound();
+            }
 
             ViewBag.Article = article;
             ViewBag.Category = article.Category;
@@ -39,6 +44,26 @@ namespace RetroGamingWorld.Controllers
 
             return View(article);
         }
+
+        //[HttpPost]
+        //public IActionResult Show([FromForm] Comment comment)
+        //{
+        //    comment.Date = DateTime.Now;
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Comments.Add(comment);
+        //        db.SaveChanges();
+        //        return Redirect("Articles/Show/" + comment.ArticleId);
+        //    }
+        //    else
+        //    {
+        //        Article? article = db.Articles
+        //                        .Include(a => a.Category)
+        //                        .Include(a => a.Comments)
+        //                        .Where(a => comment.ArticleId == a.Id)
+        //                        .First();
+        //    }
+        //}
 
         [HttpGet]
         public IActionResult New()
@@ -54,15 +79,14 @@ namespace RetroGamingWorld.Controllers
         public IActionResult New(Article article)
         {
             article.Date = DateTime.Now;
-            try
+            if (ModelState.IsValid)
             {
                 db.Articles.Add(article);
                 db.SaveChanges();
                 TempData["messageArticles"] = "Articolul \"" + article.Title + "\" a fost adaugat!";
                 return RedirectToAction("Index");
             }
-
-            catch (Exception)
+            else
             {
                 article.Categ = GetAllCategories();
                 return View(article);
@@ -84,7 +108,7 @@ namespace RetroGamingWorld.Controllers
         public IActionResult Edit(int id, Article requestArt)
         {
             Article art = db.Articles.Find(id);
-            try
+            if (ModelState.IsValid)
             {
                 art.Title = requestArt.Title;
                 art.Content = requestArt.Content;
@@ -95,7 +119,7 @@ namespace RetroGamingWorld.Controllers
                 return RedirectToAction("Index");
 
             }
-            catch (Exception)
+            else
             {
                 requestArt.Categ = GetAllCategories();
                 return View(requestArt);

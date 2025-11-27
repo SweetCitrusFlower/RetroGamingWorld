@@ -9,40 +9,29 @@
 
 
 <div class="d-flex justify-content-center">
+    @* <a class="btn btn-success" asp-action="Index" asp-controller="Categories">Inapoi la categorii</a> *@
 
-    <a class="btn btn-outline-success" href="/Categories/Index/">Afisare categorii</a>
-    <br />
-    <a class="btn btn-outline-success" href="/Articles/New">Adauga articol</a>
-    <br />
-
+    <a class="btn btn-success" asp-action="New" asp-controller="Articles">Adauga un nou articol</a>
 </div>
 
 <br />
+<div class="d-flex justify-content-evenly flex-row flex-wrap mt-2">
+    @foreach (var article in ViewBag.Articles){
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title alert alert-success py-3 px-3 rounded-2 text-center">@article.Title</h3>
 
-@foreach (var article in ViewBag.Articles)
-{
-    <div class="card">
+                <div class="card-text">@article.Content</div>
 
-        <div class="card-body">
+                <div class="d-flex justify-content-between flex-row mt-5">
 
-            <h3 class="card-title alert alert-success py-3 px-3 rounded-2 text-center">@article.Title</h3>
+                    <div><i class="bi bi-globe"></i> @article.Category.CategoryName</div>
 
-            <div class="card-text">@article.Content</div>
+                    <a class="btn btn-success" href="/Articles/Show/@article.Id">Afisare articol</a>
 
-            <div class="d-flex justify-content-between flex-row mt-5">
-
-                <div><i class="bi bi-globe"></i> @article.Category.CategoryName</div>
-
-                <a class="btn btn-success" href="/Articles/Show/@article.Id">Afisare articol</a>
-
-                <span class="px-1 align-content-center">@article.Date</span>
-
+                    <span class="px-1 align-content-center">@article.Date</span>
+                </div>
             </div>
-
         </div>
-
-    </div>
-    <br />
-    <br />
-}
-
+    }
+</div>

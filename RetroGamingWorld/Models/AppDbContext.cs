@@ -1,7 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-namespace RetroGamingWorld.Models
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using RetroGamingWorld.Models;
+
+namespace RetroGamingWorld.Data
 {
-    public class AppDbContext : DbContext
+    //pasul 3: useri si roluri
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
