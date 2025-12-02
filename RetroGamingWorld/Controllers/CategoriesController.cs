@@ -1,6 +1,9 @@
 ﻿using RetroGamingWorld.Models;
-using Microsoft.AspNetCore.Mvc;
 using RetroGamingWorld.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace RetroGamingWorld.Controllers
 {
@@ -25,10 +28,16 @@ namespace RetroGamingWorld.Controllers
 
         public ActionResult Show(int id)
         {
-            Category category = db.Categories.Find(id);
+            Category? category = db.Categories.Find(id);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
             return View(category);
         }
 
+        [HttpGet]
         public ActionResult New()
         {
             return View();
@@ -37,7 +46,7 @@ namespace RetroGamingWorld.Controllers
         [HttpPost]
         public ActionResult New(Category cat)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 db.Categories.Add(cat);
                 db.SaveChanges();
@@ -46,20 +55,33 @@ namespace RetroGamingWorld.Controllers
             }
             else
             {
+                
                 return View(cat);
             }
         }
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            Category category = db.Categories.Find(id);
+            Category? category = db.Categories.Find(id);
+            
+            if (category is null)
+            {
+                return NotFound();
+            }
+
             return View(category);
         }
 
         [HttpPost]
         public ActionResult Edit(int id, Category requestCategory)
         {
-            Category category = db.Categories.Find(id);
+            Category? category = db.Categories.Find(id);
+
+            if (category is null)
+            {
+                return NotFound();
+            }
+
             if (ModelState.IsValid)
             { 
                 category.CategoryName = requestCategory.CategoryName;
@@ -76,7 +98,18 @@ namespace RetroGamingWorld.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            Category category = db.Categories.Find(id);
+            Category? category = db.Categories.Find(id);
+            
+            if (category is null)
+            {
+                return NotFound();
+            }
+
+            if (category.Articles?.Any() == true)
+            {
+                TempData["messageCategories"] = "Nu poti sterge categoria cat timp are articole asociate";
+                return RedirectToAction("Index");
+            }
             db.Categories.Remove(category);
             db.SaveChanges();
             TempData["messageCategories"] = "Categoria a fost stearsa";

@@ -5,12 +5,17 @@ using RetroGamingWorld.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
-
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 
 //pasul 2: useri si roluri
+
+
+builder.Services.AddDbContext<AppDbContext>(
+    option => option.UseSqlServer(connectionString));
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
 builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
@@ -18,8 +23,6 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 );
 
 
-builder.Services.AddDbContext<AppDbContext>(
-    option => option.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
@@ -48,5 +51,6 @@ app.MapControllerRoute(
     pattern: "{controller=Articles}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+app.MapRazorPages();
 
 app.Run();

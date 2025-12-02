@@ -178,6 +178,12 @@ namespace RetroGamingWorld.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -237,8 +243,7 @@ namespace RetroGamingWorld.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -258,6 +263,54 @@ namespace RetroGamingWorld.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Articles");
+                });
+
+            modelBuilder.Entity("RetroGamingWorld.Models.ArticleBookmark", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BookmarkId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("BookmarkDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id", "ArticleId", "BookmarkId");
+
+                    b.HasIndex("ArticleId");
+
+                    b.HasIndex("BookmarkId");
+
+                    b.ToTable("ArticleBookmarks");
+                });
+
+            modelBuilder.Entity("RetroGamingWorld.Models.Bookmark", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Bookmarks");
                 });
 
             modelBuilder.Entity("RetroGamingWorld.Models.Category", b =>
@@ -375,6 +428,34 @@ namespace RetroGamingWorld.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("RetroGamingWorld.Models.ArticleBookmark", b =>
+                {
+                    b.HasOne("RetroGamingWorld.Models.Article", "Article")
+                        .WithMany("ArticleBookmarks")
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RetroGamingWorld.Models.Bookmark", "Bookmark")
+                        .WithMany("ArticleBookmarks")
+                        .HasForeignKey("BookmarkId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Article");
+
+                    b.Navigation("Bookmark");
+                });
+
+            modelBuilder.Entity("RetroGamingWorld.Models.Bookmark", b =>
+                {
+                    b.HasOne("RetroGamingWorld.Models.ApplicationUser", "User")
+                        .WithMany("Bookmarks")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("RetroGamingWorld.Models.Comment", b =>
                 {
                     b.HasOne("RetroGamingWorld.Models.Article", "Article")
@@ -396,12 +477,21 @@ namespace RetroGamingWorld.Migrations
                 {
                     b.Navigation("Articles");
 
+                    b.Navigation("Bookmarks");
+
                     b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("RetroGamingWorld.Models.Article", b =>
                 {
+                    b.Navigation("ArticleBookmarks");
+
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("RetroGamingWorld.Models.Bookmark", b =>
+                {
+                    b.Navigation("ArticleBookmarks");
                 });
 
             modelBuilder.Entity("RetroGamingWorld.Models.Category", b =>

@@ -1,35 +1,47 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using RetroGamingWorld.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using RetroGamingWorld.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace RetroGamingWorld.Data
 {
-    //pasul 3: useri si roluri
+    // PASUL 3: useri si roluri
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
         {
-
         }
 
         public DbSet<Article> Articles { get; set; }
-
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Bookmark> Bookmarks { get; set; }
+        public DbSet<ArticleBookmark> ArticleBookmarks { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // definirea relatiei many-to-many dintre Article si Bookmark
+
+            base.OnModelCreating(modelBuilder);
+
+            // definire primary key compus
+            modelBuilder.Entity<ArticleBookmark>()
+                .HasKey(ab => new { ab.Id, ab.ArticleId, ab.BookmarkId });
+
+
+            // definire relatii cu modelele Bookmark si Article (FK)
+
+            modelBuilder.Entity<ArticleBookmark>()
+                .HasOne(ab => ab.Article)
+                .WithMany(ab => ab.ArticleBookmarks)
+                .HasForeignKey(ab => ab.ArticleId);
+
+            modelBuilder.Entity<ArticleBookmark>()
+                .HasOne(ab => ab.Bookmark)
+                .WithMany(ab => ab.ArticleBookmarks)
+                .HasForeignKey(ab => ab.BookmarkId);
+
+        }
     }
 }
-
-
-// Constructor
-
-// Clasa DbContextOptions din Entity Framework Core este esentiala pentru configurarea contextului de baza de date. Aceasta contine toate setarile necesare pentru cum contextul va interactiona cu o sursa de date specifica
-
-// Stocheaza informatii precum string-ul de conexiune la baza de date si alte detalii specifice providerului de baze de date utilizat
-
-// Parametrul "options" poate avea orice alt nume. Important este sa se pastreze tipul parametrului pentru a fi compatibil cu ceea ce framework-ul se asteapta sa primeasca
-
-// DbSet<Article> defineste o colectie de entitati Article, unde Article este o clasa ce reflecta un tabel din baza de date. Prin DbSet, Entity Framework ofera acces direct la aceste entitati, permitand interogarea si modificarea datelor
-
-// Este un concept esential in Entity Framework, care permite executarea operatiilor CRUD (Create, Read, Update, Delete) asupra entitatilor corespunzatoare din BD
-

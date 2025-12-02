@@ -1,8 +1,10 @@
 ﻿using RetroGamingWorld.Models;
+using RetroGamingWorld.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using RetroGamingWorld.Data;
 
 namespace RetroGamingWorld.Controllers
 {
@@ -31,16 +33,19 @@ namespace RetroGamingWorld.Controllers
             Article? article = db.Articles
                                 .Include(a => a.Category)
                                 .Include(a => a.Comments)
+                                    .ThenInclude(c => c.User)
+                                .Include(a => a.User)
                                 .Where(a => id == a.Id)
-                                .First();
+                                .FirstOrDefault();
             if(article is null)
             {
                 return NotFound();
             }
 
-            ViewBag.Article = article;
-            ViewBag.Category = article.Category;
-            ViewBag.Comments = article.Comments;
+            //ViewBag.Article = article;
+            //ViewBag.Category = article.Category;
+            //ViewBag.Comments = article.Comments;
+
 
             return View(article);
         }
