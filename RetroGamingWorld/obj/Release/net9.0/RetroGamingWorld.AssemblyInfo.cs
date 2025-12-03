@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RetroGamingWorld")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0fb120e67170f5e881eb492929aa3134e81ff3d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb9721f6a43418789d45d899c6e2073b5deff851")]
 [assembly: System.Reflection.AssemblyProductAttribute("RetroGamingWorld")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RetroGamingWorld")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
