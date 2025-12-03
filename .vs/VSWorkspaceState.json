@@ -2,11 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\RetroGamingWorld",
+    "\\RetroGamingWorld\\Controllers",
     "\\RetroGamingWorld\\Models",
     "\\RetroGamingWorld\\Views",
     "\\RetroGamingWorld\\Views\\Articles",
     "\\RetroGamingWorld\\Views\\Categories"
   ],
-  "SelectedNode": "\\RetroGamingWorld\\Models\\SeedData.cs",
+  "SelectedNode": "\\RetroGamingWorld.sln",
   "PreviewInSolutionExplorer": false
 }

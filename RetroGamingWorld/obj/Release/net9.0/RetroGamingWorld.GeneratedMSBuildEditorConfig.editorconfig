@@ -64,6 +64,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZXNcU2hvdy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Alex/Documents/GitHub/RetroGamingWorld/RetroGamingWorld/Views/Bookmarks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va21hcmtzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Alex/Documents/GitHub/RetroGamingWorld/RetroGamingWorld/Views/Bookmarks/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va21hcmtzXE5ldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Alex/Documents/GitHub/RetroGamingWorld/RetroGamingWorld/Views/Bookmarks/Show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va21hcmtzXFNob3cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Alex/Documents/GitHub/RetroGamingWorld/RetroGamingWorld/Views/Categories/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -96,12 +108,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Alex/Documents/GitHub/RetroGamingWorld/RetroGamingWorld/Views/Shared/_LayoutNou.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROb3UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Alex/Documents/GitHub/RetroGamingWorld/RetroGamingWorld/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Alex/Documents/GitHub/RetroGamingWorld/RetroGamingWorld/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Alex/Documents/GitHub/RetroGamingWorld/RetroGamingWorld/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Alex/Documents/GitHub/RetroGamingWorld/RetroGamingWorld/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Alex/Documents/GitHub/RetroGamingWorld/RetroGamingWorld/Views/Users/Show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcU2hvdy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Alex/Documents/GitHub/RetroGamingWorld/RetroGamingWorld/Views/_ViewImports.cshtml]
