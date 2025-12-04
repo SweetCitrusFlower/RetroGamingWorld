@@ -6,7 +6,8 @@
     "\\RetroGamingWorld\\Models",
     "\\RetroGamingWorld\\Views",
     "\\RetroGamingWorld\\Views\\Articles",
-    "\\RetroGamingWorld\\Views\\Categories"
+    "\\RetroGamingWorld\\Views\\Categories",
+    "\\RetroGamingWorld\\Views\\Shared"
   ],
   "SelectedNode": "\\RetroGamingWorld.sln",
   "PreviewInSolutionExplorer": false
