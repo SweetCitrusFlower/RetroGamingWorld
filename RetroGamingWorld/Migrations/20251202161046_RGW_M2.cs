@@ -39,14 +39,14 @@ namespace RetroGamingWorld.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Bookmarks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Bookmarks_AspNetUsers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Bookmarks_AspNetUsers_UserID",
+                        column: x => x.UserID,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                 });
@@ -89,9 +89,9 @@ namespace RetroGamingWorld.Migrations
                 column: "BookmarkId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bookmarks_UserId",
+                name: "IX_Bookmarks_UserID",
                 table: "Bookmarks",
-                column: "UserId");
+                column: "UserID");
         }
 
         /// <inheritdoc />

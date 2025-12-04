@@ -48,7 +48,7 @@ namespace RetroGamingWorld.Controllers
             {
                 var bookmarks = db.Bookmarks
                                   .Include(b => b.User)
-                                  .Where(b => b.UserId == _userManager.GetUserId(User));
+                                  .Where(b => b.UserID == _userManager.GetUserId(User));
              
                 if(bookmarks is null)
                 {
@@ -103,7 +103,7 @@ namespace RetroGamingWorld.Controllers
                                             .ThenInclude(a => a.User)
                                     .Include(b => b.User)
                                     .Where(b => b.Id == id)
-                                    .Where(b => b.UserId == _userManager.GetUserId(User))
+                                    .Where(b => b.UserID == _userManager.GetUserId(User))
                                     .FirstOrDefault();
 
                  
@@ -161,7 +161,7 @@ namespace RetroGamingWorld.Controllers
         [Authorize(Roles = "User,Editor,Admin")]
         public ActionResult New(Bookmark bm)
         {
-            bm.UserId = _userManager.GetUserId(User);
+            bm.UserID = _userManager.GetUserId(User);
 
             if (ModelState.IsValid)
             {

@@ -11,7 +11,7 @@ namespace RetroGamingWorld.Models
         public string Name { get; set; }
 
         // o colectie este creata de catre un user
-        public string? UserId { get; set; }
+        public string? UserID { get; set; }
 
         // proprietatea de navigatie
         public virtual ApplicationUser? User { get; set; }
