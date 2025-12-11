@@ -46,6 +46,7 @@ wwwroot\css\site.css
 wwwroot\desktop.ini
 wwwroot\favicon.ico
 wwwroot\js\site.js
+wwwroot\js\Summernote.js
 wwwroot\lib\bootstrap\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\bootstrap\dist\css\bootstrap-grid.css.map
 wwwroot\lib\bootstrap\bootstrap\dist\css\bootstrap-grid.min.css
@@ -257,3 +258,4 @@ C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\boo
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\bootstrap\bootstrap\dist\css\bootstrap-reboot.rtl.css
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\bootstrap\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\bootstrap\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\js\Summernote.js

@@ -7,7 +7,7 @@ namespace RetroGamingWorld.Models
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "Continutul este obligatoriu")]
-        public string Content { get; set; }
+        public string Content { get; set; } = string.Empty;
         public DateTime Date { get; set; }
         public int ArticleId { get; set; }
         public string? UserID { get; set; }

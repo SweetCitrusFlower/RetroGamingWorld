@@ -1,5 +1,8 @@
 ﻿
 @model RetroGamingWorld.Models.Category
+@{
+    ViewBag.Title = "Afisare categorie";
+}
 
 
 <h2>@ViewBag.Title</h2>
@@ -9,19 +12,19 @@
 <p>@Model.CategoryName</p>
 
 
-<form method="post" asp-action="Delete" asp-controller="Categories" asp-route-id="@Model.Id">
+<form method="post" asp-controller="Categories" asp-action="Delete"
+      asp-route-id="@Model.Id">
 
     <button class="btn btn-danger" type="submit">Sterge categoria</button>
 
 </form>
 
-
 <br />
 
-<a class="btn alert-success" asp-action="Index" asp-controller="Categories">Afisare lista categorii</a>
-
+<a class="btn alert-success" href="/Categories/Index/">Afisare lista categorii</a>
 
 <br />
 <hr />
 <br />
+
 

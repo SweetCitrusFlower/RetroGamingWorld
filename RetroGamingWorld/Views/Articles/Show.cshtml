@@ -11,8 +11,6 @@
     </div>
 }
 
-<br />
-
 <div class="card">
 
     <partial name="ArticleInfo" model="Model"></partial>
@@ -20,67 +18,59 @@
     @if ((ViewBag.AfisareButoane == true && Model.UserID == ViewBag.UserCurent)
         || ViewBag.EsteAdmin == true)
     {
-        <div class="d-flex flex-row justify-content-between">
+        <div class="d-flex flex-row justify-content-between align-items-center ">
+            <div class="d-flex flex-row">
+                <div class="p-2">
+                    <a class="btn btn-success" asp-controller="Articles" asp-action="Edit" asp-route-id="@Model.Id">Editeaza articol</a>
+                </div>
+                <div class="p-2">
+                    <form method="post" asp-controller="Articles" asp-action="Delete" asp-route-id="@Model.Id">
+                        <button class="btn btn-danger" type="submit">Sterge articol</button>
+                    </form>
+                </div>
+            </div>
 
-            <a class="btn btn-success" asp-controller="Articles" asp-action="Edit" asp-route-id="@Model.Id">Editeaza articol</a>
-
-            <form method="post" asp-controller="Articles" asp-action="Delete" asp-route-id="@Model.Id">
-
-                <button class="btn btn-danger" type="submit">Sterge articol</button>
-
-            </form>
-
+            <div class="ml-auto p-2">
+                <form method="post" asp-controller="Articles" asp-action="AddBookmark">
+                    <input type="hidden" name="ArticleId" value="@Model.Id" />
+                    <div class="d-flex flex-row justify-content-center p-3">
+                        <div>
+                            <select name="BookmarkId" class="form-control">
+                                <option selected>Adauga acest articol intr-o colectie</option>
+                                @foreach (var bookmark in ViewBag.UserBookmarks)
+                                {
+                                    <option value="@bookmark.Id">@bookmark.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-success" value="+" />
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     }
-
-    <form method="post" asp-controller="Articles" asp-action="AddBookmark">
-        <input type="hidden" name="ArticleId" value="@Model.Id" />
-        <div class="d-flex flex-row justify-content-center p-3 border-1 border-top">
-            <div>
-                <select name="BookmarkId" class="form-control">
-                    <option selected>Adauga acest articol intr-o colectie</option>
-                    @foreach (var bookmark in ViewBag.UserBookmarks)
-                    {
-                        <option value="@bookmark.Id">@bookmark.Name</option>
-                    }
-                </select>
-            </div>
-            <div>
-                <input type="submit" class="btn btn-success" value="+" />
-            </div>
-        </div>
-    </form>
-
 </div>
 
 <br />
 <br />
 
-@* Afisarea formularului in care se poate adauga un comentariu *@
-
 <div class="container">
-
     <div class="row">
-
         <div class="col-md-2"></div>
-
         <div class="col-md-8">
-
             <div class="card">
-
                 <form method="post" asp-controller="Articles" asp-action="Show">
-
                     <div class="card-body">
-
                         <input type="hidden" name="ArticleId" value="@Model.Id" />
-
-                        <label>Continut comentariu</label>
+                        <label>Scrie un comentariu!</label>
                         <br />
 
                         <textarea class="form-control" name="Content"></textarea>
 
                         <span asp-validation-for="Content" class="text-danger"></span>
-                        <br /><br />
+                        <br />
                         <button class="btn btn-success " type="submit">Adauga comentariul</button>
                     </div>
                 </form>
@@ -89,7 +79,7 @@
         <div class="col-md-2"></div>
     </div>
 
-    <br><br>
+ <br><br>
 @* Afisare comentarii impreuna cu butoanele de editare si stergere *@
 
 @foreach (var comm in Model.Comments)
@@ -100,7 +90,7 @@
 
             <div class="col-md-8">
 
-                <div class="card">
+                <div class="card p-2">
                     <div>
                         <strong><i class="bi bi-person"> @comm.User.UserName</i></strong>
                         <p>@comm.Content</p>

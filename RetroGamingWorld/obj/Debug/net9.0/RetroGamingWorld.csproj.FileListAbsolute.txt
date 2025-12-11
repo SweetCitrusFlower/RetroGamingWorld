@@ -1483,3 +1483,7 @@ D:\Facultate\Anul II\Semestrul I\DAW\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug
 D:\Facultate\Anul II\Semestrul I\DAW\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\RetroGamingWorld.pdb
 D:\Facultate\Anul II\Semestrul I\DAW\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\RetroGamingWorld.genruntimeconfig.cache
 D:\Facultate\Anul II\Semestrul I\DAW\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\ref\RetroGamingWorld.dll
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\AngleSharp.dll
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\AngleSharp.Css.dll
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\HtmlSanitizer.dll
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\0u44wddsk7-nlmnvst90x.gz

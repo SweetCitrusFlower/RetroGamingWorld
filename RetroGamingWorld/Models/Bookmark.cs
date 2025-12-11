@@ -8,7 +8,7 @@ namespace RetroGamingWorld.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Numele colectiei este obligatoriu")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         // o colectie este creata de catre un user
         public string? UserID { get; set; }
