@@ -24,7 +24,6 @@ namespace RetroGamingWorld.Controllers
                              .Include(a => a.User)
                              .OrderByDescending(a => a.Date);
 
-            // ViewBag.OriceDenumireSugestiva
             ViewBag.Articles = articles;
 
             if (TempData.ContainsKey("message"))
@@ -62,7 +61,7 @@ namespace RetroGamingWorld.Controllers
             ViewBag.SearchString = search;
 
             int totalItems = articles.Count();
-            int articlesPerPage = 3;
+            int articlesPerPage = 30;
             var currentPage = Convert.ToInt32(HttpContext.Request.Query["page"]);
             var offset = 0;
 

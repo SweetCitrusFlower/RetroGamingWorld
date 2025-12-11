@@ -17,16 +17,19 @@
     </div>
 </form>
 
+<div class="row">
 @foreach (var article in ViewBag.Articles)
 {
-    <div class="card">
-        <partial name="ArticleInfo" model="article"></partial>
-        <a class="btn btn-success" asp-controller="Articles" asp-action="Show" asp-route-id="@article.Id">Afisare articol</a>
-    </div>
-    <br />
-    <br />
+    <div class="col-6 mb-2">
+        <div class="card" style="height:100%; width: 100%;">
+            <partial name="ArticleInfo" model="article"></partial>
+            <a class="btn btn-success" asp-controller="Articles" asp-action="Show" asp-route-id="@article.Id">Afisare articol</a>
+        </div>
+        </div>
+        <br />
+        <br />
 }
-
+</div>
 
 <div class="d-flex justify-content-center">
     <nav aria-label="Page navigation example">
