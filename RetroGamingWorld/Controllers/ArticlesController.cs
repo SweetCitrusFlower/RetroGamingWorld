@@ -35,14 +35,12 @@ namespace RetroGamingWorld.Controllers
             // LOGICA ADMIN vs USER
             if (User.IsInRole("Administrator"))
             {
-                // Adminul vede tot, neaprobatele sunt primele
                 ViewBag.Articles = articlesQuery
-                                    .OrderBy(a => a.IsApproved) // False inaintea lui True
+                                    .OrderBy(a => a.IsApproved) 
                                     .ThenByDescending(a => a.Id);
             }
             else
             {
-                // Userii vad doar ce e aprobat
                 ViewBag.Articles = articlesQuery
                                     .Where(a => a.IsApproved == true)
                                     .OrderByDescending(a => a.Id);
@@ -51,16 +49,15 @@ namespace RetroGamingWorld.Controllers
             return View();
         }
 
-        // 2. AFISAREA UNUI ARTICOL (SHOW) - Aici era problema ta!
+        // 2. AFISAREA UNUI ARTICOL
         [HttpGet]
         public IActionResult Show(int id)
         {
-            // Cautam articolul cu toate relatiile (User, Categorie, Comentarii)
             Article? article = db.Articles
                                  .Include(a => a.Category)
                                  .Include(a => a.User)
                                  .Include(a => a.Comments)
-                                    .ThenInclude(c => c.User) // Incarcam si userul care a lasat comentariul
+                                    .ThenInclude(c => c.User)
                                  .FirstOrDefault(a => a.Id == id);
 
             if (article == null)
@@ -73,7 +70,7 @@ namespace RetroGamingWorld.Controllers
 
         // 3. ADAUGARE COMENTARIU (NOU)
         [HttpPost]
-        [Authorize] // Trebuie sa fii logat
+        [Authorize]
         public IActionResult AddComment([FromForm] Comment comment)
         {
             comment.Date = DateTime.Now;
@@ -86,7 +83,6 @@ namespace RetroGamingWorld.Controllers
                 return RedirectToAction("Show", new { id = comment.ArticleId });
             }
 
-            // Daca e eroare, ne intoarcem la articol
             return RedirectToAction("Show", new { id = comment.ArticleId });
         }
 
@@ -128,7 +124,7 @@ namespace RetroGamingWorld.Controllers
             if (User.IsInRole("Administrator")) return RedirectToAction("Index");
 
             article.Date = DateTime.Now;
-            article.UserId = _userManager.GetUserId(User); // Corectat din UserID in UserId (standard)
+            article.UserId = _userManager.GetUserId(User);
             article.IsApproved = false;
 
             if (ModelState.IsValid)
@@ -153,7 +149,6 @@ namespace RetroGamingWorld.Controllers
             Article article = db.Articles.Include(a => a.Category).FirstOrDefault(a => a.Id == id);
             if (article == null) return NotFound();
 
-            // Poti edita doar daca esti Admin sau proprietarul articolului
             if (!User.IsInRole("Administrator") && article.UserId != _userManager.GetUserId(User))
             {
                 return Forbid();
@@ -229,5 +224,7 @@ namespace RetroGamingWorld.Controllers
             }
             return selectList;
         }
+
     }
+
 }

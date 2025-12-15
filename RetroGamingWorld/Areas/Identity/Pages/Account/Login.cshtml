@@ -2,47 +2,60 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Autentificare";
+    ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form id="account" method="post">
-                <h2>Folosește un cont local pentru a te loga.</h2>
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                    <label asp-for="Input.Email" class="form-label">Email</label>
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0 rounded-3 mt-5">
+                <div class="card-header p-4 text-center text-white" style="background-color: #D32F2F;">
+                    <h2 class="mb-0 fw-bold">🎮 Autentificare</h2>
+                    <p class="mb-0 opacity-75">Bine ai revenit, gamer!</p>
                 </div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
-                    <label asp-for="Input.Password" class="form-label">Parolă</label>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+                <div class="card-body p-4">
+                    <form id="account" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                            <label asp-for="Input.Email">Email</label>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                            <label asp-for="Input.Password">Parolă</label>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="checkbox mb-3">
+                            <label asp-for="Input.RememberMe" class="form-label">
+                                <input class="form-check-input" asp-for="Input.RememberMe" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button id="login-submit" type="submit" class="btn btn-lg text-white fw-bold" style="background-color: #D32F2F;">
+                                Intră în cont
+                            </button>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <p>
+                                <a id="forgot-password" asp-page="./ForgotPassword" class="link-retro">Ai uitat parola?</a>
+                            </p>
+                            <p>
+                                Nu ai cont?
+                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="link-retro">Înregistrează-te aici</a>
+                            </p>
+                        </div>
+                    </form>
                 </div>
-                <div class="checkbox mb-3">
-                    <label asp-for="Input.RememberMe" class="form-label">
-                        <input class="form-check-input" asp-for="Input.RememberMe" />
-                        @Html.DisplayNameFor(m => m.Input.RememberMe)
-                    </label>
-                </div>
-                <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Logare</button>
-                </div>
-                <div class="d-flex justify-content-between mt-3">
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Ai uitat parola?</a>
-                    </p>
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Înregistrează un utilizator nou</a>
-                    </p>
-                    @* Opțional: Poți adăuga link-ul de Resend Confirmation AICI *@
-                </div>
-            </form>
-        </section>
+            </div>
+        </div>
     </div>
 </div>
 

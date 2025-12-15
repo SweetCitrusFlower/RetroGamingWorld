@@ -1888,7 +1888,6 @@ D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\obj\Debug\net9.0\c
 D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\ni2cs1xwny-ir474ug6zy.gz
 D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\07divn2hdc-5cl6jzyzps.gz
 D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\y7bxdgv3t3-a2c1phmbzv.gz
-D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\vu7qms1sga-b9sayid5wm.gz
 D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\e0tidfov40-61n19gt1b8.gz
 D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\1xubn2nkv1-xtxxf3hu2r.gz
 D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\u59o78y1vu-t1cqhe9u97.gz
@@ -2015,3 +2014,4 @@ D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\bin\Debug\net9.0\r
 D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\bin\Debug\net9.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\bin\Debug\net9.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\bin\Debug\net9.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\vu7qms1sga-h9sjvf78ow.gz

@@ -8,9 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 
-//pasul 2: useri si roluri
-
-
 builder.Services.AddDbContext<AppDbContext>(
     option => option.UseSqlServer(connectionString));
 
@@ -30,7 +27,7 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
 
-    await DataSeeder.InitializeRoles(services);
+    SeedData.Initialize(services);
 }
 
 if (!app.Environment.IsDevelopment())

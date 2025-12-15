@@ -1,119 +1,93 @@
-﻿@using RetroGamingWorld.Models
+﻿@model IEnumerable<RetroGamingWorld.Models.Article> 
 @{
     ViewData["Title"] = "Articole";
 }
 
-<div class="d-flex justify-content-center mb-5 mt-4">
+<div class="d-flex justify-content-between align-items-center mb-5 p-4 rounded-3 shadow-sm bg-white border-start border-5 border-danger">
+    <div>
+        <h1 class="display-6 fw-bold mb-0">📚 Colecția de Articole</h1>
+        <p class="text-muted mb-0">Exploarează istoria gaming-ului.</p>
+    </div>
     
-    @if (!User.IsInRole("Administrator"))
+    @if (User.Identity.IsAuthenticated)
     {
-        <a class="btn btn-success btn-lg shadow" asp-action="New">
-            Adaugă un articol nou
-        </a>
-    }
-
-    @if (User.IsInRole("Administrator"))
-    {
-        <a class="btn btn-warning btn-lg shadow ms-3" asp-controller="Categories" asp-action="New">
-            + Adaugă Categorie (Admin)
+        <a class="btn btn-retro" href="/Articles/New">
+            <i class="bi bi-plus-lg"></i> Adaugă Articol
         </a>
     }
 </div>
 
-@if (ViewBag.message != null)
-{
-    <div class="alert alert-success text-center mb-4">
-        @ViewBag.message
-    </div>
-}
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+    
+    @foreach (var article in ViewBag.Articles)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 card-hover-effect position-relative">
+                
+                <span class="position-absolute top-0 end-0 badge bg-danger m-3 shadow-sm">
+                    @if (article.Category != null)
+                    {
+                        @article.Category.CategoryName  }
+                    else
+                    {
+                        <text>General</text>
+                    }
+                </span>
 
-<div class="container">
-    <div class="row">
-        @foreach (var article in ViewBag.Articles)
-        {
-            string cardBorder = "border-0 shadow-sm"; 
-            string headerStyle = "background-color: #d1e7dd; color: #0f5132;";
-            
-            if (!article.IsApproved)
-            {
-                cardBorder = "border border-3 border-danger shadow";
-                headerStyle = "background-color: #f8d7da; color: #842029;"; 
-            }
+                <div class="card-img-top bg-light d-flex justify-content-center align-items-center border-bottom" style="height: 150px;">
+                    @if(article.Id % 2 == 0) {
+                        <span style="font-size: 4rem;">🕹️</span>
+                    } else {
+                        <span style="font-size: 4rem;">👾</span>
+                    }
+                </div>
 
-            <div class="col-md-6 mb-4">
-                <div class="card h-100 @cardBorder">
+                <div class="card-body">
+                    @if (User.IsInRole("Administrator") && !article.IsApproved)
+                    {
+                        <span class="badge bg-warning text-dark mb-2">În Așteptare</span>
+                    }
                     
-                    <div class="card-header text-center py-3" style="@headerStyle">
-                        <h3 class="card-title m-0">
-                            @article.Title
-                            @if (!article.IsApproved)
-                            {
-                                <br/><span class="badge bg-danger mt-1" style="font-size: 0.5em;">NEAPROBAT</span>
-                            }
-                        </h3>
-                    </div>
-
-                    <div class="card-body d-flex flex-column">
-                        
-                        <p class="card-text mb-4">
-                            @if (article.Content.Length > 120)
-                            {
-                                @article.Content.Substring(0, 120) <span>...</span>
-                            }
-                            else
-                            {
-                                @article.Content
-                            }
-                        </p>
-
-                        @if (User.IsInRole("Administrator") && !article.IsApproved)
+                    <h5 class="card-title fw-bold text-dark mt-2">@article.Title</h5>
+                    
+                    <p class="card-text small mb-1">
+                        De: <span class="fw-semibold text-danger">@article.User.UserName</span> 
+                    </p>
+                    
+                    <p class="card-text text-muted small">
+                        @if (!string.IsNullOrEmpty(article.Content) && article.Content.Length > 100)
                         {
-                            <div class="alert alert-warning p-2 text-center">
-                                <strong>Acțiune Admin:</strong>
-                                <div class="mt-2">
-                                    <form method="post" asp-action="Approve" asp-route-id="@article.Id" style="display:inline;">
-                                        <button type="submit" class="btn btn-success btn-sm">✅ Aprobă</button>
-                                    </form>
-                                    <form method="post" asp-action="Delete" asp-route-id="@article.Id" style="display:inline;">
-                                        <button type="submit" class="btn btn-danger btn-sm ms-2">🗑️ Respinge</button>
-                                    </form>
-                                </div>
-                            </div>
+                            @article.Content.Substring(0, 100) <span class="text-danger">...</span>
                         }
+                        else
+                        {
+                            @article.Content
+                        }
+                    </p>
+                </div>
 
-                        <div class="mt-auto pt-3 border-top">
-                            <div class="d-flex justify-content-between align-items-center">
-                                
-                                <div>
-                                    <small class="text-muted d-block">
-                                        <i class="bi bi-person"></i> @(article.User?.UserName ?? "Anonim")
-                                    </small>
-                                    <span class="badge bg-secondary">@article.Category?.CategoryName</span>
-                                </div>
+                <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center pb-3">
+                    <small class="text-muted">
+                        📅 @article.Date.ToString("dd MMM yyyy")
+                    </small>
 
-                                <div>
-                                    <a asp-action="Show" asp-route-id="@article.Id" class="btn btn-success">
-                                        Afisare articol
-                                    </a>
-
-                                    @if (User.IsInRole("Administrator") && article.IsApproved)
-                                    {
-                                         <a asp-action="Edit" asp-route-id="@article.Id" class="btn btn-outline-dark btn-sm ms-1">Edit</a>
-                                         <form method="post" asp-action="Delete" asp-route-id="@article.Id" style="display:inline;">
-                                            <button type="submit" class="btn btn-outline-danger btn-sm ms-1">X</button>
-                                         </form>
-                                    }
-                                </div>
-                            </div>
-                            
-                            <div class="text-end mt-1">
-                                <small class="text-muted" style="font-size: 0.75em;">@article.Date.ToString("dd.MM.yyyy HH:mm")</small>
-                            </div>
-                        </div>
-
+                    <div class="btn-group">
+                        <a href="/Articles/Show/@article.Id" class="btn btn-sm btn-outline-secondary">
+                            Afisează articol
+                        </a>
+                        
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/Articles/Edit/@article.Id" class="btn btn-sm btn-outline-primary">
+                                ✏️
+                            </a>
+                            <a href="/Articles/Delete/@article.Id" class="btn btn-sm btn-outline-danger">
+                                🗑️
+                            </a>
+                        }
                     </div>
                 </div>
             </div>
-        }
-    </div>
+        </div>
+    }
 </div>

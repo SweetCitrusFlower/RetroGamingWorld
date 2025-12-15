@@ -63,8 +63,6 @@
 
             <hr class="my-4" />
 
-            @if (User.Identity.IsAuthenticated)
-            {
                 <div class="card bg-light border-0 p-4">
                     <h5>Adaugă un comentariu</h5>
                     <form method="post" asp-action="AddComment">
@@ -77,13 +75,6 @@
                         <button type="submit" class="btn btn-success">Postează Comentariu</button>
                     </form>
                 </div>
-            }
-            else
-            {
-                <div class="alert alert-warning">
-                    Trebuie să te <a asp-area="Identity" asp-page="/Account/Login">loghezi</a> pentru a lăsa un comentariu.
-                </div>
-            }
 
         </div>
     </div>

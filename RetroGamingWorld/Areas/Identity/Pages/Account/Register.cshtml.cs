@@ -10,11 +10,11 @@ namespace RetroGamingWorld.Areas.Identity.Pages.Account
     public class RegisterModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager; // Am adăugat SignInManager pentru autologin
+        private readonly SignInManager<ApplicationUser> _signInManager; 
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager) // Injectăm SignInManager
+            SignInManager<ApplicationUser> signInManager) 
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -58,7 +58,7 @@ namespace RetroGamingWorld.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    //await _userManager.AddToRoleAsync(user, "User");
+                    await _userManager.AddToRoleAsync(user, "User");
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
