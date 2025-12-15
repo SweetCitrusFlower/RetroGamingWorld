@@ -8,9 +8,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RetroGamingWorld.Controllers
 {
-    public class ArticlesController(AppDbContext context) : Controller
+    public class ArticlesController : Controller
     {
-        private readonly AppDbContext db = context;
+        private readonly AppDbContext db;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public ArticlesController(AppDbContext context, UserManager<ApplicationUser> userManager)
+        {
+            db = context;
+            _userManager = userManager;
+        }
+
+        // 1. LISTA DE ARTICOLE (INDEX)
         [HttpGet]
         public IActionResult Index()
         {
@@ -18,77 +27,115 @@ namespace RetroGamingWorld.Controllers
             {
                 ViewBag.message = TempData["messageArticles"].ToString();
             }
-            var articles = db.Articles
-                             .Include(a => a.Category)
-                             .OrderByDescending(a => a.Id);
-            ViewBag.Articles = articles;
+
+            var articlesQuery = db.Articles
+                                  .Include(a => a.Category)
+                                  .Include(a => a.User);
+
+            // LOGICA ADMIN vs USER
+            if (User.IsInRole("Administrator"))
+            {
+                // Adminul vede tot, neaprobatele sunt primele
+                ViewBag.Articles = articlesQuery
+                                    .OrderBy(a => a.IsApproved) // False inaintea lui True
+                                    .ThenByDescending(a => a.Id);
+            }
+            else
+            {
+                // Userii vad doar ce e aprobat
+                ViewBag.Articles = articlesQuery
+                                    .Where(a => a.IsApproved == true)
+                                    .OrderByDescending(a => a.Id);
+            }
 
             return View();
         }
 
+        // 2. AFISAREA UNUI ARTICOL (SHOW) - Aici era problema ta!
         [HttpGet]
         public IActionResult Show(int id)
         {
-            
+            // Cautam articolul cu toate relatiile (User, Categorie, Comentarii)
             Article? article = db.Articles
-                                .Include(a => a.Category)
-                                .Include(a => a.Comments)
-                                    .ThenInclude(c => c.User)
-                                .Include(a => a.User)
-                                .Where(a => id == a.Id)
-                                .FirstOrDefault();
-            if(article is null)
+                                 .Include(a => a.Category)
+                                 .Include(a => a.User)
+                                 .Include(a => a.Comments)
+                                    .ThenInclude(c => c.User) // Incarcam si userul care a lasat comentariul
+                                 .FirstOrDefault(a => a.Id == id);
+
+            if (article == null)
             {
                 return NotFound();
             }
 
-            //ViewBag.Article = article;
-            //ViewBag.Category = article.Category;
-            //ViewBag.Comments = article.Comments;
-
-
             return View(article);
         }
 
-        //[HttpPost]
-        //public IActionResult Show([FromForm] Comment comment)
-        //{
-        //    comment.Date = DateTime.Now;
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Comments.Add(comment);
-        //        db.SaveChanges();
-        //        return Redirect("Articles/Show/" + comment.ArticleId);
-        //    }
-        //    else
-        //    {
-        //        Article? article = db.Articles
-        //                        .Include(a => a.Category)
-        //                        .Include(a => a.Comments)
-        //                        .Where(a => comment.ArticleId == a.Id)
-        //                        .First();
-        //    }
-        //}
+        // 3. ADAUGARE COMENTARIU (NOU)
+        [HttpPost]
+        [Authorize] // Trebuie sa fii logat
+        public IActionResult AddComment([FromForm] Comment comment)
+        {
+            comment.Date = DateTime.Now;
+            comment.UserID = _userManager.GetUserId(User);
 
+            if (ModelState.IsValid)
+            {
+                db.Comments.Add(comment);
+                db.SaveChanges();
+                return RedirectToAction("Show", new { id = comment.ArticleId });
+            }
+
+            // Daca e eroare, ne intoarcem la articol
+            return RedirectToAction("Show", new { id = comment.ArticleId });
+        }
+
+        // 4. APROBARE (DOAR ADMIN)
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        public IActionResult Approve(int id)
+        {
+            var article = db.Articles.Find(id);
+            if (article != null)
+            {
+                article.IsApproved = true;
+                db.SaveChanges();
+                TempData["messageArticles"] = "Articolul a fost aprobat!";
+            }
+            return RedirectToAction("Index");
+        }
+
+        // 5. CREARE ARTICOL (NEW)
+        [Authorize(Roles = "Colaborator")]
         [HttpGet]
         public IActionResult New()
         {
+            if (User.IsInRole("Administrator"))
+            {
+                TempData["messageArticles"] = "Adminii nu pot posta articole!";
+                return RedirectToAction("Index");
+            }
+
             Article art = new Article();
-
             art.Categ = GetAllCategories();
-
             return View(art);
         }
 
+        [Authorize(Roles = "Colaborator")]
         [HttpPost]
         public IActionResult New(Article article)
         {
+            if (User.IsInRole("Administrator")) return RedirectToAction("Index");
+
             article.Date = DateTime.Now;
+            article.UserId = _userManager.GetUserId(User); // Corectat din UserID in UserId (standard)
+            article.IsApproved = false;
+
             if (ModelState.IsValid)
             {
                 db.Articles.Add(article);
                 db.SaveChanges();
-                TempData["messageArticles"] = "Articolul \"" + article.Title + "\" a fost adaugat!";
+                TempData["messageArticles"] = "Articolul a fost trimis spre aprobare!";
                 return RedirectToAction("Index");
             }
             else
@@ -98,31 +145,50 @@ namespace RetroGamingWorld.Controllers
             }
         }
 
+        // 6. EDITARE (EDIT)
+        [Authorize]
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Article article = db.Articles
-                                .Include(a => a.Category)
-                                .First(art => art.Id == id);
-            article.Categ = GetAllCategories();
+            Article article = db.Articles.Include(a => a.Category).FirstOrDefault(a => a.Id == id);
+            if (article == null) return NotFound();
 
+            // Poti edita doar daca esti Admin sau proprietarul articolului
+            if (!User.IsInRole("Administrator") && article.UserId != _userManager.GetUserId(User))
+            {
+                return Forbid();
+            }
+
+            article.Categ = GetAllCategories();
             return View(article);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Edit(int id, Article requestArt)
         {
             Article art = db.Articles.Find(id);
+            if (art == null) return NotFound();
+
             if (ModelState.IsValid)
             {
                 art.Title = requestArt.Title;
                 art.Content = requestArt.Content;
                 art.CategoryId = requestArt.CategoryId;
 
-                db.SaveChanges();
-                TempData["messageArticles"] = "Articolul a fost modificat!";
-                return RedirectToAction("Index");
+                // Daca userul editeaza, trece iar in moderare
+                if (!User.IsInRole("Administrator"))
+                {
+                    art.IsApproved = false;
+                    TempData["messageArticles"] = "Articolul modificat așteaptă aprobare!";
+                }
+                else
+                {
+                    TempData["messageArticles"] = "Articolul a fost modificat!";
+                }
 
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             else
             {
@@ -131,23 +197,27 @@ namespace RetroGamingWorld.Controllers
             }
         }
 
+        // 7. STERGERE (DELETE)
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult Delete(int id)
         {
             Article article = db.Articles.Find(id);
-            db.Articles.Remove(article);
-            db.SaveChanges();
-            TempData["messageArticles"] = "Articolul a fost sters!";
+            if (article != null)
+            {
+                db.Articles.Remove(article);
+                db.SaveChanges();
+                TempData["messageArticles"] = "Articolul a fost șters!";
+            }
             return RedirectToAction("Index");
         }
 
+        // METODA AUXILIARA
         [NonAction]
         public IEnumerable<SelectListItem> GetAllCategories()
         {
             var selectList = new List<SelectListItem>();
-
-            var categories = from cat in db.Categories
-                             select cat;
+            var categories = from cat in db.Categories select cat;
 
             foreach (var category in categories)
             {
@@ -161,4 +231,3 @@ namespace RetroGamingWorld.Controllers
         }
     }
 }
-

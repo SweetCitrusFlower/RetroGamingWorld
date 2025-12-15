@@ -1,19 +1,27 @@
 ﻿@model RetroGamingWorld.Models.Category
 
 @{
-    ViewBag.Title = "Adaugare Categorie";
+    ViewData["Title"] = "Adaugă Categorie";
 }
 
-<h2>Adaugare Categorie</h2>
-<form asp-action="New" asp-controller="Categories" method="post">
+<h1>Adaugă o Categorie Nouă</h1>
+<hr />
 
-    <div class="form-group">
-        <label asp-for="CategoryName" class="form-label">Denumire categorie</label>
-        <br />
-        <input asp-for="CategoryName" class="form-control" />
-        <span asp-validation-for="CategoryName" class="text-danger"></span>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="New">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="CategoryName" class="control-label">Nume Categorie</label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Adaugă Categorie" class="btn btn-success" />
+                <a asp-controller="Articles" asp-action="Index" class="btn btn-secondary">Înapoi</a>
+            </div>
+        </form>
     </div>
-
-    <br /><br />
-    <button class="btn btn-success" type="submit">Adauga categorie</button>
-</form>
+</div>

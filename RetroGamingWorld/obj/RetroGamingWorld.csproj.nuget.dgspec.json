@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\RetroGamingWorld\\RETROGAMINGWORLD\\RetroGamingWorld.csproj": {}
+    "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\Proiect\\RETROGAMINGWORLD\\RetroGamingWorld.csproj": {}
   },
   "projects": {
-    "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\RetroGamingWorld\\RETROGAMINGWORLD\\RetroGamingWorld.csproj": {
+    "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\Proiect\\RETROGAMINGWORLD\\RetroGamingWorld.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\RetroGamingWorld\\RETROGAMINGWORLD\\RetroGamingWorld.csproj",
+        "projectUniqueName": "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\Proiect\\RETROGAMINGWORLD\\RetroGamingWorld.csproj",
         "projectName": "RetroGamingWorld",
-        "projectPath": "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\RetroGamingWorld\\RETROGAMINGWORLD\\RetroGamingWorld.csproj",
+        "projectPath": "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\Proiect\\RETROGAMINGWORLD\\RetroGamingWorld.csproj",
         "packagesPath": "C:\\Users\\Tudor\\.nuget\\packages\\",
-        "outputPath": "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\RetroGamingWorld\\RETROGAMINGWORLD\\obj\\",
+        "outputPath": "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\Proiect\\RETROGAMINGWORLD\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -88,7 +88,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.0-preview.2.24522.25, )"
             },
             "bootstrap": {
               "target": "Package",

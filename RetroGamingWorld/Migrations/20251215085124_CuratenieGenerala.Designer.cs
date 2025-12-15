@@ -12,8 +12,8 @@ using RetroGamingWorld.Data;
 namespace RetroGamingWorld.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251202161046_RGW_M2")]
-    partial class RGW_M2
+    [Migration("20251215085124_CuratenieGenerala")]
+    partial class CuratenieGenerala
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -251,43 +251,38 @@ namespace RetroGamingWorld.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("UserID")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Articles");
                 });
 
             modelBuilder.Entity("RetroGamingWorld.Models.ArticleBookmark", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
                     b.Property<int>("ArticleId")
                         .HasColumnType("int");
 
                     b.Property<int>("BookmarkId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("BookmarkDate")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
-                    b.HasKey("Id", "ArticleId", "BookmarkId");
-
-                    b.HasIndex("ArticleId");
+                    b.HasKey("ArticleId", "BookmarkId");
 
                     b.HasIndex("BookmarkId");
 
@@ -424,7 +419,7 @@ namespace RetroGamingWorld.Migrations
 
                     b.HasOne("RetroGamingWorld.Models.ApplicationUser", "User")
                         .WithMany("Articles")
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Category");
 

@@ -1,104 +1,90 @@
 ﻿@model RetroGamingWorld.Models.Article
 
-@* <div class="d-flex justify-content-center">
+@{
+    ViewData["Title"] = Model.Title;
+}
 
-    <a class="btn btn-outline-success" href="/Articles/Index/">Afisare articole</a>
+<div class="container mt-5">
 
-    <a class="btn btn-outline-success" href="/Articles/New">Adauga articol</a>
+    <div class="card shadow-lg border-0 mb-5">
 
-</div> *@
+        <div class="card-header text-center py-4" style="background-color: #d1e7dd; color: #0f5132;">
+            <h1 class="display-5 fw-bold mb-0">@Model.Title</h1>
 
-<br />
+            <div class="mt-2">
+                <span class="badge bg-secondary">@Model.Category?.CategoryName</span>
+                <span class="text-muted ms-2" style="font-size: 0.9rem;">
+                    Scris de @(Model.User?.UserName ?? "Anonim") pe @Model.Date.ToString("dd MMMM yyyy")
+                </span>
+            </div>
+        </div>
 
-<div class="card">
-    <div class="card-body">
-        <h3 class="card-title alert alert-success py-3 px-3 rounded-2 text-center">@Model.Title</h3>
-        <div class="card-text">@Model.Content</div>
-        <div class="d-flex justify-content-between flex-row mt-5">
-            <div><i class="bi bi-globe"></i>@Model.Category.CategoryName</div>
-            <div><i class="bi bi-person"></i>@Model.User.UserName</div>
-            <span>@Model.Date</span>
+        <div class="card-body p-5">
+            <div class="card-text" style="font-size: 1.1rem; line-height: 1.8;">
+                @Html.Raw(Model.Content.Replace("\n", "<br>"))
+            </div>
+        </div>
+
+        <div class="card-footer text-center bg-white border-0 pb-4">
+            <a asp-action="Index" class="btn btn-outline-dark">← Înapoi la Articole</a>
+
+            @if ((User.IsInRole("Administrator")) || (User.Identity.Name == Model.User?.Email))
+            {
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning ms-2">Editează</a>
+            }
         </div>
     </div>
 
-    <hr />
-    <div class="d-flex flex-row justify-content-between">
-        <a asp-controller="Articles" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success">Editează articol</a>
-        <form method="post" asp-controller="Articles" asp-action="Delete" asp-route-id="@Model.Id">
-            <button class="btn btn-danger" type="submit">Sterge articol</button>
-        </form>
-    </div>
-</div>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h3 class="mb-4"><i class="bi bi-chat-left-text"></i> Comentarii</h3>
 
-<br />
-<br />
+            @if (Model.Comments != null && Model.Comments.Any())
+            {
+                foreach (var comm in Model.Comments.OrderBy(c => c.Date))
+                {
+                    <div class="card mb-3 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h6 class="fw-bold text-success">@comm.User?.UserName</h6>
+                                <small class="text-muted">@comm.Date.ToString("dd.MM.yyyy HH:mm")</small>
+                            </div>
+                            <p class="mt-2 mb-0">@comm.Content</p>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="alert alert-light text-center">
+                    Nu există comentarii. Fii primul care scrie!
+                </div>
+            }
 
-<div class="container">
+            <hr class="my-4" />
 
-    <div class="row">
-
-        <div class="col-md-2"></div>
-
-        <div class="col-md-8">
-
-            <div class="card">
-
-                <form method="post" asp-controller="Comments" asp-action="New">
-
-                    <div class="card-body">
-
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="card bg-light border-0 p-4">
+                    <h5>Adaugă un comentariu</h5>
+                    <form method="post" asp-action="AddComment">
                         <input type="hidden" name="ArticleId" value="@Model.Id" />
 
-                        <label>Continutul comentariului</label>
-                        <br />
-
-                        <textarea class="form-control" name="Content"></textarea>
-                        <br />
-
-                        <span asp-validation-for="Comments" class="text-danger"></span>
-
-                        <button class="btn btn-success " type="submit">Adauga comentariul</button>
-
-                    </div>
-
-                </form>
-
-            </div>
-
-        </div>
-
-        <div class="col-md-2"></div>
-
-    </div>
-
-</div>
- 
-@foreach (var comm in Model.Comments)
-{
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <div class="card">
-                        <div>
-                            <p>@comm.Content</p>
-                            <small>@comm.Date</small>
+                        <div class="form-group mb-3">
+                            <textarea name="Content" class="form-control" rows="3" placeholder="Spune-ți părerea..." required></textarea>
                         </div>
-                        <br>
-                        <div class="d-flex">
-                            <div>
-                                <a class="btn btn-outline-primary" href="/Comments/Edit/@comm.Id"><i class="bi bi-pencil-square"></i>Editeaza</a>
-                            </div>
-                            <div>
-                                <form method="post" asp-controller="Comments" asp-action="Delete" asp-route-id="@comm.Id">
-                                    <button class="btn btn-outline-danger" type="submit"><i class="bi bi-trash"></i>Sterge</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <br />
+
+                        <button type="submit" class="btn btn-success">Postează Comentariu</button>
+                    </form>
                 </div>
-            <div class="col-md-2"></div>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    Trebuie să te <a asp-area="Identity" asp-page="/Account/Login">loghezi</a> pentru a lăsa un comentariu.
+                </div>
+            }
+
         </div>
     </div>
-}
+</div>

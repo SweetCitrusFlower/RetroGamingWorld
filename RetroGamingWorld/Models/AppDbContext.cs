@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RetroGamingWorld.Data
 {
-    // PASUL 3: useri si roluri
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
@@ -21,27 +20,27 @@ namespace RetroGamingWorld.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // definirea relatiei many-to-many dintre Article si Bookmark
-
             base.OnModelCreating(modelBuilder);
 
-            // definire primary key compus
+            // === DEFINIRE CHEIE PRIMARA COMPUSA ===
+            // Corect este sa folosim doar ArticleId si BookmarkId
             modelBuilder.Entity<ArticleBookmark>()
-                .HasKey(ab => new { ab.Id, ab.ArticleId, ab.BookmarkId });
+                .HasKey(ab => new { ab.ArticleId, ab.BookmarkId });
 
 
-            // definire relatii cu modelele Bookmark si Article (FK)
+            // === DEFINIRE RELATII (Foreign Keys) ===
 
+            // Relatia cu Article
             modelBuilder.Entity<ArticleBookmark>()
                 .HasOne(ab => ab.Article)
-                .WithMany(ab => ab.ArticleBookmarks)
+                .WithMany(a => a.ArticleBookmarks) // <--- Acum va merge, pentru ca am adaugat lista in Article.cs
                 .HasForeignKey(ab => ab.ArticleId);
 
+            // Relatia cu Bookmark
             modelBuilder.Entity<ArticleBookmark>()
                 .HasOne(ab => ab.Bookmark)
-                .WithMany(ab => ab.ArticleBookmarks)
+                .WithMany(b => b.ArticleBookmarks) // <--- Asigura-te ca ai lista asta si in Bookmark.cs!
                 .HasForeignKey(ab => ab.BookmarkId);
-
         }
     }
 }
