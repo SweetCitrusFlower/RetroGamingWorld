@@ -824,7 +824,6 @@ C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\ni2cs1xwny-ir474ug6zy.gz
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\07divn2hdc-5cl6jzyzps.gz
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\y7bxdgv3t3-a2c1phmbzv.gz
-C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\vu7qms1sga-b9sayid5wm.gz
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\e0tidfov40-61n19gt1b8.gz
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\1xubn2nkv1-xtxxf3hu2r.gz
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\u59o78y1vu-t1cqhe9u97.gz
@@ -900,8 +899,6 @@ C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\0dab1o8x7s-ttgo8qnofa.gz
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\hz8wpxcp0m-87fc7y1x7t.gz
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\s9cydwghva-mlv21k5csn.gz
-C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\9sr0g1qqr1-x7q70h1mog.gz
-C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\9b6h8n1hp6-x7q70h1mog.gz
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\RetroGam.379C91DE.Up2Date
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\Microsoft.Data.Sqlite.dll
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Sqlite.dll
@@ -2015,3 +2012,14 @@ D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\bin\Debug\net9.0\r
 D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\bin\Debug\net9.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\bin\Debug\net9.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 D:\Facultate\Anul II\Semestrul I\DAW\Proiect\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\vu7qms1sga-h9sjvf78ow.gz
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\System.Drawing.Common.dll
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\System.Security.Permissions.dll
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\System.Windows.Extensions.dll
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\bin\Debug\net9.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\vu7qms1sga-h9sjvf78ow.gz
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\9sr0g1qqr1-vh0ue1jxva.gz
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\obj\Debug\net9.0\compressed\9b6h8n1hp6-vh0ue1jxva.gz

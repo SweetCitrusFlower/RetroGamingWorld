@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\Proiect\\RETROGAMINGWORLD\\RetroGamingWorld.csproj": {}
+    "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\RetroGamingWorld.csproj": {}
   },
   "projects": {
-    "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\Proiect\\RETROGAMINGWORLD\\RetroGamingWorld.csproj": {
+    "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\RetroGamingWorld.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\Proiect\\RETROGAMINGWORLD\\RetroGamingWorld.csproj",
+        "projectUniqueName": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\RetroGamingWorld.csproj",
         "projectName": "RetroGamingWorld",
-        "projectPath": "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\Proiect\\RETROGAMINGWORLD\\RetroGamingWorld.csproj",
-        "packagesPath": "C:\\Users\\Tudor\\.nuget\\packages\\",
-        "outputPath": "D:\\Facultate\\Anul II\\Semestrul I\\DAW\\Proiect\\RETROGAMINGWORLD\\obj\\",
+        "projectPath": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\RetroGamingWorld.csproj",
+        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RETROGAMINGWORLD\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Tudor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
