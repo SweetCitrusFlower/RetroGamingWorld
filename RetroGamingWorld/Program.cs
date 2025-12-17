@@ -19,6 +19,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     .AddEntityFrameworkStores<AppDbContext>(
 );
 
+builder.Services.AddControllersWithViews();
 
 
 var app = builder.Build();
@@ -36,6 +37,7 @@ if (!app.Environment.IsDevelopment())
 
     app.UseHsts();
 }
+
 
 app.UseHttpsRedirection();
 app.UseRouting();

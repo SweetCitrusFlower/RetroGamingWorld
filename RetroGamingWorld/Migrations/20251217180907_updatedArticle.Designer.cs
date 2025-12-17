@@ -12,8 +12,8 @@ using RetroGamingWorld.Data;
 namespace RetroGamingWorld.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251215085124_CuratenieGenerala")]
-    partial class CuratenieGenerala
+    [Migration("20251217180907_updatedArticle")]
+    partial class updatedArticle
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -251,8 +251,21 @@ namespace RetroGamingWorld.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsApproved")
                         .HasColumnType("bit");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(6, 2)");
+
+                    b.Property<float>("Rating")
+                        .HasColumnType("real");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()

@@ -28,7 +28,7 @@
         <div class="card-footer text-center bg-white border-0 pb-4">
             <a asp-action="Index" class="btn btn-outline-dark">← Înapoi la Articole</a>
 
-            @if ((User.IsInRole("Administrator")) || (User.Identity.Name == Model.User?.Email))
+            @if ((User.IsInRole("Admin")) || (User.Identity.Name == Model.User?.Email))
             {
                 <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning ms-2">Editează</a>
             }

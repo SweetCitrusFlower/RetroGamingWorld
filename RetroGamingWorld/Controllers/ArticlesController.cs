@@ -31,13 +31,17 @@ namespace RetroGamingWorld.Controllers
             var articlesQuery = db.Articles
                                   .Include(a => a.Category)
                                   .Include(a => a.User);
-
             // LOGICA ADMIN vs USER
-            if (User.IsInRole("Administrator"))
+            if (User.IsInRole("Admin"))
             {
                 ViewBag.Articles = articlesQuery
-                                    .OrderBy(a => a.IsApproved) 
-                                    .ThenByDescending(a => a.Id);
+                                    .Where(a => a.IsApproved == true || a.IsApproved == false) 
+                                    .OrderByDescending(a => a.Id);
+            }
+            else if (User.IsInRole("Editor")){
+                ViewBag.Articles = articlesQuery
+                                   .Where(a => a.IsApproved == true || a.IsApproved == false)
+                                   .OrderByDescending(a => a.Id);
             }
             else
             {
@@ -87,7 +91,7 @@ namespace RetroGamingWorld.Controllers
         }
 
         // 4. APROBARE (DOAR ADMIN)
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Approve(int id)
         {
@@ -96,17 +100,17 @@ namespace RetroGamingWorld.Controllers
             {
                 article.IsApproved = true;
                 db.SaveChanges();
-                TempData["messageArticles"] = "Articolul a fost aprobat!";
+                TempData["messageArticles"] = "Articolul \"" + article.Title + "\" a fost aprobat!";
             }
             return RedirectToAction("Index");
         }
 
         // 5. CREARE ARTICOL (NEW)
-        [Authorize(Roles = "Colaborator")]
+        [Authorize(Roles = "Editor")]
         [HttpGet]
         public IActionResult New()
         {
-            if (User.IsInRole("Administrator"))
+            if (User.IsInRole("Admin"))
             {
                 TempData["messageArticles"] = "Adminii nu pot posta articole!";
                 return RedirectToAction("Index");
@@ -117,11 +121,11 @@ namespace RetroGamingWorld.Controllers
             return View(art);
         }
 
-        [Authorize(Roles = "Colaborator")]
+        [Authorize(Roles = "Editor")]
         [HttpPost]
         public IActionResult New(Article article)
         {
-            if (User.IsInRole("Administrator")) return RedirectToAction("Index");
+            if (User.IsInRole("Admin")) return RedirectToAction("Index");
 
             article.Date = DateTime.Now;
             article.UserId = _userManager.GetUserId(User);
@@ -149,7 +153,7 @@ namespace RetroGamingWorld.Controllers
             Article article = db.Articles.Include(a => a.Category).FirstOrDefault(a => a.Id == id);
             if (article == null) return NotFound();
 
-            if (!User.IsInRole("Administrator") && article.UserId != _userManager.GetUserId(User))
+            if (!User.IsInRole("Admin") && article.UserId != _userManager.GetUserId(User))
             {
                 return Forbid();
             }
@@ -172,7 +176,7 @@ namespace RetroGamingWorld.Controllers
                 art.CategoryId = requestArt.CategoryId;
 
                 // Daca userul editeaza, trece iar in moderare
-                if (!User.IsInRole("Administrator"))
+                if (!User.IsInRole("Admin"))
                 {
                     art.IsApproved = false;
                     TempData["messageArticles"] = "Articolul modificat așteaptă aprobare!";
@@ -193,7 +197,7 @@ namespace RetroGamingWorld.Controllers
         }
 
         // 7. STERGERE (DELETE)
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Delete(int id)
         {

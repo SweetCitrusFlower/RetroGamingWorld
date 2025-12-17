@@ -2,6 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\RetroGamingWorld",
+    "\\RetroGamingWorld\\Controllers",
+    "\\RetroGamingWorld\\Migrations",
     "\\RetroGamingWorld\\Models",
     "\\RetroGamingWorld\\Views",
     "\\RetroGamingWorld\\Views\\Articles",

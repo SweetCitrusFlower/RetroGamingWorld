@@ -5,7 +5,7 @@ using RetroGamingWorld.Models;
 
 namespace RetroGamingWorld.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : Controller
     {
         private readonly AppDbContext db;

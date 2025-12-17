@@ -5,31 +5,18 @@
 namespace RetroGamingWorld.Migrations
 {
     /// <inheritdoc />
-    public partial class CuratenieGenerala : Migration
+    public partial class updatedArticle : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Image",
-                table: "Articles");
+            migrationBuilder.AddColumn<bool>(
+                name: "IsApproved",
+                table: "Articles",
+                type: "bit",
+                nullable: false,
+                defaultValue: false);
 
-            migrationBuilder.DropColumn(
-                name: "Price",
-                table: "Articles");
-
-            migrationBuilder.DropColumn(
-                name: "Rating",
-                table: "Articles");
-
-            migrationBuilder.DropColumn(
-                name: "Stock",
-                table: "Articles");
-        }
-
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
             migrationBuilder.AddColumn<string>(
                 name: "Image",
                 table: "Articles",
@@ -57,6 +44,30 @@ namespace RetroGamingWorld.Migrations
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "IsApproved",
+                table: "Articles");
+
+            migrationBuilder.DropColumn(
+                name: "Image",
+                table: "Articles");
+
+            migrationBuilder.DropColumn(
+                name: "Price",
+                table: "Articles");
+
+            migrationBuilder.DropColumn(
+                name: "Rating",
+                table: "Articles");
+
+            migrationBuilder.DropColumn(
+                name: "Stock",
+                table: "Articles");
         }
     }
 }
