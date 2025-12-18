@@ -1,27 +1,95 @@
 ﻿
-@model RetroGamingWorld.Models.Category
+@model IEnumerable<RetroGamingWorld.Models.Article>
+<div class="d-flex justify-content-between align-items-center mb-5 p-4 rounded-3 shadow-sm bg-white border-start border-5 border-danger">
+    <div>
+        <h1 class="display-6 fw-bold mb-0">📚 @ViewBag.CategoryName</h1>
+    </div>
+</div>
 
+@if(ViewBag.CategoryIsEmpty != null)
+{
+    <div class="d-flex justify-content-center align-items-center mb-5 p-4 rounded-3 bg-info-subtle">
+        <h1>@ViewBag.CategoryIsEmpty</h1>
+    </div>
+}
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+    @foreach(Article article in ViewBag.ArticlesInCategory){
+    
+        if(article is not null)
+        {
+            <div class="col">
+            <div class="card h-100 shadow-sm border-0 card-hover-effect position-relative">
+                
+                <span class="position-absolute top-0 end-0 badge bg-danger m-3 shadow-sm">
+                    @if (article.Category != null)
+                        @article.Category.CategoryName
+                    else
+                        {<text>General</text>}
+                </span>
 
-<h2>@ViewBag.Title</h2>
+                <div class="card-img-top bg-light d-flex justify-content-center align-items-center border-bottom" style="height: 150px;">
+                    @if(article.Id % 2 == 0) {
+                        <span style="font-size: 4rem;">🕹️</span>
+                    } else {
+                        <span style="font-size: 4rem;">👾</span>
+                    }
+                </div>
 
-<br />
+                <div class="card-body">
+                    @if (article.IsApproved == false)
+                    {
+                        <span class="badge bg-warning text-dark mb-2">În Așteptare</span>
+                    }
+                    
+                    <h5 class="card-title fw-bold text-dark mt-2">@article.Title</h5>
+                    
+                    <p class="card-text small mb-1">
+                        De: <span class="fw-semibold text-danger">@article.User.UserName</span> 
+                    </p>
+                    
+                    <p class="card-text text-muted small">
+                        @if (!string.IsNullOrEmpty(article.Content) && article.Content.Length > 100)
+                        {
+                            @article.Content.Substring(0, 100) <span class="text-danger">...</span>
+                        }
+                        else
+                        {
+                            @article.Content
+                        }
+                    </p>
+                </div>
+                @if (User.IsInRole("Admin") && article.IsApproved == false)
+                {
+                    <div class="d-flex justify-content-center">
+                        <form method="post" asp-action="Approve" asp-controller="Articles">
+                        <input type="hidden" name="Id" value="@article.Id" />
+                        <button class="btn btn-success" type="submit">Aprobă articol</button>
+                        </form>
+                    </div>
+                    <br/>
+                }
+                <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center pb-3">
+                    <small class="text-muted">
+                        📅 @article.Date.ToString("dd MMM yyyy")
+                    </small>
 
-<p>@Model.CategoryName</p>
-
-
-<form method="post" asp-action="Delete" asp-controller="Categories" asp-route-id="@Model.Id">
-
-    <button class="btn btn-danger" type="submit">Sterge categoria</button>
-
-</form>
-
-
-<br />
-
-<a class="btn alert-success" asp-action="Index" asp-controller="Categories">Afisare lista categorii</a>
-
-
-<br />
-<hr />
-<br />
-
+                    <div class="btn-group">
+                        <a href="/Articles/Show/@article.Id" class="btn btn-sm btn-outline-secondary">
+                            Afisează articol
+                        </a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/Articles/Edit/@article.Id" class="btn btn-sm btn-outline-primary">
+                                ✏️
+                            </a>
+                            <a href="/Articles/Delete/@article.Id" class="btn btn-sm btn-outline-danger">
+                                🗑️
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+}
+</div>
