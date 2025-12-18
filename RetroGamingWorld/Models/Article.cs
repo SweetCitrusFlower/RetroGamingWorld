@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering; 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.AspNetCore.Mvc.Rendering; 
 
 namespace RetroGamingWorld.Models
 {
@@ -20,18 +20,17 @@ namespace RetroGamingWorld.Models
         public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Te rog adaugă un link către o imagine!")]
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         [Required(ErrorMessage = "Prețul este obligatoriu")]
         [Column(TypeName = "decimal(6, 2)")]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
         [Required(ErrorMessage = "Stocul este obligatoriu")]
-        public int Stock { get; set; }
+        public int? Stock { get; set; }
 
         [Range(1, 5, ErrorMessage = "Ratingul trebuie să fie între 1 și 5")]
-        public float Rating { get; set; }
-
+        public float? Rating { get; set; }
         public bool IsApproved { get; set; } = false;
 
         [Required(ErrorMessage = "Categoria este obligatorie")]

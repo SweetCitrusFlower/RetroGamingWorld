@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RetroGamingWorld.Data;
 using RetroGamingWorld.Models;
 
@@ -33,6 +34,14 @@ namespace RetroGamingWorld.Controllers
                 return RedirectToAction("Index", "Articles");
             }
             return View(cat);
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var cat = db.Categories;
+            ViewBag.Categories = cat;
+            return View();
         }
     }
 }

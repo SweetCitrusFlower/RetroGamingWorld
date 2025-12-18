@@ -70,10 +70,13 @@
                 </div>
                 @if (User.IsInRole("Admin") && article.IsApproved == false)
                 {
-                    <form method="post" asp-action="Approve" asp-controller="Articles">
-                    <input type="hidden" name="Id" value="@article.Id" />
-                    <button class="btn btn-success" type="submit">Aprobă articol</button>
-                    </form>
+                    <div class="d-flex justify-content-center">
+                        <form method="post" asp-action="Approve" asp-controller="Articles">
+                        <input type="hidden" name="Id" value="@article.Id" />
+                        <button class="btn btn-success" type="submit">Aprobă articol</button>
+                        </form>
+                    </div>
+                    <br/>
                 }
                 <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center pb-3">
                     <small class="text-muted">
