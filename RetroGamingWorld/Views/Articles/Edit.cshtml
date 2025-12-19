@@ -12,15 +12,15 @@
             <form method="post" asp-action="Edit" asp-controller="Articles" asp-route-id="@Model.Id">
 
                 <div class="form-group">
-                    <label asp-for="Title" class="form-label">Titlu Articol</label>
+                    <label asp-for="Title" class="form-label">Titlu </label>
                     <br />
                     <input asp-for="Title" class="form-control" />
                     <span asp-validation-for="Title" class="text-danger"></span>
-                    <br /><br />
+                    <br />
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="Content" class="form-label">Continut Articol</label>
+                    <label asp-for="Content" class="form-label">Conținut </label>
                     <br />
                     <textarea asp-for="Content" class="form-control"></textarea>
                     <span asp-validation-for="Content" class="text-danger"></span>
@@ -28,15 +28,50 @@
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="CategoryId">Selectati categoria</label>
+                    <label asp-for="Image" class="form-label">Link către imagine </label>
                     <br />
-                    <select name="CategoryId" asp-for="CategoryId" asp-items="Model.Categ" class="form-control"></select>
+                    <textarea asp-for="Image" class="form-control"></textarea>
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                    <br />
+                </div>
+
+                <div class="d-flex justify-content-evenly">
+
+                    <div class="form-group p-1">
+                        <label asp-for="Price" class="form-label">Preț </label>
+                        <br />
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                        <br />
+                    </div>
+
+                    <div class="form-group p-1">
+                        <label asp-for="Rating" class="form-label">Rating </label>
+                        <br />
+                        <input asp-for="Rating" class="form-control" />
+                        <span asp-validation-for="Rating" class="text-danger"></span>
+                        <br />
+                    </div>
+                    <div class="form-group p-1">
+                        <label asp-for="Stock" class="form-label">Stoc </label>
+                        <br />
+                        <input asp-for="Stock" class="form-control" />
+                        <span asp-validation-for="Stock" class="text-danger"></span>
+                        <br />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="CategoryId">Categoria</label>
+                    <br />
+                    <select name="CategoryId" asp-for="CategoryId" asp-items="Model.Categ" class="form-control">
+                        <option value="">Selectați...</option>
+                    </select>
                     <span asp-validation-for="CategoryId" class="text-danger"></span>
                     <br />
                 </div>
                 <br /><br />
-                <button class="btn btn-success" type="submit">Modifica articol</button>
-
+                <button class="btn btn-success" type="submit">Modifică articol</button>
             </form>
         </div>
     </div>

@@ -6,7 +6,7 @@ using RetroGamingWorld.Models;
 
 namespace RetroGamingWorld.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Administrator")]
     public class CategoriesController : Controller
     {
         private readonly AppDbContext db;
@@ -86,7 +86,7 @@ namespace RetroGamingWorld.Controllers
                 var categQuery = db.Categories
                                 .Where(a => a.CategoryName.ToUpper() == pendingCateg.CategoryName.ToUpper())
                                 .FirstOrDefault();
-                if(categQuery != null)
+                if(categQuery == null)
                 {
                     TempData["messageCategories"] = "Categoria \"" + categ.CategoryName + "\" a fost editată în \"" + pendingCateg.CategoryName + "\"!";
                     categ.CategoryName = pendingCateg.CategoryName;

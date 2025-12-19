@@ -10,7 +10,7 @@
     <li class="nav-item">
         <a class="nav-link text-white" asp-area="" asp-controller="Articles" asp-action="Index">Articole</a>
     </li>
-    @if(User.IsInRole("Admin"))
+    @if(User.IsInRole("Administrator"))
     {
         <li class="nav-item">
             <a class="nav-link text-white" asp-area="" asp-controller="Categories" asp-action="Index">Afișare categorii</a>

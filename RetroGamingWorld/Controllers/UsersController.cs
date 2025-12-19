@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RetroGamingWorld.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Administrator")]
     public class UsersController : Controller
     {
         private readonly AppDbContext db;
