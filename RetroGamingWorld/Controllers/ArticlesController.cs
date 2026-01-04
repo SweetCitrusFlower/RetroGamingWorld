@@ -114,7 +114,6 @@ namespace RetroGamingWorld.Controllers
 
             ViewBag.Articles = paginatedArticles;
 
-
             if (search != "")
             {
                 ViewBag.PaginationBaseUrl = "/Articles/Index/?search=" + search + "&page";

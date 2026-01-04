@@ -21,13 +21,39 @@
     }
 </div>
 
-<form method="GET">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Caută după numele, conținutul sau categoria articolului, sau după numele utilizatorului care l-a postat" name="search"
-               value="@ViewBag.SearchString">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+<div class="row">
+    <div class="col">
+        <form method="GET">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Caută după numele, conținutul sau categoria articolului, sau după numele utilizatorului care l-a postat" name="search"
+                       value="@ViewBag.SearchString">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </div>
+        </form>
     </div>
-</form>
+    <div class="col col-md-2">
+         <nav aria-label="Page navigation example">
+       <ul class="pagination">
+            <li class="page-item border-black">
+                <a class="page-link border-black" href="@ViewBag.PaginationBaseUrl=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            @for (int i = 1; i <= ViewBag.lastPage; i++)
+            {
+                <li class="page-item"> <a class="page-link border-black" href="@ViewBag.PaginationBaseUrl=@i">@(i)</a> </li>
+            }
+
+            <li class="page-item border-black">
+                <a class="page-link border-black" href="@ViewBag.PaginationBaseUrl=@(ViewBag.lastPage)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    </div>
+</div>
 <br />
 
 <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
@@ -109,4 +135,9 @@
         </div>
         }
     }
+</div>
+
+                                
+<div class="d-flex justify-content-center">
+    
 </div>
