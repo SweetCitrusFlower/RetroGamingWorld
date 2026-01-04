@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|c:\\users\\alex\\documents\\github\\retrogamingworld\\retrogamingworld\\controllers\\articlescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|solutionrelative:retrogamingworld\\controllers\\articlescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|c:\\users\\alex\\documents\\github\\retrogamingworld\\retrogamingworld\\views\\articles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|solutionrelative:retrogamingworld\\views\\articles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|c:\\users\\alex\\documents\\github\\retrogamingworld\\retrogamingworld\\controllers\\articlescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|solutionrelative:retrogamingworld\\controllers\\articlescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|c:\\users\\alex\\documents\\github\\retrogamingworld\\retrogamingworld\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|solutionrelative:retrogamingworld\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|c:\\users\\alex\\documents\\github\\retrogamingworld\\retrogamingworld\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|solutionrelative:retrogamingworld\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RetroGamingWorldBD/True/SqlTable/dbo.Categories.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
@@ -83,10 +91,6 @@
       "RelativeMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|solutionrelative:retrogamingworld\\views\\articles\\show.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|c:\\users\\alex\\documents\\github\\retrogamingworld\\retrogamingworld\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|solutionrelative:retrogamingworld\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|c:\\users\\alex\\documents\\github\\retrogamingworld\\retrogamingworld\\views\\categories\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|solutionrelative:retrogamingworld\\views\\categories\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -105,10 +109,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|c:\\users\\alex\\documents\\github\\retrogamingworld\\retrogamingworld\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|solutionrelative:retrogamingworld\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|c:\\users\\alex\\documents\\github\\retrogamingworld\\retrogamingworld\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|solutionrelative:retrogamingworld\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62613053-A63E-4AFE-888B-7651F8BD1B94}|RETROGAMINGWORLD\\RetroGamingWorld.csproj|c:\\users\\alex\\documents\\github\\retrogamingworld\\retrogamingworld\\models\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -130,7 +130,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 33,
+          "SelectedChildIndex": 34,
           "Children": [
             {
               "$type": "Bookmark",
@@ -150,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "dbo.Articles.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RetroGamingWorldBD/True/SqlTable/dbo.Articles.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RetroGamingWorldBD/True/SqlTable/dbo.Articles.sql",
@@ -159,7 +159,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "dbo.Categories.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RetroGamingWorldBD/True/SqlTable/dbo.Categories.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RetroGamingWorldBD/True/SqlTable/dbo.Categories.sql",
@@ -168,7 +168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Error.cshtml",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Shared\\Error.cshtml",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Views\\Shared\\Error.cshtml",
@@ -180,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Models\\ErrorViewModel.cs",
@@ -192,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "dbo.Bookmarks.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RetroGamingWorldBD/True/SqlTable/dbo.Bookmarks.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RetroGamingWorldBD/True/SqlTable/dbo.Bookmarks.sql",
@@ -201,7 +201,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ArticleBookmark.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Models\\ArticleBookmark.cs",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Models\\ArticleBookmark.cs",
@@ -213,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "20260103170647_Rating.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Migrations\\20260103170647_Rating.cs",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Migrations\\20260103170647_Rating.cs",
@@ -225,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Comments\\Edit.cshtml",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Views\\Comments\\Edit.cshtml",
@@ -237,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "Comment.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Models\\Comment.cs",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Models\\Comment.cs",
@@ -249,7 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "CommentsController.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Controllers\\CommentsController.cs",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Controllers\\CommentsController.cs",
@@ -261,7 +261,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Models\\ApplicationUser.cs",
@@ -273,7 +273,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Controllers\\UsersController.cs",
@@ -285,7 +285,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "Bookmark.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Models\\Bookmark.cs",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Models\\Bookmark.cs",
@@ -297,7 +297,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Models\\AppDbContext.cs",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Models\\AppDbContext.cs",
@@ -309,7 +309,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "SeedData.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Models\\SeedData.cs",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Models\\SeedData.cs",
@@ -321,7 +321,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "New.cshtml",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Articles\\New.cshtml",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Views\\Articles\\New.cshtml",
@@ -333,7 +333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Articles\\Edit.cshtml",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Views\\Articles\\Edit.cshtml",
@@ -345,7 +345,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "Show.cshtml",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Articles\\Show.cshtml",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Views\\Articles\\Show.cshtml",
@@ -357,19 +357,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 2,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "RetroGamingWorld\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Shared\\_Layout.cshtml*",
+              "RelativeToolTip": "RetroGamingWorld\\Views\\Shared\\_Layout.cshtml*",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAsAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-18T10:53:47.258Z"
+              "WhenOpened": "2025-12-18T10:53:47.258Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Categories\\Edit.cshtml",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Views\\Categories\\Edit.cshtml",
@@ -381,7 +382,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "New.cshtml",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Categories\\New.cshtml",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Views\\Categories\\New.cshtml",
@@ -393,7 +394,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "Show.cshtml",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Categories\\Show.cshtml",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Views\\Categories\\Show.cshtml",
@@ -405,7 +406,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Categories\\Index.cshtml",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Views\\Categories\\Index.cshtml",
@@ -417,7 +418,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "Category.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Models\\Category.cs",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Models\\Category.cs",
@@ -429,7 +430,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 3,
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Views\\Shared\\_LoginPartial.cshtml",
@@ -437,7 +438,8 @@
               "RelativeToolTip": "RetroGamingWorld\\Views\\Shared\\_LoginPartial.cshtml",
               "ViewState": "AgIAABcAAAAAAAAAAAAAABcAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-18T08:30:46.38Z"
+              "WhenOpened": "2025-12-18T08:30:46.38Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -477,7 +479,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "secrets.json",
               "DocumentMoniker": "C:\\Users\\Alex\\AppData\\Roaming\\Microsoft\\UserSecrets\\a2723e12-07a3-405c-9aee-9a4e073c3f18\\secrets.json",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Roaming\\Microsoft\\UserSecrets\\a2723e12-07a3-405c-9aee-9a4e073c3f18\\secrets.json",
@@ -489,26 +491,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Articles\\Index.cshtml",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Views\\Articles\\Index.cshtml",
               "ToolTip": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Views\\Articles\\Index.cshtml",
               "RelativeToolTip": "RetroGamingWorld\\Views\\Articles\\Index.cshtml",
-              "ViewState": "AgIAACcAAAAAAAAAAAAwwDYAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAADEAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-12-17T19:57:07.034Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ArticlesController.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Controllers\\ArticlesController.cs",
               "RelativeDocumentMoniker": "RetroGamingWorld\\Controllers\\ArticlesController.cs",
-              "ToolTip": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Controllers\\ArticlesController.cs",
-              "RelativeToolTip": "RetroGamingWorld\\Controllers\\ArticlesController.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAAAHIAAAAxAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Alex\\Documents\\GitHub\\RetroGamingWorld\\RetroGamingWorld\\Controllers\\ArticlesController.cs*",
+              "RelativeToolTip": "RetroGamingWorld\\Controllers\\ArticlesController.cs*",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAAAKAAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-17T19:55:11.008Z",
               "EditorCaption": ""

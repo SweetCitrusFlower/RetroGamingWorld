@@ -1,10 +1,12 @@
-﻿using RetroGamingWorld.Models;
-using RetroGamingWorld.Data;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using RetroGamingWorld.Data;
+using RetroGamingWorld.Models;
+using System.Globalization;
 
 namespace RetroGamingWorld.Controllers
 {
@@ -89,6 +91,44 @@ namespace RetroGamingWorld.Controllers
                                       .OrderByDescending(a => a.Date);
 
             }
+            var sortBy = "";
+            if (Convert.ToString(HttpContext.Request.Query["sortBy"]) != null)
+                sortBy = Convert.ToString(HttpContext.Request.Query["sortBy"]).Trim();
+            else
+                if (ViewBag.sortBy is not null)
+                    sortBy = ViewBag.sortBy;
+                else
+                    sortBy = "title";
+
+            var sortOrder = "";
+            if (Convert.ToString(HttpContext.Request.Query["sortOrder"]) != null)
+                sortOrder = Convert.ToString(HttpContext.Request.Query["sortOrder"]).Trim();
+            else if (ViewBag.sortOrder is not null)
+                    sortOrder = ViewBag.sortOrder;
+                else
+                    sortOrder = "asc";
+
+            switch (sortBy)
+            {
+                case "price":
+                    articles = sortOrder == "desc"
+                        ? articles.OrderByDescending(a => a.Price)
+                        : articles.OrderBy(a => a.Price);
+                    break;
+
+                case "rating":
+                    articles = sortOrder == "desc"
+                        ? articles.OrderByDescending(a => a.Rating)
+                        : articles.OrderBy(a => a.Rating);
+                    break;
+
+                default:
+                    articles = articles.OrderBy(a => a.Title);
+                    break;
+            }
+
+            ViewBag.SortBy = sortBy;
+            ViewBag.SortOrder = sortOrder;
 
             ViewBag.SearchString = search;
 
@@ -112,17 +152,21 @@ namespace RetroGamingWorld.Controllers
 
             ViewBag.lastPage = Math.Ceiling((float)totalItems / (float)_perPage);
 
-            ViewBag.Articles = paginatedArticles;
 
-            if (search != "")
+            ViewBag.PaginationBaseUrl = "/Articles/Index/";
+            if (search != string.Empty && search != null)
             {
-                ViewBag.PaginationBaseUrl = "/Articles/Index/?search=" + search + "&page";
+                ViewBag.PaginationBaseUrl += "?search=" + search + "&";
             }
             else
             {
-                ViewBag.PaginationBaseUrl = "/Articles/Index/?page";
+                ViewBag.PaginationBaseUrl += "?";
             }
+            ViewBag.PaginationBaseUrl += "sortBy=" + sortBy.ToString() + "&sortOrder=" + sortOrder.ToString() + "&page";
 
+            ViewBag.articles = paginatedArticles;
+            ViewBag.nrArticles = articles.Count();
+            ViewBag.CurrentPage = currentPage;
             return View();
         }
 
