@@ -21,6 +21,15 @@
     }
 </div>
 
+<form method="GET">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Caută după numele, conținutul sau categoria articolului, sau după numele utilizatorului care l-a postat" name="search"
+               value="@ViewBag.SearchString">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </div>
+</form>
+<br />
+
 <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
     
     @foreach (Article article in ViewBag.Articles)
@@ -80,6 +89,7 @@
                         <a href="/Articles/Show/@article.Id" class="btn btn-sm btn-outline-secondary">
                             Afisează articol
                         </a>
+                        <a class="btn btn-success" asp-action="AddToWishlist" asp-controller="Users" asp-route-id="@article.Id">❤️</a>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <a href="/Articles/Edit/@article.Id" class="btn btn-sm btn-outline-primary">

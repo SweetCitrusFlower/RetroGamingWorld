@@ -50,6 +50,80 @@ namespace RetroGamingWorld.Controllers
                                     .OrderByDescending(a => a.Id);
             }
 
+            var search = "";
+            IOrderedQueryable<Article> articles = ViewBag.Articles;
+
+            if (Convert.ToString(HttpContext.Request.Query["search"]) != null)
+            {
+                search = Convert.ToString(HttpContext.Request.Query["search"]).Trim();
+
+                List<int> articleIds = db.Articles.Where
+                                        (
+                                         at => at.Title.Contains(search)
+                                         || at.Content.Contains(search)
+                                        ).Select(a => a.Id).ToList();
+
+                List<int> articleIdsOfCommentsWithSearchString = db.Comments
+                                        .Where
+                                        (
+                                         c => c.Content.Contains(search)
+                                        ).Select(c => c.ArticleId).ToList();
+
+                 List<int> articleIdsOfCategoriesWithSearchString = db.Articles
+                                        .Where(a => a.Category.CategoryName.Contains(search))
+                                        .Select(a => a.Id).ToList();
+
+                List<int> articleIdsOfCreatorUsersWithSearchString = db.Articles
+                                        .Where(a => a.User.FirstName.Contains(search) || a.User.LastName.Contains(search) || a.User.Email.Contains(search))
+                                        .Select(a => a.Id).ToList();
+
+                List<int> mergedIds = articleIds
+                    .Union(articleIdsOfCommentsWithSearchString)
+                    .Union(articleIdsOfCategoriesWithSearchString)
+                    .Union(articleIdsOfCreatorUsersWithSearchString).ToList();
+
+
+                articles = db.Articles.Where(article => mergedIds.Contains(article.Id))
+                                      .Include(a => a.Category)
+                                      .Include(a => a.User)
+                                      .OrderByDescending(a => a.Date);
+
+            }
+
+            ViewBag.SearchString = search;
+
+            int _perPage = 3;
+
+            int totalItems = articles.Count();
+
+            var currentPage = Convert.ToInt32(HttpContext.Request.Query["page"]);
+
+            // offsetul este egal cu numarul de articole care au fost deja afisate pe paginile anterioare
+            var offset = 0;
+
+
+            if (!currentPage.Equals(0))
+            {
+                offset = (currentPage - 1) * _perPage;
+            }
+
+            var paginatedArticles = articles.Skip(offset).Take(_perPage);
+
+
+            ViewBag.lastPage = Math.Ceiling((float)totalItems / (float)_perPage);
+
+            ViewBag.Articles = paginatedArticles;
+
+
+            if (search != "")
+            {
+                ViewBag.PaginationBaseUrl = "/Articles/Index/?search=" + search + "&page";
+            }
+            else
+            {
+                ViewBag.PaginationBaseUrl = "/Articles/Index/?page";
+            }
+
             return View();
         }
 
@@ -83,6 +157,8 @@ namespace RetroGamingWorld.Controllers
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);
+                db.SaveChanges();
+                UpdateArticleRating(comment.ArticleId);
                 db.SaveChanges();
                 return RedirectToAction("Show", new { id = comment.ArticleId });
             }
@@ -129,6 +205,7 @@ namespace RetroGamingWorld.Controllers
 
             article.Date = DateTime.Now;
             article.UserId = _userManager.GetUserId(User);
+            article.Rating = 0;
             article.IsApproved = false;
 
             if (ModelState.IsValid)
@@ -174,7 +251,6 @@ namespace RetroGamingWorld.Controllers
                 art.Title = requestArt.Title;
                 art.Content = requestArt.Content;
                 art.Image = requestArt.Image;
-                art.Rating = requestArt.Rating;
                 art.Price = requestArt.Price;
                 art.Stock = requestArt.Stock;
                 art.CategoryId = requestArt.CategoryId;
@@ -212,6 +288,17 @@ namespace RetroGamingWorld.Controllers
                 TempData["messageArticles"] = "Articolul a fost șters!";
             }
             return RedirectToAction("Index");
+        }
+        private void UpdateArticleRating(int ArticleId)
+        {
+            var Article = db.Articles
+                            .Include(p => p.Comments)
+                            .FirstOrDefault(p => p.Id == ArticleId);
+
+            if (Article != null && Article.Comments.Any())
+            {
+                Article.Rating = (float?)Article.Comments.Average(c => c.Rating);
+            }
         }
 
         // METODA AUXILIARA

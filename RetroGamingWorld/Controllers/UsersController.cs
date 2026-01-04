@@ -126,7 +126,17 @@ namespace RetroGamingWorld.Controllers
                 return RedirectToAction("Index");
             }       
         }
-
+        //[HttpGet]
+        //public IActionResult AddToWishlist(string userId, int ArticleId)
+        //{
+        //    var user = db.ApplicationUsers
+        //                    .Include(u => u.Articles)
+        //                    .Include(u => u.Comments)
+        //                    .Include(u => u.Bookmarks)
+        //                    .Where(u => u.Id == userId)
+        //                    .First();
+        //    db.Users.Find(userId).
+        //}
 
         [HttpPost]
         public IActionResult Delete(string id)

@@ -8,7 +8,6 @@ namespace RetroGamingWorld.Models
 
         public int ArticleId { get; set; }
         public virtual Article? Article { get; set; }
-
         public int BookmarkId { get; set; }
         public virtual Bookmark? Bookmark { get; set; }
     }

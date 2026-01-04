@@ -157,7 +157,7 @@ wwwroot\lib\jquery\LICENSE.txt
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery\LICENSE.txt
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery\dist\jquery.slim.min.map
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery\dist\jquery.slim.min.js
-C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery\dist\jquery.slim.js
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery-validation\dist\additional-methods.js
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery\dist\jquery.min.map
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery\dist\jquery.min.js
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery\dist\jquery.js
@@ -165,7 +165,7 @@ C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jqu
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery-validation\dist\jquery.validate.js
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
-C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery-validation\dist\additional-methods.js
+C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery\dist\jquery.slim.js
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
 C:\Users\Alex\Documents\GitHub\RetroGamingWorld\RETROGAMINGWORLD\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
