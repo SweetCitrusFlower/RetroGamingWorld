@@ -1,4 +1,4 @@
-﻿
+﻿@model RetroGamingWorld.Models.Comment
 @{
     ViewBag.Title = "Edit";
 }
@@ -6,15 +6,36 @@
 <h2>Editare comentariu</h2>
 <br />
 
-<form method="post" action="/Comments/Edit/@ViewBag.Comment.Id">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <form method="post" asp-action="Edit" asp-controller="Comments" asp-route-id="@Model.Id">
+                <div class="form-group">
+                    <label>Ratingul produsului</label>
+                    <br />
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <label>
+                            <input type="radio" asp-for="Rating" value="@i" />
+                            @i ⭐
+                        </label>
+                    }
+                    <br />
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
+                <br/>
 
-    <label>Continut comentariu</label>
-    <br />
+                <div class="form-group">
+                    <label asp-for="Content" class="form-label">Conținut comentariu</label>
+                    <br />
+                    <textarea asp-for="Content" class="form-control"></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                    <br />
+                </div>
+                <button class="btn btn-primary" type="submit">Editează comentariul</button>
+            </form>
 
-    <textarea name="Content">@ViewBag.Comment.Content</textarea>
-    <br />
-
-    <button class="btn  btn-primary" type="submit">Editeaza comentariul</button>
-
-</form>
+        </div>
+    </div>
+</div>
 

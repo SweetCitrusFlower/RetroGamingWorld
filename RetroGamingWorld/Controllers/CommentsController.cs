@@ -1,6 +1,7 @@
-﻿using RetroGamingWorld.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RetroGamingWorld.Data;
+using RetroGamingWorld.Models;
 
 namespace RetroGamingWorld.Controllers
 {
@@ -32,13 +33,14 @@ namespace RetroGamingWorld.Controllers
             Comment comm = db.Comments.Find(id);
             db.Comments.Remove(comm);
             db.SaveChanges();
+            UpdateArticleRating(comm.ArticleId);
+            db.SaveChanges();
             return Redirect("/Articles/Show/" + comm.ArticleId);
         }
         public IActionResult Edit(int id)
         {
             Comment comm = db.Comments.Find(id);
-            ViewBag.Comment = comm;
-            return View();
+            return View(comm);
         }
 
         [HttpPost]
@@ -47,11 +49,12 @@ namespace RetroGamingWorld.Controllers
             Comment comm = db.Comments.Find(id);
             if (ModelState.IsValid)
             {
-
+                comm.Rating = requestComment.Rating;
                 comm.Content = requestComment.Content;
 
                 db.SaveChanges();
-
+                UpdateArticleRating(comm.ArticleId);
+                db.SaveChanges();
                 return Redirect("/Articles/Show/" + comm.ArticleId);
             }
             else
@@ -59,6 +62,17 @@ namespace RetroGamingWorld.Controllers
                 return Redirect("/Articles/Show/" + comm.ArticleId);
             }
 
+        }
+        private void UpdateArticleRating(int ArticleId)
+        {
+            var Article = db.Articles
+                            .Include(p => p.Comments)
+                            .FirstOrDefault(p => p.Id == ArticleId);
+
+            if (Article != null && Article.Comments.Any())
+            {
+                Article.Rating = (float?)Article.Comments.Average(c => c.Rating);
+            }
         }
     }
 }

@@ -81,6 +81,17 @@
                                     }
                                 ] @comm.Content</p>
                         </div>
+                        @if (comm.User.Email == User.Identity.Name)
+                        {
+                            <div class="card-body">
+                                <div class="d-flex justify-content-start rounded-4 flex-row mt-2">
+                                <a class="btn btn-warning" asp-action="Edit" asp-controller="Comments" asp-route-id="@comm.Id">Editare</a>
+                                <form method="post" asp-action="Delete" asp-controller="Comments" asp-route-id="@comm.Id">
+                                    <button class="btn btn-danger" type="submit">Ștergere</button>
+                                </form>
+                                </div>
+                            </div>
+                        }
                     </div>
                 }
             }

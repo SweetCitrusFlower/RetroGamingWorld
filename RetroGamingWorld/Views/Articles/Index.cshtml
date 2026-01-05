@@ -21,46 +21,37 @@
         </a>
     }
 </div>
-@* --- ZONA UNIFICATĂ: SEARCH (Stânga) + PAGINARE (Dreapta) --- *@
 <div class="row align-items-center mb-4 g-2">
     
-    @* 1. FORMULARUL DE CĂUTARE (Ocupă tot spațiul disponibil - col) *@
     <div class="col">
         <form method="GET" asp-action="Index" asp-controller="Articles">
             <div class="input-group">
                 
-                @* Input Text *@
                 <input type="text" class="form-control" 
                        placeholder="Caută în wishlist..." 
                        name="search"
                        value="@ViewBag.SearchString">
 
-                @* Select Rating/Preț *@
                 <select name="sortBy" class="form-select" style="max-width: 110px;">
                     <option value="rating" selected="@(ViewBag.SortBy == "rating")">Rating</option>
                     <option value="price" selected="@(ViewBag.SortBy == "price")">Preț</option>
                 </select>
 
-                @* Select Asc/Desc *@
                 <select name="sortOrder" class="form-select" style="max-width: 110px;">
                     <option value="desc" selected="@(ViewBag.SortOrder == "desc")">Descresc.</option>
                     <option value="asc" selected="@(ViewBag.SortOrder == "asc")">Cresc.</option>
                 </select>
 
-                @* Buton Caută *@
                 <button class="btn btn-outline-danger" type="submit">Search</button>
             </div>
         </form>
     </div>
 
-    @* 2. PAGINAREA (Ocupă doar cât are nevoie - col-auto) *@
-    @* Apare mereu dacă există articole (Am scos condiția > 1) *@
 
         <div class="col-auto">
             <nav aria-label="Page navigation">
                 <ul class="pagination mb-0">
                     
-                    @* Buton Previous *@
                     <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
                         <a class="page-link border-secondary text-dark" 
                            href="@ViewBag.PaginationBaseUrl=@(ViewBag.CurrentPage - 1)" aria-label="Previous">
@@ -68,7 +59,6 @@
                         </a>
                     </li>
 
-                    @* Butoane Numerotate *@
                     @for (int i = 1; i <= ViewBag.lastPage; i++)
                     {
                         <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
@@ -79,7 +69,6 @@
                         </li>
                     }
 
-                    @* Buton Next *@
                     <li class="page-item @(ViewBag.CurrentPage == ViewBag.lastPage ? "disabled" : "")">
                         <a class="page-link border-secondary text-dark" 
                            href="@ViewBag.PaginationBaseUrl=@(ViewBag.CurrentPage + 1)" aria-label="Next">
@@ -109,8 +98,15 @@
                     @article.Category.CategoryName
                 </span>
                 
-                <div class="card-img-top bg-light d-flex justify-content-center align-items-center border-bottom w-100 h-75">
-                    <img class = "card-img" src = @article.Image />
+                <div class="card-img-top bg-light d-flex justify-content-center align-items-center border-bottom w-100 h-75" style="min-height: 200px;">
+                         @if (!string.IsNullOrEmpty(article.Image))
+                         {
+                            <img class="card-img" src="@article.Image" style="object-fit: cover; height: 100%; width: 100%;" />
+                         }
+                         else
+                         {
+                             <span class="text-muted">Fără imagine</span>
+                         }
                 </div>
 
                 <div class="card-body">
@@ -158,23 +154,26 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
-                            @if (wishlistIds.Contains(article.Id))
+                            @if(User.IsInRole("User"))
                             {
-                                <form method="post" asp-controller="Wishlist" asp-action="Remove" asp-route-articleId="@article.Id" class="d-inline">
-                                    <button type="submit" class="btn btn-sm wishlist-btn added" title="Scoate din Wishlist">
-                                        💖
-                                    </button>
-                                </form>
-                            }
-                            else
-                            {
-                                <a class="btn btn-sm wishlist-btn" 
-                                   asp-controller="Wishlist" 
-                                   asp-action="Add" 
-                                   asp-route-articleId="@article.Id"
-                                   title="Adaugă în Wishlist">
-                                    ❤️
-                                </a>
+                                @if (wishlistIds.Contains(article.Id))
+                                {
+                                    <form method="post" asp-controller="Wishlist" asp-action="Remove" asp-route-articleId="@article.Id" class="d-inline">
+                                        <button type="submit" class="btn btn-sm wishlist-btn added" title="Scoate din Wishlist">
+                                            💖
+                                        </button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-sm wishlist-btn" 
+                                       asp-controller="Wishlist" 
+                                       asp-action="Add" 
+                                       asp-route-articleId="@article.Id"
+                                       title="Adaugă în Wishlist">
+                                        ❤️
+                                    </a>
+                                }     
                             }
                         }
                         else
