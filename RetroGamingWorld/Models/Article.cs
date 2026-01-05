@@ -37,6 +37,8 @@ namespace RetroGamingWorld.Models
         public int? CategoryId { get; set; }
         public virtual Category? Category { get; set; }
         public string? UserId { get; set; }
+        [ForeignKey("UserId")]
+        [InverseProperty("Articles")]
         public virtual ApplicationUser? User { get; set; }
         public virtual ICollection<Comment>? Comments { get; set; }
         public virtual ICollection<ArticleBookmark>? ArticleBookmarks { get; set; }

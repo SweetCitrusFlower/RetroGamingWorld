@@ -9,11 +9,11 @@ namespace RetroGamingWorld.Models
     public class ApplicationUser : IdentityUser
     {
         public virtual ICollection<Comment> Comments { get; set; } = [];
+        [InverseProperty("User")]
         public virtual ICollection<Article> Articles { get; set; } = [];
-        public virtual ICollection<Bookmark> Bookmarks { get; set; } = [];
+        public virtual ICollection<Article> Wishlist { get; set; } = new List<Article>();
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
-        //public virtual ICollection<Article>? Wishlist { get; set; }
         //public virtual ICollection<Article>? Cart { get; set; }
         [NotMapped]
         public IEnumerable<SelectListItem>? AllRoles { get; set; }

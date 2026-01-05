@@ -30,143 +30,134 @@ namespace RetroGamingWorld.Controllers
                 ViewBag.message = TempData["messageArticles"].ToString();
             }
 
-            var articlesQuery = db.Articles
-                                  .Include(a => a.Category)
-                                  .Include(a => a.User);
-            // LOGICA ADMIN vs USER
-            if (User.IsInRole("Administrator"))
+            // QUERY DE BAZA
+            var query = db.Articles
+               .Include(a => a.Category)
+               .Include(a => a.User)
+               .AsQueryable();
+
+            // 1. SEARCH SAFE
+            // Folosim FirstOrDefault() care nu crapa daca parametrul lipseste
+            var search = HttpContext.Request.Query["search"].FirstOrDefault();
+
+            if (!string.IsNullOrEmpty(search))
             {
-                ViewBag.Articles = articlesQuery
-                                    .Where(a => a.IsApproved == true || a.IsApproved == false) 
-                                    .OrderByDescending(a => a.Id);
-            }
-            else if (User.IsInRole("Colaborator")){
-                ViewBag.Articles = articlesQuery
-                                   .Where(a => a.IsApproved == true || a.IsApproved == false)
-                                   .OrderByDescending(a => a.Id);
-            }
-            else
-            {
-                ViewBag.Articles = articlesQuery
-                                    .Where(a => a.IsApproved == true)
-                                    .OrderByDescending(a => a.Id);
-            }
+                search = search.Trim();
 
-            var search = "";
-            IOrderedQueryable<Article> articles = ViewBag.Articles;
-
-            if (Convert.ToString(HttpContext.Request.Query["search"]) != null)
-            {
-                search = Convert.ToString(HttpContext.Request.Query["search"]).Trim();
-
-                List<int> articleIds = db.Articles.Where
-                                        (
-                                         at => at.Title.Contains(search)
-                                         || at.Content.Contains(search)
-                                        ).Select(a => a.Id).ToList();
-
-                List<int> articleIdsOfCommentsWithSearchString = db.Comments
-                                        .Where
-                                        (
-                                         c => c.Content.Contains(search)
-                                        ).Select(c => c.ArticleId).ToList();
-
-                 List<int> articleIdsOfCategoriesWithSearchString = db.Articles
-                                        .Where(a => a.Category.CategoryName.Contains(search))
-                                        .Select(a => a.Id).ToList();
-
-                List<int> articleIdsOfCreatorUsersWithSearchString = db.Articles
-                                        .Where(a => a.User.FirstName.Contains(search) || a.User.LastName.Contains(search) || a.User.Email.Contains(search))
-                                        .Select(a => a.Id).ToList();
+                // Cautare complexa
+                List<int> articleIds = db.Articles.Where(at => at.Title.Contains(search) || at.Content.Contains(search)).Select(a => a.Id).ToList();
+                List<int> commentIds = db.Comments.Where(c => c.Content.Contains(search)).Select(c => c.ArticleId).ToList();
+                List<int> catIds = db.Articles.Where(a => a.Category.CategoryName.Contains(search)).Select(a => a.Id).ToList();
+                List<int> userIds = db.Articles.Where(a => a.User.FirstName.Contains(search) || a.User.LastName.Contains(search) || a.User.Email.Contains(search)).Select(a => a.Id).ToList();
 
                 List<int> mergedIds = articleIds
-                    .Union(articleIdsOfCommentsWithSearchString)
-                    .Union(articleIdsOfCategoriesWithSearchString)
-                    .Union(articleIdsOfCreatorUsersWithSearchString).ToList();
+                    .Union(commentIds)
+                    .Union(catIds)
+                    .Union(userIds)
+                    .ToList();
 
-
-                articles = db.Articles.Where(article => mergedIds.Contains(article.Id))
-                                      .Include(a => a.Category)
-                                      .Include(a => a.User)
-                                      .OrderByDescending(a => a.Date);
-
+                query = query.Where(article => mergedIds.Contains(article.Id));
             }
-            var sortBy = "";
-            if (Convert.ToString(HttpContext.Request.Query["sortBy"]) != null)
-                sortBy = Convert.ToString(HttpContext.Request.Query["sortBy"]).Trim();
             else
-                if (ViewBag.sortBy is not null)
-                    sortBy = ViewBag.sortBy;
-                else
-                    sortBy = "title";
+            {
+                search = ""; // Asiguram ca nu e null pentru View
+            }
 
-            var sortOrder = "";
-            if (Convert.ToString(HttpContext.Request.Query["sortOrder"]) != null)
-                sortOrder = Convert.ToString(HttpContext.Request.Query["sortOrder"]).Trim();
-            else if (ViewBag.sortOrder is not null)
-                    sortOrder = ViewBag.sortOrder;
-                else
-                    sortOrder = "asc";
+            ViewBag.SearchString = search;
 
-            switch (sortBy)
+            // 2. FILTRE ADMIN/USER
+            if (User.IsInRole("Administrator") || User.IsInRole("Colaborator"))
+            {
+                query = query.Where(a => a.IsApproved == true || a.IsApproved == false);
+            }
+            else
+            {
+                query = query.Where(a => a.IsApproved == true);
+            }
+
+            // 3. SORTARE SAFE
+            var sortBy = HttpContext.Request.Query["sortBy"].FirstOrDefault();
+            if (!string.IsNullOrEmpty(sortBy))
+            {
+                sortBy = sortBy.Trim();
+            }
+            else
+            {
+                sortBy = ViewBag.sortBy ?? "title";
+            }
+
+            var sortOrder = HttpContext.Request.Query["sortOrder"].FirstOrDefault();
+            if (!string.IsNullOrEmpty(sortOrder))
+            {
+                sortOrder = sortOrder.Trim();
+            }
+            else
+            {
+                sortOrder = ViewBag.sortOrder ?? "asc";
+            }
+
+            switch (sortBy.ToLower())
             {
                 case "price":
-                    articles = sortOrder == "desc"
-                        ? articles.OrderByDescending(a => a.Price)
-                        : articles.OrderBy(a => a.Price);
+                    query = sortOrder == "desc" ? query.OrderByDescending(a => a.Price) : query.OrderBy(a => a.Price);
                     break;
-
                 case "rating":
-                    articles = sortOrder == "desc"
-                        ? articles.OrderByDescending(a => a.Rating)
-                        : articles.OrderBy(a => a.Rating);
+                    query = sortOrder == "desc" ? query.OrderByDescending(a => a.Rating) : query.OrderBy(a => a.Rating);
                     break;
-
+                case "date":
+                    query = sortOrder == "desc" ? query.OrderByDescending(a => a.Date) : query.OrderBy(a => a.Date);
+                    break;
                 default:
-                    articles = articles.OrderBy(a => a.Title);
+                    query = sortOrder == "desc" ? query.OrderByDescending(a => a.Title) : query.OrderBy(a => a.Title);
                     break;
             }
 
             ViewBag.SortBy = sortBy;
             ViewBag.SortOrder = sortOrder;
 
-            ViewBag.SearchString = search;
-
+            // 4. PAGINARE
             int _perPage = 3;
+            int totalItems = query.Count();
 
-            int totalItems = articles.Count();
-
-            var currentPage = Convert.ToInt32(HttpContext.Request.Query["page"]);
-
-            // offsetul este egal cu numarul de articole care au fost deja afisate pe paginile anterioare
-            var offset = 0;
-
-
-            if (!currentPage.Equals(0))
+            var pageParam = HttpContext.Request.Query["page"].FirstOrDefault();
+            int currentPage = 1;
+            if (!string.IsNullOrEmpty(pageParam))
             {
-                offset = (currentPage - 1) * _perPage;
+                int.TryParse(pageParam, out currentPage);
             }
+            if (currentPage < 1) currentPage = 1;
 
-            var paginatedArticles = articles.Skip(offset).Take(_perPage);
+            var offset = (currentPage - 1) * _perPage;
 
+            var paginatedArticles = query.Skip(offset).Take(_perPage).ToList();
 
             ViewBag.lastPage = Math.Ceiling((float)totalItems / (float)_perPage);
-
-
-            ViewBag.PaginationBaseUrl = "/Articles/Index/";
-            if (search != string.Empty && search != null)
-            {
-                ViewBag.PaginationBaseUrl += "?search=" + search + "&";
-            }
-            else
-            {
-                ViewBag.PaginationBaseUrl += "?";
-            }
-            ViewBag.PaginationBaseUrl += "sortBy=" + sortBy.ToString() + "&sortOrder=" + sortOrder.ToString() + "&page";
-
-            ViewBag.articles = paginatedArticles;
-            ViewBag.nrArticles = articles.Count();
             ViewBag.CurrentPage = currentPage;
+
+            ViewBag.PaginationBaseUrl = "/Articles/Index/?";
+            if (!string.IsNullOrEmpty(search)) ViewBag.PaginationBaseUrl += "search=" + search + "&";
+            ViewBag.PaginationBaseUrl += "sortBy=" + sortBy + "&sortOrder=" + sortOrder + "&page";
+
+            // 5. WISHLIST SAFE
+            List<int> userWishlistIds = new List<int>();
+            if (User.Identity.IsAuthenticated)
+            {
+                var currentUserId = _userManager.GetUserId(User);
+
+                var userWithWishlist = db.Users
+                    .Include(u => u.Wishlist)
+                    .FirstOrDefault(u => u.Id == currentUserId);
+
+                if (userWithWishlist != null && userWithWishlist.Wishlist != null)
+                {
+                    userWishlistIds = userWithWishlist.Wishlist.Select(a => a.Id).ToList();
+                }
+            }
+
+            ViewBag.UserWishlist = userWishlistIds;
+            ViewBag.Articles = paginatedArticles;
+            ViewBag.nrArticles = totalItems;
+
             return View();
         }
 

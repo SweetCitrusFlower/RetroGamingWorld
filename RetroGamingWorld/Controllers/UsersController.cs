@@ -145,7 +145,6 @@ namespace RetroGamingWorld.Controllers
             var user = db.ApplicationUsers
                             .Include(u => u.Articles)
                             .Include(u => u.Comments)
-                            .Include(u => u.Bookmarks)
                             .Where(u => u.Id == id)
                             .First();
 
@@ -155,15 +154,6 @@ namespace RetroGamingWorld.Controllers
                 foreach (var comment in user.Comments)
                 {
                     db.Comments.Remove(comment);
-                }
-            }
-
-            // Delete user bookmarks
-            if (user.Bookmarks.Count > 0)
-            {
-                foreach (var bookmark in user.Bookmarks)
-                {
-                    db.Bookmarks.Remove(bookmark);
                 }
             }
 

@@ -59,3 +59,13 @@
         box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
         border-bottom: 3px solid #D32F2F !important;
 }
+
+.wishlist-btn.added {
+    background-color: #dec42d;
+    color: white;
+    border-color: #dec42d;
+}
+
+.wishlist-btn.added {
+    transition: background-color 0.3s, color 0.3s;
+}

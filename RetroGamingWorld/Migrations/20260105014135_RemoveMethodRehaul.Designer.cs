@@ -12,8 +12,8 @@ using RetroGamingWorld.Data;
 namespace RetroGamingWorld.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260104180052_ResetBD")]
-    partial class ResetBD
+    [Migration("20260105014135_RemoveMethodRehaul")]
+    partial class RemoveMethodRehaul
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,21 @@ namespace RetroGamingWorld.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ApplicationUserArticle", b =>
+                {
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("WishlistId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ApplicationUserId", "WishlistId");
+
+                    b.HasIndex("WishlistId");
+
+                    b.ToTable("UserWishlist", (string)null);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -286,20 +301,25 @@ namespace RetroGamingWorld.Migrations
 
             modelBuilder.Entity("RetroGamingWorld.Models.ArticleBookmark", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<int>("ArticleId")
                         .HasColumnType("int");
 
                     b.Property<int>("BookmarkId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
+                    b.HasKey("Id");
 
-                    b.HasKey("ArticleId", "BookmarkId");
+                    b.HasIndex("ArticleId");
 
                     b.HasIndex("BookmarkId");
 
-                    b.ToTable("ArticleBookmarks");
+                    b.ToTable("ArticleBookmark");
                 });
 
             modelBuilder.Entity("RetroGamingWorld.Models.Bookmark", b =>
@@ -321,7 +341,7 @@ namespace RetroGamingWorld.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Bookmarks");
+                    b.ToTable("Bookmark");
                 });
 
             modelBuilder.Entity("RetroGamingWorld.Models.Category", b =>
@@ -372,6 +392,21 @@ namespace RetroGamingWorld.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("ApplicationUserArticle", b =>
+                {
+                    b.HasOne("RetroGamingWorld.Models.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RetroGamingWorld.Models.Article", null)
+                        .WithMany()
+                        .HasForeignKey("WishlistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -464,7 +499,7 @@ namespace RetroGamingWorld.Migrations
             modelBuilder.Entity("RetroGamingWorld.Models.Bookmark", b =>
                 {
                     b.HasOne("RetroGamingWorld.Models.ApplicationUser", "User")
-                        .WithMany("Bookmarks")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
@@ -490,8 +525,6 @@ namespace RetroGamingWorld.Migrations
             modelBuilder.Entity("RetroGamingWorld.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Articles");
-
-                    b.Navigation("Bookmarks");
 
                     b.Navigation("Comments");
                 });

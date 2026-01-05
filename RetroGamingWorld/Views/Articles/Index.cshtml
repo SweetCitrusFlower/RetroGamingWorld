@@ -1,6 +1,7 @@
-﻿@model IEnumerable<RetroGamingWorld.Models.Article> 
+﻿@model IEnumerable<RetroGamingWorld.Models.Article>
 @{
     ViewData["Title"] = "Articole";
+    var wishlistIds = (ViewBag.UserWishlist as List<int>) ?? new List<int>();
 }
 @if (ViewBag.message is not null)
 {
@@ -81,7 +82,7 @@
         <p>Niciun articol nu se potrivește căutărilor.</p>
     }
     else
-    @foreach (Article article in ViewBag.Articles)
+    @foreach (Article article in ViewBag.articles)
     {
         if(article is not null)
         {
@@ -105,7 +106,7 @@
                     <h5 class="card-title fw-bold text-dark mt-2">@article.Title</h5>
                     
                     <p class="card-text small mb-1">
-                        De: <span class="fw-semibold text-danger">@article.User.UserName</span> 
+                        De: <span class="fw-semibold text-danger">@(article.User?.UserName ?? "Necunoscut")</span>
                     </p>
                     
                     <p class="card-text text-muted small">
@@ -138,17 +139,45 @@
                         <a href="/Articles/Show/@article.Id" class="btn btn-sm btn-outline-secondary">
                             Afisează articol
                         </a>
-                        <a class="btn btn-success" asp-action="AddToWishlist" asp-controller="Users" asp-route-id="@article.Id">❤️</a>
+
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <a href="/Articles/Edit/@article.Id" class="btn btn-sm btn-outline-primary">
+                            @if (wishlistIds.Contains(article.Id))
+                            {
+                                <form method="post" asp-controller="Wishlist" asp-action="Remove" asp-route-articleId="@article.Id" class="d-inline">
+                                    <button type="submit" class="btn btn-sm wishlist-btn added" title="Scoate din Wishlist">
+                                        💖
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                <a class="btn btn-sm wishlist-btn" 
+                                   asp-controller="Wishlist" 
+                                   asp-action="Add" 
+                                   asp-route-articleId="@article.Id"
+                                   title="Adaugă în Wishlist">
+                                    ❤️
+                                </a>
+                            }
+                        }
+                        else
+                        {
+                            <a class="btn btn-sm wishlist-btn" href="/Identity/Account/Login">
+                                ❤️
+                            </a>
+                        }
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                             <a href="/Articles/Edit/@article.Id" class="btn btn-sm btn-outline-primary">
                                 ✏️
                             </a>
-                            @if(User.Identity.Name == article.User.UserName || User.IsInRole("Administrator"))
+                            @if (article.User != null && User.Identity.Name == article.User.UserName)
                             {
-                                <form method="post" asp-action="Delete" asp-controller="Articles">
-                                <input type = "hidden" name="Id" value="@article.Id" />
-                                <button class = "btn btn-sm btn-outline-danger" method="post" type = "submit">🗑️</button>
+                                <form method="post" asp-action="Delete" asp-controller="Articles" class="d-inline">
+                                    <input type="hidden" name="Id" value="@article.Id" />
+                                    <button class="btn btn-sm btn-outline-danger" type="submit">🗑️</button>
                                 </form>
                             }
                         }
