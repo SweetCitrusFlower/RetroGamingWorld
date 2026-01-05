@@ -17,20 +17,108 @@ public class WishlistController : Controller
         _userManager = userManager;
     }
 
-    public async Task<IActionResult> Index()
+    [Authorize]
+    [HttpGet]
+    public IActionResult Index()
     {
-        var user = await _userManager.Users
-            .Include(u => u.Wishlist) 
-            .ThenInclude(a => a.Category) 
-            .FirstOrDefaultAsync(u => u.UserName == User.Identity!.Name);
+        var currentUserId = _userManager.GetUserId(User);
 
-        if (user == null) return View(new List<Article>());
+        // 1. Încărcăm tot wishlist-ul cu toate datele necesare pentru căutare
+        var user = _context.Users
+            .Include(u => u.Wishlist).ThenInclude(a => a.User)  
+            .Include(u => u.Wishlist).ThenInclude(a => a.Category) 
+            .Include(u => u.Wishlist).ThenInclude(a => a.Comments)  
+            .FirstOrDefault(u => u.Id == currentUserId);
 
-        var wishlistArticles = await _context.Articles
-            .Where(a => user.Wishlist.Select(w => w.Id).Contains(a.Id))
-            .ToListAsync();
+        if (user == null)
+        {
+            return RedirectToAction("Index", "Home");
+        }
 
-        return View(wishlistArticles);
+        var query = user.Wishlist.AsQueryable();
+
+        // 2. SEARCH (Logica "Search Safe" adaptată)
+        var search = HttpContext.Request.Query["search"].FirstOrDefault();
+
+        if (!string.IsNullOrEmpty(search))
+        {
+            search = search.Trim();
+            // Convertim ce ai scris tu în litere mici (ex: "Fire" -> "fire")
+            var searchTerm = search.ToLower();
+
+            // Filtrăm lista, dar transformăm și titlul/conținutul în litere mici înainte de verificare
+            query = query.Where(article =>
+                (article.Title != null && article.Title.ToLower().Contains(searchTerm)) ||
+                (article.Content != null && article.Content.ToLower().Contains(searchTerm)) ||
+                (article.Category != null && article.Category.CategoryName.ToLower().Contains(searchTerm)) ||
+                (article.User != null && (article.User.Email.ToLower().Contains(searchTerm) || article.User.UserName.ToLower().Contains(searchTerm))) ||
+                (article.Comments != null && article.Comments.Any(c => c.Content.ToLower().Contains(searchTerm)))
+            );
+        }
+
+        ViewBag.SearchString = search;
+
+        // 3. SORTARE
+        var sortBy = HttpContext.Request.Query["sortBy"].FirstOrDefault();
+        var sortOrder = HttpContext.Request.Query["sortOrder"].FirstOrDefault();
+
+        // Setăm valorile default
+        if (string.IsNullOrEmpty(sortBy)) sortBy = "rating"; // Default: Rating
+        if (string.IsNullOrEmpty(sortOrder)) sortOrder = "desc"; // Default: Cele mai bune primele
+
+        // Switch simplificat: Doar Preț și Rating
+        switch (sortBy.ToLower())
+        {
+            case "price":
+                // Acum sortăm după preț
+                if (sortOrder == "desc")
+                    query = query.OrderByDescending(a => a.Price);
+                else
+                    query = query.OrderBy(a => a.Price);
+                break;
+
+            case "rating":
+                // Sortare după Rating
+                if (sortOrder == "desc")
+                    query = query.OrderByDescending(a => a.Rating);
+                else
+                    query = query.OrderBy(a => a.Rating);
+                break;
+
+            default:
+                // Fallback: Dacă apare ceva ciudat, ordonăm după Rating descrescător
+                query = query.OrderByDescending(a => a.Rating);
+                break;
+        }
+
+        ViewBag.SortBy = sortBy;
+        ViewBag.SortOrder = sortOrder;
+
+        // 4. PAGINARE
+        int _perPage = 3;
+        int totalItems = query.Count();
+
+        var pageParam = HttpContext.Request.Query["page"].FirstOrDefault();
+        int currentPage = 1;
+        if (!string.IsNullOrEmpty(pageParam))
+        {
+            int.TryParse(pageParam, out currentPage);
+        }
+        if (currentPage < 1) currentPage = 1;
+
+        var offset = (currentPage - 1) * _perPage;
+        var paginatedItems = query.Skip(offset).Take(_perPage).ToList();
+
+        ViewBag.lastPage = Math.Ceiling((float)totalItems / (float)_perPage);
+        ViewBag.CurrentPage = currentPage;
+
+        string paginationBaseUrl = "/Wishlist/Index/?";
+        if (!string.IsNullOrEmpty(search)) paginationBaseUrl += "search=" + search + "&";
+        paginationBaseUrl += "sortBy=" + sortBy + "&sortOrder=" + sortOrder + "&page";
+
+        ViewBag.PaginationBaseUrl = paginationBaseUrl;
+
+        return View(paginatedItems);
     }
 
     [HttpGet]
