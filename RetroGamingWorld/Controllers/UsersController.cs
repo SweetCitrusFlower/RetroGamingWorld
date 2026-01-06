@@ -31,8 +31,15 @@ namespace RetroGamingWorld.Controllers
         }
         public IActionResult Index()
         {
-            var users = db.Users.OrderBy(u => u.UserName);
-                      
+            var users = from User in db.Users
+                        join UserRole in db.UserRoles on User.Id equals UserRole.UserId
+                        join Role in db.Roles on UserRole.RoleId equals Role.Id
+                        orderby User.Id
+                        select new
+                        {
+                            User,
+                            RoleName = Role.NormalizedName
+                        };
             ViewBag.UsersList = users;
 
             return View();
@@ -126,17 +133,6 @@ namespace RetroGamingWorld.Controllers
                 return RedirectToAction("Index");
             }       
         }
-        //[HttpGet]
-        //public IActionResult AddToWishlist(string userId, int ArticleId)
-        //{
-        //    var user = db.ApplicationUsers
-        //                    .Include(u => u.Articles)
-        //                    .Include(u => u.Comments)
-        //                    .Include(u => u.Bookmarks)
-        //                    .Where(u => u.Id == userId)
-        //                    .First();
-        //    db.Users.Find(userId).
-        //}
 
         [HttpPost]
         public IActionResult Delete(string id)

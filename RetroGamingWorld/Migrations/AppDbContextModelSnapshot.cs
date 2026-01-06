@@ -299,28 +299,6 @@ namespace RetroGamingWorld.Migrations
                     b.ToTable("Articles");
                 });
 
-            modelBuilder.Entity("RetroGamingWorld.Models.ArticleBookmark", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ArticleId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BookmarkId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArticleId");
-
-                    b.HasIndex("BookmarkId");
-
-                    b.ToTable("ArticleBookmark");
-                });
 
             modelBuilder.Entity("RetroGamingWorld.Models.ArticleFAQ", b =>
                 {
@@ -351,27 +329,6 @@ namespace RetroGamingWorld.Migrations
                     b.ToTable("ArticleFAQs");
                 });
 
-            modelBuilder.Entity("RetroGamingWorld.Models.Bookmark", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Bookmark");
-                });
 
             modelBuilder.Entity("RetroGamingWorld.Models.CartItem", b =>
                 {
@@ -598,25 +555,6 @@ namespace RetroGamingWorld.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("RetroGamingWorld.Models.ArticleBookmark", b =>
-                {
-                    b.HasOne("RetroGamingWorld.Models.Article", "Article")
-                        .WithMany("ArticleBookmarks")
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RetroGamingWorld.Models.Bookmark", "Bookmark")
-                        .WithMany("ArticleBookmarks")
-                        .HasForeignKey("BookmarkId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Article");
-
-                    b.Navigation("Bookmark");
-                });
-
             modelBuilder.Entity("RetroGamingWorld.Models.ArticleFAQ", b =>
                 {
                     b.HasOne("RetroGamingWorld.Models.Article", "Article")
@@ -626,15 +564,6 @@ namespace RetroGamingWorld.Migrations
                         .IsRequired();
 
                     b.Navigation("Article");
-                });
-
-            modelBuilder.Entity("RetroGamingWorld.Models.Bookmark", b =>
-                {
-                    b.HasOne("RetroGamingWorld.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RetroGamingWorld.Models.CartItem", b =>
@@ -708,18 +637,6 @@ namespace RetroGamingWorld.Migrations
                     b.Navigation("Articles");
 
                     b.Navigation("Comments");
-                });
-
-            modelBuilder.Entity("RetroGamingWorld.Models.Article", b =>
-                {
-                    b.Navigation("ArticleBookmarks");
-
-                    b.Navigation("Comments");
-                });
-
-            modelBuilder.Entity("RetroGamingWorld.Models.Bookmark", b =>
-                {
-                    b.Navigation("ArticleBookmarks");
                 });
 
             modelBuilder.Entity("RetroGamingWorld.Models.Category", b =>

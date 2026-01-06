@@ -8,14 +8,18 @@
         <h1 class="display-6 fw-bold mb-0">📚 Categorii de console</h1>
         <p class="text-muted mb-0">Exploarează gama noastră de console retro.</p>
     </div>
+
+    <a class="btn btn-retro" href="/Categories/New">
+        <i class="bi bi-plus-lg"></i> Adaugă categorie
+    </a>
 </div>
+
 <div class="d-flex justify-content-evenly flex-row flex-wrap mt-2">
     @foreach (var category in ViewBag.Categories){
         <div class="card">
             <div class="card-body">
                 <h3 class="card-title alert alert-success py-3 px-3 rounded-2 text-center">@category.CategoryName</h3>
                 <div class="d-flex justify-content-between rounded-4 flex-row mt-2">
-                    <a class="btn btn-success" asp-action="Show" asp-controller="Categories" asp-route-id="@category.Id">Afișare</a>
                     <a class="btn btn-warning" asp-action="Edit" asp-controller="Categories" asp-route-id="@category.Id">Editare</a>
                     <form method="post" asp-action="Delete" asp-controller="Categories" asp-route-id="@category.Id">
                         <button class="btn btn-danger" type="submit">Ștergere</button>

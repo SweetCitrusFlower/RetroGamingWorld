@@ -11,11 +11,18 @@
     @if (User.IsInRole("Administrator"))
     {
         <li class="nav-item">
-            <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Index">Afisare utilizatori</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link text-white" asp-controller="Articles" asp-action="PendingArticles">
                 Moderare Articole
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Index">
+                Moderare utilizatori
+                </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="Categories" asp-action="Index">
+                Moderare categorii
             </a>
         </li>
     }
@@ -25,20 +32,6 @@
         <li class="nav-item">
             <a class="nav-link text-white" asp-controller="Articles" asp-action="MyArticles">
                 Articolele mele
-            </a>
-        </li>
-    }
-
-    @if (User.IsInRole("Administrator"))
-    {
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-area="" asp-controller="Categories" asp-action="Index">
-                Afișare categorii
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-area="" asp-controller="Categories" asp-action="New">
-                Adăugare categorie
             </a>
         </li>
     }

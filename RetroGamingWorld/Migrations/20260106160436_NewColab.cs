@@ -170,45 +170,6 @@ namespace RetroGamingWorld.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-            migrationBuilder.CreateTable(
-                name: "ArticleFAQs",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ArticleId = table.Column<int>(type: "int", nullable: false),
-                    Question = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Answer = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AskedCount = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ArticleFAQs", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ArticleFAQs_Articles_ArticleId",
-                        column: x => x.ArticleId,
-                        principalTable: "Articles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-            migrationBuilder.CreateTable(
-                name: "Bookmark",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Bookmark", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Bookmark_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                });
 
             migrationBuilder.CreateTable(
                 name: "Orders",
@@ -266,29 +227,24 @@ namespace RetroGamingWorld.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
-                name: "ArticleBookmark",
+                name: "ArticleFAQs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ArticleId = table.Column<int>(type: "int", nullable: false),
-                    BookmarkId = table.Column<int>(type: "int", nullable: false)
+                    Question = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Answer = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AskedCount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ArticleBookmark", x => x.Id);
+                    table.PrimaryKey("PK_ArticleFAQs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ArticleBookmark_Articles_ArticleId",
+                        name: "FK_ArticleFAQs_Articles_ArticleId",
                         column: x => x.ArticleId,
                         principalTable: "Articles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ArticleBookmark_Bookmark_BookmarkId",
-                        column: x => x.BookmarkId,
-                        principalTable: "Bookmark",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -402,16 +358,6 @@ namespace RetroGamingWorld.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ArticleBookmark_ArticleId",
-                table: "ArticleBookmark",
-                column: "ArticleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ArticleBookmark_BookmarkId",
-                table: "ArticleBookmark",
-                column: "BookmarkId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Articles_CategoryId",
                 table: "Articles",
                 column: "CategoryId");
@@ -465,10 +411,6 @@ namespace RetroGamingWorld.Migrations
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Bookmark_UserId",
-                table: "Bookmark",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartItems_ApplicationUserId",
@@ -514,8 +456,6 @@ namespace RetroGamingWorld.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ArticleBookmark");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -546,9 +486,6 @@ namespace RetroGamingWorld.Migrations
 
             migrationBuilder.DropTable(
                 name: "ArticleFAQs");
-
-            migrationBuilder.DropTable(
-                name: "Bookmark");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

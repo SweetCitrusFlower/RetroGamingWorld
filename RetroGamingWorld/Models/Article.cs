@@ -23,7 +23,7 @@ namespace RetroGamingWorld.Models
         [Required(ErrorMessage = "Te rog adaugă un link către o imagine!")]
         public string? Image { get; set; }
 
-        [NotMapped] // Îi spune bazei de date să ignore acest câmp
+        [NotMapped]
         [Display(Name = "Imagine Produs")]
         public IFormFile? ImageFile { get; set; }
 
@@ -49,7 +49,6 @@ namespace RetroGamingWorld.Models
         [InverseProperty("Articles")]
         public virtual ApplicationUser? User { get; set; }
         public virtual ICollection<Comment>? Comments { get; set; }
-        public virtual ICollection<ArticleBookmark>? ArticleBookmarks { get; set; }
 
         [NotMapped]
         public IEnumerable<SelectListItem>? Categ { get; set; }
