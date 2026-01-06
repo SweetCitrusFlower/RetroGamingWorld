@@ -60,13 +60,15 @@ namespace RetroGamingWorld.Controllers
                         .Include(a => a.Category)
                         .Include(a => a.User)
                         .Where(a => a.CategoryId == id)
-                        .OrderByDescending(a => a.Id);
+                        .OrderByDescending(a => a.Id); 
+            var Category = db.Categories.Find(id);
+            if(Category != null)
+                ViewBag.CategoryName = Category.CategoryName;
             ViewBag.ArticlesInCategory = AIC;
             if (AIC.Count() == 0)
                 ViewBag.CategoryIsEmpty = "Categoria nu are articole";
             else
                 ViewBag.CategoryIsEmpty = null;
-            ViewBag.CategoryName = db.Categories.Find(id).CategoryName;
             return View();
         }
 
