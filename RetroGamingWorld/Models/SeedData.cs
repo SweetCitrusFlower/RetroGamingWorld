@@ -129,6 +129,50 @@ namespace RetroGamingWorld.Models
                         UserId = "8e445865-a24d-4543-a6c6-9443d048cdb4"
                     }
                 );
+
+                context.Categories.AddRange(
+                    new Category
+                    {
+                        CategoryName = "PS4"
+                    },
+                    new Category
+                    {
+                        CategoryName = "PS5",
+                    },
+                    new Category
+                    {
+                        CategoryName = "SNES"
+                    },
+                    new Category
+                    {
+                        CategoryName = "XBOX"
+                    },
+                    new Category
+                    {
+                        CategoryName = "Gameboy Advanced"
+                    },
+                    new Category
+                    {
+                        CategoryName = "Sega Dreamcast"
+                    }
+                );
+
+                context.Articles.AddRange(
+                    new Article
+                    {
+                        Title = "12",
+                        Content = "12",
+                        Date = DateTime.Now,
+                        Image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9rMeO7ak69ZrSsIlCHtNfZv2Fie-ki1oYVNpfTPv8FzpNWZyiFtPX68UChyc7pKObJx6lEI4ye1hckQhmC4Iw5Cu8nWGIzUoZaTbkUQ&s=10",
+                        Price = (decimal)1989.00,
+                        Stock = 1989,
+                        Rating = 0,
+                        IsApproved = true,
+                        AdminFeedback = null,
+                        CategoryId = 5,
+                        UserId = "8e445865-a24d-4543-a6c6-9443d048cdb0"
+                    }
+                );
                 context.SaveChanges();
             }
         }

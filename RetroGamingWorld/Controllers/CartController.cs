@@ -7,7 +7,7 @@ using RetroGamingWorld.Models;
 
 namespace RetroGamingWorld.Controllers
 {
-    [Authorize] // Doar utilizatorii logați pot accesa coșul
+    [Authorize(Roles = "User")] // Doar utilizatorii pot accesa coșul
     public class CartController : Controller
     {
         private readonly AppDbContext _context;

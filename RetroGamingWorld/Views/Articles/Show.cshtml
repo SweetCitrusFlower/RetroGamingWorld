@@ -149,9 +149,19 @@
                                     <button class="btn btn-danger" type="submit">Ștergere</button>
                                 </form>
                                 </div>
-                            </div>
-                        }
-                    </div>
+                        </div>
+                    }
+                    else if(User.IsInRole("Administrator"))
+                    {
+                        <div class="card-body">
+                            <div class="d-flex justify-content-start rounded-4 flex-row mt-2">
+                                <form method="post" asp-action="Delete" asp-controller="Comments" asp-route-id="@comm.Id">
+                                    <button class="btn btn-danger" type="submit">Ștergere</button>
+                                </form>
+                             </div>
+                        </div>
+                    }
+                </div>
                 }
             }
             else

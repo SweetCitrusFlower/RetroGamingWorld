@@ -78,17 +78,8 @@ namespace RetroGamingWorld.Controllers
             {
                 ViewBag.AllRoles = GetAllRoles();
 
-                var roleNames = await _userManager.GetRolesAsync(user); // Lista de nume de roluri
-
-                // Cautam ID-ul rolului in baza de date
-                ViewBag.UserRole = _roleManager.Roles
-                                                  .Where(r => roleNames.Contains(r.Name))
-                                                  .Select(r => r.Id)
-                                                  .First(); // Selectam 1 singur rol
-
                 return View(user);
             }
-            
         }
 
         [HttpPost]
@@ -96,21 +87,14 @@ namespace RetroGamingWorld.Controllers
         {
             ApplicationUser? user = db.Users.Find(id);
 
-            if(user is null)
+            if (user is null)
             {
                 return NotFound();
             }
-
             else
             {
-                
                 if (ModelState.IsValid)
                 {
-                    user.UserName = newData.UserName;
-                    user.Email = newData.Email;
-                    user.FirstName = newData.FirstName;
-                    user.LastName = newData.LastName;
-                    user.PhoneNumber = newData.PhoneNumber;
 
                     // Cautam toate rolurile din baza de date
                     var roles = db.Roles.ToList();
@@ -131,7 +115,7 @@ namespace RetroGamingWorld.Controllers
 
                 user.AllRoles = GetAllRoles();
                 return RedirectToAction("Index");
-            }       
+            }
         }
 
         [HttpPost]
