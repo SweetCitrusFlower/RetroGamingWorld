@@ -162,18 +162,39 @@
                             📅 @article.Date.ToString("dd MMM yyyy")
                         </small>
 
-                        <div class="d-flex gap-2">
-                            @* Buton Afiseaza *@
-                            <a href="/Articles/Show/@article.Id" class="btn btn-sm btn-outline-secondary">
-                                Afisează articol
+                        @* Grupul de butoane (Dreapta) *@
+                        <div class="d-flex gap-2 align-items-center">
+                            
+                            @* 1. Buton AFIȘEAZĂ *@
+                            <a href="/Articles/Show/@article.Id" class="btn btn-sm btn-outline-secondary" title="Vezi detalii">
+                                <i class="bi bi-eye"></i>
                             </a>
 
-                            @* Buton STERGE DIN WISHLIST (Text, nu inimioara) *@
-                            <form method="post" asp-controller="Wishlist" asp-action="Remove" asp-route-articleId="@article.Id">
-                                <button type="submit" class="btn btn-sm btn-danger">
-                                    Sterge din wishlist
-                                </button>
-                            </form>
+                            @* 2. Buton ADAUGĂ ÎN COȘ (NOU) *@
+                            @if (User.IsInRole("User"))
+                            {
+                                @if (article.Stock > 0)
+                                {
+                                    <form method="post" asp-controller="Cart" asp-action="Add" asp-route-articleId="@article.Id">
+                                        <button type="submit" class="btn btn-sm btn-success shadow-sm" title="Mută în coș">
+                                            <i class="bi bi-cart-plus"></i> Adaugă
+                                        </button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-sm btn-outline-secondary disabled" title="Stoc Epuizat">
+                                        🚫
+                                    </button>
+                                }
+
+                                @* 3. Buton ȘTERGE DIN WISHLIST *@
+                                <form method="post" asp-controller="Wishlist" asp-action="Remove" asp-route-articleId="@article.Id">
+                                    <button type="submit" class="btn btn-sm btn-danger" title="Șterge din wishlist">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            }
                         </div>
                     </div>
                 </div>

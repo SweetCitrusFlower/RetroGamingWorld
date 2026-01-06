@@ -165,19 +165,22 @@
         </a>
 
         @* 2. Buton ADAUGĂ ÎN COȘ (NOU - Inserat aici) *@
-        @if (article.Stock > 0)
+        @if (User.IsInRole("User"))
         {
-            <form method="post" asp-controller="Cart" asp-action="Add" asp-route-articleId="@article.Id" class="d-inline">
-                <button type="submit" class="btn btn-sm btn-outline-success" title="Adaugă în coș">
-                    🛒
+            @if (article.Stock > 0)
+            {
+                <form method="post" asp-controller="Cart" asp-action="Add" asp-route-articleId="@article.Id" class="d-inline">
+                    <button type="submit" class="btn btn-sm btn-outline-success" title="Adaugă în coș">
+                        🛒
+                    </button>
+                </form>
+            }
+            else
+            {
+                <button class="btn btn-sm btn-outline-secondary disabled" title="Stoc Epuizat">
+                    🚫
                 </button>
-            </form>
-        }
-        else
-        {
-            <button class="btn btn-sm btn-outline-secondary disabled" title="Stoc Epuizat">
-                🚫
-            </button>
+            }
         }
 
         @* 3. Buton WISHLIST (Logica ta originală intactă) *@
