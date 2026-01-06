@@ -24,14 +24,17 @@ namespace RetroGamingWorld.Models
 
         [Required(ErrorMessage = "Prețul este obligatoriu")]
         [Column(TypeName = "decimal(6, 2)")]
+        [Range(0.01, 9999.99, ErrorMessage = "Prețul trebuie să fie mai mare ca 0")]
         public decimal? Price { get; set; }
 
         [Required(ErrorMessage = "Stocul este obligatoriu")]
+        [Range(0, 100000, ErrorMessage = "Stocul nu poate fi negativ")]
         public int? Stock { get; set; }
 
         [Range(1, 5, ErrorMessage = "Ratingul trebuie să fie între 1 și 5")]
         public float? Rating { get; set; }
         public bool IsApproved { get; set; } = false;
+        public string? AdminFeedback { get; set; }
 
         [Required(ErrorMessage = "Categoria este obligatorie")]
         public int? CategoryId { get; set; }

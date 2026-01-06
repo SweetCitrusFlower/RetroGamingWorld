@@ -66,15 +66,8 @@ namespace RetroGamingWorld.Controllers
 
             ViewBag.SearchString = search;
 
-            // 2. FILTRE ADMIN/USER
-            if (User.IsInRole("Administrator") || User.IsInRole("Colaborator"))
-            {
-                query = query.Where(a => a.IsApproved == true || a.IsApproved == false);
-            }
-            else
-            {
-                query = query.Where(a => a.IsApproved == true);
-            }
+            // 2. AFISAREA DOAR A ARTICOLELOR APROBATE
+            query = query.Where(a => a.IsApproved == true);
 
             // 3. SORTARE SAFE
             var sortBy = HttpContext.Request.Query["sortBy"].FirstOrDefault();
@@ -201,7 +194,22 @@ namespace RetroGamingWorld.Controllers
             return RedirectToAction("Show", new { id = comment.ArticleId });
         }
 
-        // 4. APROBARE (DOAR ADMIN)
+        // 8. LISTA DE AȘTEPTARE (GET) - Trebuie să vedem articolele înainte să le aprobăm
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public async Task<IActionResult> PendingArticles()
+        {
+            var pendingArticles = await db.Articles // Folosim 'db' cum ai tu în cod
+                                          .Include(a => a.Category)
+                                          .Include(a => a.User)
+                                          .Where(a => a.IsApproved == false)
+                                          .OrderByDescending(a => a.Date)
+                                          .ToListAsync();
+
+            return View(pendingArticles);
+        }
+
+        // 9. APROBARE (Modificarea lui Alex)
         [Authorize(Roles = "Administrator")]
         [HttpPost]
         public IActionResult Approve(int id)
@@ -210,10 +218,34 @@ namespace RetroGamingWorld.Controllers
             if (article != null)
             {
                 article.IsApproved = true;
+
+                // ADAUGAT: Ștergem motivul respingerii anterioare, dacă există
+                article.AdminFeedback = null;
+
                 db.SaveChanges();
                 TempData["messageArticles"] = "Articolul \"" + article.Title + "\" a fost aprobat!";
             }
-            return RedirectToAction("Index");
+
+            // MODIFICAT: Ne întoarcem la lista de așteptare, nu în magazin
+            return RedirectToAction("PendingArticles");
+        }
+
+        // 10. RESPINGERE (Nou)
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        public IActionResult Reject(int id, string reason)
+        {
+            var article = db.Articles.Find(id);
+            if (article != null)
+            {
+                article.IsApproved = false; // Rămâne neaprobat
+                article.AdminFeedback = reason; // Salvăm motivul (Ex: "Poza neclară")
+
+                db.SaveChanges();
+                TempData["messageArticles"] = "Articolul a fost respins. Feedback trimis!";
+            }
+
+            return RedirectToAction("PendingArticles");
         }
 
         // 5. CREARE ARTICOL (NEW)
@@ -239,16 +271,21 @@ namespace RetroGamingWorld.Controllers
             if (User.IsInRole("Administrator")) return RedirectToAction("Index");
 
             article.Date = DateTime.Now;
+
             article.UserId = _userManager.GetUserId(User);
+
             article.Rating = 0;
+
             article.IsApproved = false;
+            article.AdminFeedback = null;
 
             if (ModelState.IsValid)
             {
                 db.Articles.Add(article);
                 db.SaveChanges();
                 TempData["messageArticles"] = "Articolul a fost trimis spre aprobare!";
-                return RedirectToAction("Index");
+
+                return RedirectToAction("MyArticles");
             }
             else
             {
@@ -281,6 +318,13 @@ namespace RetroGamingWorld.Controllers
             Article art = db.Articles.Find(id);
             if (art == null) return NotFound();
 
+            // SECURITATE EXTRA: Verificăm din nou dacă are voie să editeze
+            // (E bine să faci asta și la POST, nu doar la GET)
+            if (!User.IsInRole("Administrator") && art.UserId != _userManager.GetUserId(User))
+            {
+                return Forbid();
+            }
+
             if (ModelState.IsValid)
             {
                 art.Title = requestArt.Title;
@@ -290,18 +334,24 @@ namespace RetroGamingWorld.Controllers
                 art.Stock = requestArt.Stock;
                 art.CategoryId = requestArt.CategoryId;
 
-                if (!User.IsInRole("Administrator"))
+                // LOGICA DE ROLURI
+                if (User.IsInRole("Administrator"))
                 {
-                    art.IsApproved = false;
-                    TempData["messageArticles"] = "Articolul modificat așteaptă aprobare!";
+                    TempData["messageArticles"] = "Articolul a fost modificat!";
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
                 else
                 {
-                    TempData["messageArticles"] = "Articolul a fost modificat!";
-                }
+                    art.IsApproved = false;
 
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    art.AdminFeedback = null;
+
+                    TempData["messageArticles"] = "Articolul modificat așteaptă aprobare!";
+                    db.SaveChanges();
+
+                    return RedirectToAction("MyArticles");
+                }
             }
             else
             {
@@ -311,17 +361,32 @@ namespace RetroGamingWorld.Controllers
         }
 
         // 7. STERGERE (DELETE)
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Colaborator")] // 1. Deschidem ușa și pentru Colaboratori
         [HttpPost]
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             Article article = db.Articles.Find(id);
+
             if (article != null)
             {
+                // 2. VERIFICARE DE SECURITATE (Foarte important!)
+                // Dacă NU ești Admin ȘI NU ești proprietarul articolului -> STOP
+                if (!User.IsInRole("Administrator") && article.UserId != _userManager.GetUserId(User))
+                {
+                    TempData["messageArticles"] = "Nu ai dreptul să ștergi acest articol!";
+                    return RedirectToAction("Index");
+                }
+
                 db.Articles.Remove(article);
                 db.SaveChanges();
                 TempData["messageArticles"] = "Articolul a fost șters!";
+
+                if (User.IsInRole("Colaborator"))
+                {
+                    return RedirectToAction("MyArticles");
+                }
             }
+
             return RedirectToAction("Index");
         }
         private void UpdateArticleRating(int ArticleId)
@@ -334,6 +399,23 @@ namespace RetroGamingWorld.Controllers
             {
                 Article.Rating = (float?)Article.Comments.Average(c => c.Rating);
             }
+        }
+
+        // 8. ARTICOLELE MELE (Pentru Colaboratori)
+        [Authorize(Roles = "Colaborator")]
+        [HttpGet]
+        public IActionResult MyArticles()
+        {
+            var userId = _userManager.GetUserId(User);
+
+            // Luăm articolele userului curent, indiferent dacă sunt aprobate sau nu
+            var articles = db.Articles
+                             .Include(a => a.Category)
+                             .Where(a => a.UserId == userId)
+                             .OrderByDescending(a => a.Date)
+                             .ToList();
+
+            return View(articles);
         }
 
         // METODA AUXILIARA
