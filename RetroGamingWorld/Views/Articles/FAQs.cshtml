@@ -1,0 +1,23 @@
+﻿@model RetroGamingWorld.Models.Article
+
+<div class="ai-chat">
+    <h5>🤖 Product Assistant</h5>
+
+    <form asp-controller="ProductAssistant" asp-action="Ask" method="post">
+        <input type="hidden" name="articleId" value="@Model.Id" />
+
+        <input type="text" name="question" class="form-control"
+               placeholder="Întreabă despre produs..." />
+
+        <button type="submit" class="btn btn-secondary mt-2">
+            Întreabă
+        </button>
+    </form>
+
+    @if (ViewBag.AIResponse != null)
+    {
+        <div class="alert alert-info mt-2">
+            @ViewBag.AIResponse
+        </div>
+    }
+</div>

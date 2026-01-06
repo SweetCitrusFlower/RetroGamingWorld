@@ -18,6 +18,7 @@ namespace RetroGamingWorld.Data
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<ArticleFAQ> ArticleFAQs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

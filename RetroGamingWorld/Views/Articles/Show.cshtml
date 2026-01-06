@@ -50,6 +50,10 @@
             </div>
         </div>
 
+        <hr />
+
+
+
         <div class="card-footer text-center bg-white border-0 pb-4">
             @if (User.IsInRole("Administrator") || User.Identity.Name == Model.User?.Email)
             {
@@ -58,6 +62,43 @@
         </div>
     </div>
 
+    <div class="card mt-4">
+        <div class="card-header">
+            🤖 AI Assistant pentru întreări frecvente
+        </div>
+
+        <div class="card-body">
+            <form asp-controller="ArticleFAQ"
+                  asp-action="Ask"
+                  method="post">
+
+                <input type="hidden"
+                       name="articleId"
+                       value="@Model.Id" />
+
+                <div class="mb-2">
+                    <input type="text"
+                           name="question"
+                           class="form-control"
+                           placeholder="Întreabă despre acest produs..."
+                           required />
+                </div>
+
+                <button type="submit" class="btn btn-outline-primary">
+                    Trimite întrebarea
+                </button>
+            </form>
+
+            @if (TempData["AIResponse"] != null)
+            {
+                <div class="alert alert-info mt-3">
+                    @TempData["AIResponse"]
+                </div>
+            }
+        </div>
+    </div>
+    <hr class="my-4" />
+    <br />
     <div class="row justify-content-center">
         <div class="col-md-10">
             <h3 class="mb-4"><i class="bi bi-chat-left-text"></i> Comentarii</h3>
@@ -101,8 +142,6 @@
                     Nu există comentarii. Fii primul care scrie!
                 </div>
             }
-
-            <hr class="my-4" />
 
                 <div class="card bg-light border-0 p-4">
                     <h5>Adaugă un comentariu și un rating</h5>
