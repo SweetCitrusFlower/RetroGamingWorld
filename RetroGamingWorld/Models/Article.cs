@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering; 
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,6 +22,10 @@ namespace RetroGamingWorld.Models
 
         [Required(ErrorMessage = "Te rog adaugă un link către o imagine!")]
         public string? Image { get; set; }
+
+        [NotMapped] // Îi spune bazei de date să ignore acest câmp
+        [Display(Name = "Imagine Produs")]
+        public IFormFile? ImageFile { get; set; }
 
         [Required(ErrorMessage = "Prețul este obligatoriu")]
         [Column(TypeName = "decimal(6, 2)")]

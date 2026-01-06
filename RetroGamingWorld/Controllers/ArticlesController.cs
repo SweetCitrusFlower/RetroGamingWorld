@@ -266,29 +266,70 @@ namespace RetroGamingWorld.Controllers
 
         [Authorize(Roles = "Colaborator")]
         [HttpPost]
-        public IActionResult New(Article article)
+        // 1. Am facut metoda ASYNC pentru a putea salva fisierul
+        public async Task<IActionResult> New(Article article, IFormFile? ImageFile)
         {
             if (User.IsInRole("Administrator")) return RedirectToAction("Index");
 
+            // Setările tale standard
             article.Date = DateTime.Now;
-
             article.UserId = _userManager.GetUserId(User);
-
             article.Rating = 0;
-
             article.IsApproved = false;
             article.AdminFeedback = null;
+
+            // --- LOGICA NOUĂ: UPLOAD POZĂ ---
+            if (ImageFile != null && ImageFile.Length > 0)
+            {
+                // A. Validare Dimensiune (Maxim 5 MB)
+                if (ImageFile.Length > 5 * 1024 * 1024)
+                {
+                    TempData["messageArticles"] = "Imaginea este prea mare! Maxim 5MB.";
+                    article.Categ = GetAllCategories(); // Reîncărcăm categoriile ca să nu crape pagina
+                    return View(article);
+                }
+
+                // B. Validare Extensie
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                var fileExtension = Path.GetExtension(ImageFile.FileName).ToLower();
+
+                if (!allowedExtensions.Contains(fileExtension))
+                {
+                    TempData["messageArticles"] = "Format invalid! Doar .jpg, .png, .gif";
+                    article.Categ = GetAllCategories();
+                    return View(article);
+                }
+
+                // C. Salvare Fizică (wwwroot/images)
+                var storagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+                if (!Directory.Exists(storagePath)) Directory.CreateDirectory(storagePath);
+
+                var fileName = Guid.NewGuid().ToString() + "_" + ImageFile.FileName;
+                var filePath = Path.Combine(storagePath, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await ImageFile.CopyToAsync(stream);
+                }
+
+                // D. Salvăm calea în baza de date
+                article.Image = "/images/" + fileName;
+            }
+            // --------------------------------
+
+            ModelState.Remove(nameof(article.Image));
 
             if (ModelState.IsValid)
             {
                 db.Articles.Add(article);
-                db.SaveChanges();
+                await db.SaveChangesAsync(); // Am pus async si aici daca tot e metoda async
                 TempData["messageArticles"] = "Articolul a fost trimis spre aprobare!";
 
                 return RedirectToAction("MyArticles");
             }
             else
             {
+                // Logica ta pentru când formularul nu e valid
                 article.Categ = GetAllCategories();
                 return View(article);
             }
