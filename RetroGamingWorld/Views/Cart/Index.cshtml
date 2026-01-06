@@ -1,0 +1,214 @@
+﻿@model IEnumerable<RetroGamingWorld.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Coșul meu";
+    decimal totalCartAmount = 0;
+}
+
+@* --- SCENARIUL 1: COMANDA PLASATĂ CU SUCCES (Card Mare) --- *@
+@if (TempData["OrderSuccess"] != null)
+{
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+        <div class="card border-0 shadow-lg rounded-5 p-5 text-center" style="max-width: 600px; width: 100%; background: linear-gradient(to bottom, #ffffff, #f8f9fa);">
+
+            @* Icoana Animată *@
+            <div class="mb-4">
+                <div class="d-inline-flex align-items-center justify-content-center bg-success bg-opacity-10 rounded-circle" style="width: 120px; height: 120px;">
+                    <i class="bi bi-check-lg text-success display-1"></i>
+                </div>
+            </div>
+
+            <h1 class="fw-bold text-success mb-3">Comandă Reușită!</h1>
+
+            <p class="text-muted fs-5 mb-4">
+                Îți mulțumim pentru cumpărături!<br>
+                Comanda ta <span class="fw-bold text-dark">#@TempData["LastOrderId"]</span> a fost înregistrată.
+            </p>
+
+            <div class="alert alert-light border border-success border-opacity-25 rounded-3 py-3 mb-4">
+                <small class="text-muted d-block text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 1px;">Status actual</small>
+                <span class="text-success fw-bold"><i class="bi bi-box-seam me-2"></i>În procesare</span>
+            </div>
+
+            <p class="small text-muted mb-4">
+                Vei primi un email de confirmare în scurt timp cu detaliile livrării.
+            </p>
+
+            <div class="d-grid gap-3">
+                <a asp-controller="Articles" asp-action="Index" class="btn btn-dark btn-lg rounded-pill fw-bold shadow-sm">
+                    Înapoi la Magazin
+                </a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @* --- SCENARIUL 2: COȘUL NORMAL (Codul anterior) --- *@
+
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-info alert-dismissible fade show text-center mb-4 mx-auto container" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i> @TempData["message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="container py-4">
+        <div class="d-flex align-items-center mb-4">
+            <i class="bi bi-cart3 text-danger display-6 me-3"></i>
+            <h2 class="fw-bold m-0">Coșul de Cumpărături</h2>
+        </div>
+
+        @if (!Model.Any())
+        {
+            @* COȘ GOL *@
+            <div class="text-center py-5 bg-white rounded-4 shadow-sm">
+                <i class="bi bi-cart-x display-1 text-muted opacity-25"></i>
+                <h3 class="mt-4 fw-bold">Coșul tău este gol</h3>
+                <p class="text-muted">Nu ai adăugat încă niciun produs.</p>
+                <a asp-controller="Articles" asp-action="Index" class="btn btn-danger mt-3 rounded-pill px-5 py-2 fw-bold shadow-sm">
+                    Mergi la Cumpărături
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="row g-4">
+
+                @* --- COLOANA STÂNGA (Produsele) --- *@
+                <div class="col-lg-7 col-xl-8">
+                    @foreach (var item in Model)
+                    {
+                        decimal lineTotal = item.Quantity * (item.Article?.Price ?? 0);
+                        totalCartAmount += lineTotal;
+
+                        <div class="card mb-3 border-0 shadow-sm rounded-4 overflow-hidden">
+                            <div class="row g-0 align-items-center p-2">
+                                <div class="col-md-3 bg-light rounded-3 d-flex justify-content-center align-items-center" style="height: 120px;">
+                                    @if (!string.IsNullOrEmpty(item.Article?.Image))
+                                    {
+                                        <img src="@item.Article.Image" class="img-fluid rounded-3" style="max-height: 100%; max-width: 100%; object-fit: contain;" alt="@item.Article.Title">
+                                    }
+                                    else
+                                    {
+                                        <i class="bi bi-image text-muted fs-2 opacity-50"></i>
+                                    }
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body py-2">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h5 class="card-title fw-bold mb-1">
+                                                    <a asp-controller="Articles" asp-action="Show" asp-route-id="@item.ArticleId" class="text-decoration-none text-dark stretched-link">
+                                                        @item.Article?.Title
+                                                    </a>
+                                                </h5>
+                                                <p class="text-muted small mb-2">Preț unitar: @(item.Article?.Price ?? 0) LEI</p>
+                                            </div>
+                                            <h5 class="fw-bold text-danger">@lineTotal LEI</h5>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2 position-relative" style="z-index: 2;">
+                                            <div>
+                                                @if (item.Article != null && item.Article.Stock < 5)
+                                                {
+                                                    <small class="text-warning fw-bold"><i class="bi bi-exclamation-triangle"></i> Stoc limitat: @item.Article.Stock</small>
+                                                }
+                                            </div>
+                                            <div class="d-flex align-items-center bg-light rounded-pill px-2 py-1 border">
+                                                <form asp-action="UpdateQuantity" asp-controller="Cart" method="post" class="d-inline">
+                                                    <input type="hidden" name="cartItemId" value="@item.Id" />
+                                                    <input type="hidden" name="change" value="-1" />
+                                                    <button type="submit" class="btn btn-sm btn-link text-dark text-decoration-none px-2 fw-bold" style="box-shadow: none;">−</button>
+                                                </form>
+                                                <span class="mx-2 fw-bold small">@item.Quantity</span>
+                                                <form asp-action="UpdateQuantity" asp-controller="Cart" method="post" class="d-inline">
+                                                    <input type="hidden" name="cartItemId" value="@item.Id" />
+                                                    <input type="hidden" name="change" value="1" />
+                                                    <button type="submit" class="btn btn-sm btn-link text-dark text-decoration-none px-2 fw-bold" style="box-shadow: none;">+</button>
+                                                </form>
+                                            </div>
+                                            <form asp-action="Remove" asp-controller="Cart" method="post">
+                                                <input type="hidden" name="cartItemId" value="@item.Id" />
+                                                <button type="submit" class="btn btn-link text-muted p-0 text-decoration-none small hover-danger">
+                                                    <i class="bi bi-trash"></i> Șterge
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                @* --- COLOANA DREAPTA (Formular & Total) --- *@
+                <div class="col-lg-5 col-xl-4">
+                    <div class="card border-0 shadow-sm rounded-4 bg-white p-4 sticky-top" style="top: 20px; z-index: 1;">
+                        <h4 class="fw-bold mb-4 border-bottom pb-3">Sumar Comandă</h4>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Subtotal produse</span>
+                            <span class="fw-bold">@totalCartAmount LEI</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span class="text-muted">Livrare</span>
+                            <span class="text-success fw-bold">Gratuit</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4 p-3 bg-light rounded-3">
+                            <span class="fs-5 fw-bold text-dark">Total de plată</span>
+                            <span class="fs-4 fw-bold text-danger">@totalCartAmount LEI</span>
+                        </div>
+
+                        <h5 class="fw-bold mb-3 mt-4"><i class="bi bi-truck me-2"></i>Detalii Livrare</h5>
+                        <form method="post" asp-controller="Cart" asp-action="PlaceOrder" class="needs-validation">
+                            <div class="row g-2 mb-2">
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" name="lastName" class="form-control bg-light border-0" id="lastName" placeholder="Nume" required>
+                                        <label for="lastName" class="text-muted small">Nume</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" name="firstName" class="form-control bg-light border-0" id="firstName" placeholder="Prenume" required>
+                                        <label for="firstName" class="text-muted small">Prenume</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-2">
+                                <input type="tel" name="phoneNumber" class="form-control bg-light border-0" id="phone" placeholder="Telefon" required>
+                                <label for="phone" class="text-muted small">Număr de Telefon</label>
+                            </div>
+                            <div class="row g-2 mb-2">
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" name="county" class="form-control bg-light border-0" id="county" placeholder="Județ" required>
+                                        <label for="county" class="text-muted small">Județ</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" name="city" class="form-control bg-light border-0" id="city" placeholder="Oraș" required>
+                                        <label for="city" class="text-muted small">Oraș</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <textarea name="addressDetails" class="form-control bg-light border-0" id="address" placeholder="Adresă" style="height: 80px" required></textarea>
+                                <label for="address" class="text-muted small">Adresă completă (Str, Nr...)</label>
+                            </div>
+                            <button type="submit" class="btn btn-danger w-100 py-3 rounded-pill fw-bold fs-5 shadow-sm hover-scale">
+                                Plasează Comanda <i class="bi bi-arrow-right-circle-fill ms-2"></i>
+                            </button>
+                        </form>
+                        <div class="mt-4 text-center border-top pt-3">
+                            <a asp-controller="Articles" asp-action="Index" class="text-decoration-none text-muted small fw-bold">
+                                <i class="bi bi-arrow-left"></i> Continuă cumpărăturile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
