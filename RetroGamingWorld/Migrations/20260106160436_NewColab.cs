@@ -170,7 +170,27 @@ namespace RetroGamingWorld.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
+            migrationBuilder.CreateTable(
+                name: "ArticleFAQs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ArticleId = table.Column<int>(type: "int", nullable: false),
+                    Question = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Answer = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AskedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ArticleFAQs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ArticleFAQs_Articles_ArticleId",
+                        column: x => x.ArticleId,
+                        principalTable: "Articles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
             migrationBuilder.CreateTable(
                 name: "Bookmark",
                 columns: table => new
@@ -434,6 +454,11 @@ namespace RetroGamingWorld.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ArticleFAQs_ArticleId",
+                table: "ArticleFAQs",
+                column: "ArticleId");
+
+            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
@@ -518,6 +543,9 @@ namespace RetroGamingWorld.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserWishlist");
+
+            migrationBuilder.DropTable(
+                name: "ArticleFAQs");
 
             migrationBuilder.DropTable(
                 name: "Bookmark");

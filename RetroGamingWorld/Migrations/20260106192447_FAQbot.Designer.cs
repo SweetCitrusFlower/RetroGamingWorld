@@ -12,7 +12,7 @@ using RetroGamingWorld.Data;
 namespace RetroGamingWorld.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260106155621_FAQbot")]
+    [Migration("20260106192447_FAQbot")]
     partial class FAQbot
     {
         /// <inheritdoc />
@@ -255,6 +255,9 @@ namespace RetroGamingWorld.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AdminFeedback")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
