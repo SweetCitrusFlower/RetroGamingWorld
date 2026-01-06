@@ -97,24 +97,6 @@
                 <span class="position-absolute top-0 end-0 badge bg-danger m-3 shadow-sm">
                     @article.Category.CategoryName
                 </span>
-                
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-                @* <div class="card-img-top bg-light d-flex justify-content-center align-items-center border-bottom"> *@
-                         @if (!string.IsNullOrEmpty(article.Image))
-                         {
-                             <div class="ratio ratio-1x1">
-                                 <img class="card-img-top object-fit-cover" src="@article.Image"/>
-                             </div>
-                         }
-                         else
-                         {
-                             <span class="text-muted">Fără imagine</span>
-                         }
-                @* </div> *@
-=======
->>>>>>> Stashed changes
                 <div class="card-img-top bg-light d-flex align-items-center justify-content-center position-relative" style="height: 300px; overflow: hidden;">
                     @if (!string.IsNullOrEmpty(article.Image))
                     {
@@ -126,7 +108,6 @@
                         <span class="text-muted">Fără Imagine</span>
                     }
                 </div>
->>>>>>> 46ab68fa83f60e1d758d9a2a51f0ba2a2d14e8e8
 
                 <div class="card-body">
                     @if (article.IsApproved == false)
