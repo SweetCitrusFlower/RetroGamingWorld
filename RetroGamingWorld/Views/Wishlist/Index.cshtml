@@ -80,37 +80,40 @@
     }
 </div>
 
-@* 4. GRILA DE CARDURI *@
-<div class=" g-4 mb-5">
-    
-    @if (!Model.Any())
-    {
-        <div class="d-flex justify-content-center align-items-center my-5">
-        
-            <div class="card shadow-sm border-0 rounded-4 p-5 text-center bg-white" 
-                 style="width: 100%; max-width: 600px; min-width: 300px;">
-            
-                <div class="mb-4">
-                    <i class="bi bi-heart text-danger bg-danger bg-opacity-10 p-4 rounded-circle display-4"></i>
-                </div>
-            
-                <h2 class="fw-bold mb-3">Wishlist-ul tău este gol</h2>
-            
-                <p class="text-muted fs-5 mb-4">
-                    Nu ai salvat încă niciun articol.<br>
-                    Explorează colecția și salvează-ți preferatele aici!
-                </p>
+@* 4. LOGICA AFIȘARE (Separată: Mesaj Gol vs Grilă Produse) *@
 
-                <div>
-                    <a asp-controller="Articles" asp-action="Index" class="btn btn-danger btn-lg px-5 rounded-pill shadow-sm">
-                        📚 Mergi la Articole
-                    </a>
-                </div>
+@if (!Model.Any())
+{
+    @* CAZ 1: LISTA E GOALĂ - Container separat, fără reguli de grilă care să ne încurce *@
+    <div class="d-flex justify-content-center align-items-center my-5">
+        
+        <div class="card shadow-sm border-0 rounded-4 p-5 text-center bg-white" 
+             style="width: 100%; max-width: 600px; min-width: 300px;">
+        
+            <div class="mb-4">
+                <i class="bi bi-heart text-danger bg-danger bg-opacity-10 p-4 rounded-circle display-4"></i>
+            </div>
+        
+            <h2 class="fw-bold mb-3">Wishlist-ul tău este gol</h2>
+        
+            <p class="text-muted fs-5 mb-4">
+                Nu ai salvat încă niciun articol.<br>
+                Explorează colecția și salvează-ți preferatele aici!
+            </p>
+
+            <div>
+                <a asp-controller="Articles" asp-action="Index" class="btn btn-danger btn-lg px-5 rounded-pill shadow-sm">
+                    📚 Mergi la Articole
+                </a>
             </div>
         </div>
-    }
-    else
-    {
+    </div>
+}
+else
+{
+    @* CAZ 2: AVEM PRODUSE - Abia acum deschidem Grila *@
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+        
         @foreach (var article in Model)
         {
             <div class="col">
@@ -118,15 +121,16 @@
                     
                     @if(article.Category != null)
                     {
-                        <span class="position-absolute top-0 end-0 badge bg-danger m-3 shadow-sm">
+                        <span class="position-absolute top-0 end-0 badge bg-danger m-3 shadow-sm" style="z-index: 10;">
                             @article.Category.CategoryName
                         </span>
                     }
 
-                    <div class="card-img-top bg-light d-flex justify-content-center align-items-center border-bottom w-100 h-75" style="min-height: 200px;">
+                    @* Imagine *@
+                    <div class="card-img-top bg-light d-flex justify-content-center align-items-center border-bottom position-relative" style="height: 220px; overflow: hidden;">
                          @if (!string.IsNullOrEmpty(article.Image))
                          {
-                            <img class="card-img" src="@article.Image" style="object-fit: cover; height: 100%; width: 100%;" />
+                            <img class="w-100 h-100" src="@article.Image" style="object-fit: cover;" />
                          }
                          else
                          {
@@ -136,18 +140,18 @@
 
                     <div class="card-body">
                         @* Titlu *@
-                        <h5 class="card-title fw-bold text-dark mt-2">@article.Title</h5>
+                        <h5 class="card-title fw-bold text-dark mt-2 text-truncate">@article.Title</h5>
                         
                         @* Autor *@
                         <p class="card-text small mb-1">
                             De: <span class="fw-semibold text-danger">@(article.User?.UserName ?? "Necunoscut")</span>
                         </p>
                         
-                        @* Descriere (Logica ta de scurtare) *@
-                        <p class="card-text text-muted small">
-                            @if (!string.IsNullOrEmpty(article.Content) && article.Content.Length > 100)
+                        @* Descriere *@
+                        <p class="card-text text-muted small" style="height: 40px; overflow: hidden;">
+                            @if (!string.IsNullOrEmpty(article.Content) && article.Content.Length > 80)
                             {
-                                @article.Content.Substring(0, 100) <span class="text-danger">...</span>
+                                @article.Content.Substring(0, 80) <span class="text-danger">...</span>
                             }
                             else
                             {
@@ -159,25 +163,22 @@
                     @* Footer *@
                     <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center pb-3">
                         <small class="text-muted">
-                            📅 @article.Date.ToString("dd MMM yyyy")
+                            📅 @article.Date.ToString("dd MMM")
                         </small>
 
-                        @* Grupul de butoane (Dreapta) *@
                         <div class="d-flex gap-2 align-items-center">
                             
-                            @* 1. Buton AFIȘEAZĂ *@
                             <a href="/Articles/Show/@article.Id" class="btn btn-sm btn-outline-secondary" title="Vezi detalii">
                                 <i class="bi bi-eye"></i>
                             </a>
 
-                            @* 2. Buton ADAUGĂ ÎN COȘ (NOU) *@
                             @if (User.IsInRole("User"))
                             {
                                 @if (article.Stock > 0)
                                 {
                                     <form method="post" asp-controller="Cart" asp-action="Add" asp-route-articleId="@article.Id">
                                         <button type="submit" class="btn btn-sm btn-success shadow-sm" title="Mută în coș">
-                                            <i class="bi bi-cart-plus"></i> Adaugă
+                                            <i class="bi bi-cart-plus"></i>
                                         </button>
                                     </form>
                                 }
@@ -188,7 +189,6 @@
                                     </button>
                                 }
 
-                                @* 3. Buton ȘTERGE DIN WISHLIST *@
                                 <form method="post" asp-controller="Wishlist" asp-action="Remove" asp-route-articleId="@article.Id">
                                     <button type="submit" class="btn btn-sm btn-danger" title="Șterge din wishlist">
                                         <i class="bi bi-trash"></i>
@@ -200,8 +200,8 @@
                 </div>
             </div>
         }
-    }
-</div>
+    </div>
+}
 
 @if (Model.Any() && ViewBag.lastPage > 1)
 {

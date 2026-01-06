@@ -1,0 +1,100 @@
+﻿@model IEnumerable<RetroGamingWorld.Models.Article>
+
+@{
+    ViewData["Title"] = "Articole în Așteptare";
+}
+
+<div class="container py-5">
+    <h1 class="fw-bold mb-4 text-danger"><i class="bi bi-shield-lock-fill me-2"></i>Panou Moderare</h1>
+
+    @if (TempData["messageArticles"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["messageArticles"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="text-center py-5 bg-light rounded-3">
+            <h3 class="text-muted">Totul e curat! 🎉</h3>
+            <p>Nu există articole care așteaptă aprobare.</p>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-12">
+                    <div class="card shadow-sm border-0 rounded-3 overflow-hidden">
+                        <div class="row g-0">
+                            @* Imagine *@
+                            <div class="col-md-3 bg-light d-flex align-items-center justify-content-center" style="min-height: 200px;">
+                                @if (!string.IsNullOrEmpty(item.Image))
+                                {
+                                    <img src="@item.Image" class="img-fluid" style="max-height: 200px;" alt="Preview">
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Fără imagine</span>
+                                }
+                            </div>
+
+                            @* Detalii *@
+                            <div class="col-md-5 p-4">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-secondary me-2">@item.Category?.CategoryName</span>
+                                    <small class="text-muted">@item.Date.ToString("dd MMM yyyy")</small>
+                                </div>
+                                <h4 class="fw-bold">@item.Title</h4>
+                                <p class="text-muted small mb-3">
+                                    Autor: <strong class="text-dark">@item.User?.UserName</strong> (Email: @item.User?.Email)
+                                </p>
+                                <a asp-action="Show" asp-route-id="@item.Id" target="_blank" class="btn btn-sm btn-outline-dark rounded-pill">
+                                    <i class="bi bi-box-arrow-up-right me-1"></i>Verifică Articolul Complet
+                                </a>
+
+                                @* Dacă a fost respins anterior, arătăm motivul vechi *@
+                                @if (!string.IsNullOrEmpty(item.AdminFeedback))
+                                {
+                                    <div class="alert alert-warning mt-3 py-2 small">
+                                        <i class="bi bi-exclamation-triangle me-1"></i> <strong>Anterior respins:</strong> @item.AdminFeedback
+                                    </div>
+                                }
+                            </div>
+
+                            @* ZONA DE ACȚIUNE (Admin) *@
+                            <div class="col-md-4 bg-light border-start p-4 d-flex flex-column justify-content-center">
+                                <h6 class="fw-bold text-muted mb-3">Acțiuni Administrator</h6>
+
+                                @* 1. FORMULAR APROBARE *@
+                                <form asp-action="Approve" method="post" class="mb-3">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-success w-100 fw-bold py-2 shadow-sm">
+                                        <i class="bi bi-check-lg me-2"></i>APROBĂ
+                                    </button>
+                                </form>
+
+                                <hr class="my-2">
+
+                                @* 2. FORMULAR RESPINGERE *@
+                                <form asp-action="Reject" method="post">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <label class="form-label small text-muted">Motiv respingere (obligatoriu):</label>
+                                    <div class="input-group mb-2">
+                                        <textarea name="reason" class="form-control" rows="2" placeholder="Ex: Imagine neclară, limbaj inadecvat..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-danger w-100 btn-sm">
+                                        <i class="bi bi-x-circle me-1"></i>Respinge
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,108 @@
+﻿@model IEnumerable<RetroGamingWorld.Models.Article>
+
+@{
+    ViewData["Title"] = "Propunerile mele";
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="fw-bold mb-0">📂 Articolele mele</h1>
+            <p class="text-muted">Gestionează articolele propuse de tine</p>
+        </div>
+        <a asp-action="New" class="btn btn-danger rounded-pill px-4 shadow-sm">
+            <i class="bi bi-plus-lg me-2"></i>Propune Articol Nou
+        </a>
+    </div>
+
+    @if (TempData["messageArticles"] != null)
+    {
+        <div class="alert alert-info alert-dismissible fade show mb-4" role="alert">
+            @TempData["messageArticles"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="text-center py-5 bg-white rounded-4 shadow-sm">
+            <i class="bi bi-folder2-open display-1 text-muted opacity-50"></i>
+            <h3 class="mt-4">Nu ai nicio propunere activă</h3>
+            <p class="text-muted">Începe să contribui la comunitate chiar acum!</p>
+            <a asp-action="New" class="btn btn-outline-danger mt-2 rounded-pill">Începe acum</a>
+        </div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+
+                        @* Header cu Status *@
+                        <div class="card-header bg-white border-0 pt-3 d-flex justify-content-between align-items-center">
+                            <small class="text-muted fw-bold">📅 @item.Date.ToString("dd MMM yyyy")</small>
+
+                            @if (item.IsApproved)
+                            {
+                                <span class="badge bg-success rounded-pill px-3"><i class="bi bi-check-circle me-1"></i>APROBAT</span>
+                            }
+                            else if (!string.IsNullOrEmpty(item.AdminFeedback))
+                            {
+                                <span class="badge bg-danger rounded-pill px-3"><i class="bi bi-x-circle me-1"></i>RESPINS</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark rounded-pill px-3"><i class="bi bi-hourglass-split me-1"></i>ÎN AȘTEPTARE</span>
+                            }
+                        </div>
+
+                        @* Poză *@
+                        <div style="height: 200px; overflow: hidden;" class="bg-light d-flex align-items-center justify-content-center position-relative">
+                            @if (!string.IsNullOrEmpty(item.Image))
+                            {
+                                <img src="@item.Image" class="w-100 h-100" style="object-fit: cover;" alt="@item.Title">
+                            }
+                            else
+                            {
+                                <i class="bi bi-image text-muted fs-1 opacity-50"></i>
+                            }
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-2 text-truncate">@item.Title</h5>
+                            <p class="text-muted small mb-2 text-truncate">@item.Category?.CategoryName</p>
+
+                            @* AICI APARE FEEDBACK-UL DACĂ E RESPINS *@
+                            @if (!item.IsApproved && !string.IsNullOrEmpty(item.AdminFeedback))
+                            {
+                                <div class="alert alert-danger py-2 px-3 mt-3 small border-0 bg-danger bg-opacity-10 text-danger rounded-3">
+                                    <i class="bi bi-exclamation-circle-fill me-1"></i> <strong>Motiv respingere:</strong><br>
+                                    @item.AdminFeedback
+                                </div>
+                            }
+                        </div>
+
+                        <div class="card-footer bg-white border-top-0 pb-3 pt-0">
+                            <hr class="text-muted opacity-25 mb-3">
+                            <div class="d-flex gap-2">
+                                <a asp-action="Show" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary flex-grow-1 rounded-pill">
+                                    <i class="bi bi-eye"></i> Vezi
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary flex-grow-1 rounded-pill">
+                                    <i class="bi bi-pencil"></i> Editează
+                                </a>
+                                <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="flex-grow-1">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger w-100 rounded-pill">
+                                        <i class="bi bi-trash"></i> Șterge
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

@@ -12,8 +12,8 @@ using RetroGamingWorld.Data;
 namespace RetroGamingWorld.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260106113450_CartSystem")]
-    partial class CartSystem
+    [Migration("20260106160436_NewColab")]
+    partial class NewColab
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -255,6 +255,9 @@ namespace RetroGamingWorld.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AdminFeedback")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
