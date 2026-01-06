@@ -13,15 +13,15 @@
             <div class="row">
                 <!-- IMAGINE PRODUS (PĂTRATĂ) -->
                 <div class="col-md-4">
-                    <div class="ratio ratio-1x1 border">
+                    <div class="card-img-top bg-light d-flex justify-content-center align-items-center border-bottom">
                         <img src="@Model.Image"
                              class="img-fluid object-fit-cover"
                              alt="@Model.Title" />
                     </div>
                 </div>
                 
-                <div class="col-md-8">
-                    <div class="card-header text-center py-4" style="background-color: #d1e7dd; color: #0f5132;">
+                <div class="d-flex flex-column col-md-8">
+                <div class="card text-center py-4" style="background-color: #f08e7a; color: #380d04;">
                         <h1 class="display-5 fw-bold mb-0">@Model.Title</h1>
                         <div class="mt-2">
                             <span class="badge bg-secondary">@Model.Category?.CategoryName</span>
@@ -29,7 +29,7 @@
                                 Scris de @(Model.User?.UserName ?? "Anonim") pe @Model.Date.ToString("dd MMMM yyyy")
                             </span>
                         </div>
-                        <div class="mt-2" style="background-color: #d1e7dd">
+                    <div class="mt-2" style="background-color: #f08e7a">
                             <span>
                                 @if (@Model.Comments.Count == 0)
                                 {
@@ -66,7 +66,15 @@
                         {
                             <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning ms-2">Editează</a>
                         }
-                    </div>
+                        else if (User.IsInRole("User"))
+                        {
+                        <form method="post" asp-controller="Cart" asp-action="Add" asp-route-articleId="@Model.Id" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-success col-4" title="Adaugă în coș">
+                                Adaugă în coș
+                            </button>
+                        </form>
+                        }
+                </div>
                 </div>
             </div>
             
