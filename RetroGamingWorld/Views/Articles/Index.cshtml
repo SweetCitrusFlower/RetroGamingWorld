@@ -222,16 +222,14 @@
                                     ❤️
                                 </a>
                             }
-                                <p>@User.Identity.Name</p>
-                                <p>@article.User.UserName</p>
-                                <p>@User.IsInRole("Admin")</p>
-                                @if (User.Identity.Name == article.User.UserName || User.IsInRole("Admin"))
-                                {
-                                    <form method="post" asp-action="Delete" asp-controller="Articles" class="d-inline">
-                                        <input type="hidden" name="Id" value="@article.Id" />
-                                        <button class="btn btn-sm btn-danger" type="submit"><i class="bi bi-trash"></i></button>
-                                    </form>
-                                }
+                                
+                        }
+                        @if (User.Identity.Name == article.User.UserName || User.IsInRole("Administrator"))
+                        {
+                            <form method="post" asp-action="Delete" asp-controller="Articles" class="d-inline">
+                                <input type="hidden" name="Id" value="@article.Id" />
+                                <button class="btn btn-sm btn-danger" type="submit"><i class="bi bi-trash"></i></button>
+                            </form>
                         }
                     </div>
                 </div>
