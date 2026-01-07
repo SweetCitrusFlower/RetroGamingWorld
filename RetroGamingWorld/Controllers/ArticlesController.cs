@@ -347,10 +347,10 @@ namespace RetroGamingWorld.Controllers
             }
         }
 
-        // 6. EDITARE (EDIT)
+        // 6. EDITARE (GET)
         [Authorize]
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int id, string? source) // <--- (1) Parametru sursă adăugat
         {
             Article article = db.Articles.Include(a => a.Category).FirstOrDefault(a => a.Id == id);
             if (article == null) return NotFound();
@@ -361,54 +361,92 @@ namespace RetroGamingWorld.Controllers
             }
 
             article.Categ = GetAllCategories();
+
+            // (2) Salvăm sursa în ViewBag ca să o trimitem la View (pentru butonul Renunță)
+            ViewBag.Source = source;
+
             return View(article);
         }
 
+        // 6. EDITARE (POST)
         [Authorize]
         [HttpPost]
-        public IActionResult Edit(int id, Article requestArt)
+        public async Task<IActionResult> Edit(int id, Article requestArt, IFormFile? ImageFile, string? source)
         {
             Article art = db.Articles.Find(id);
             if (art == null) return NotFound();
 
-            // SECURITATE EXTRA: Verificăm din nou dacă are voie să editeze
-            // (E bine să faci asta și la POST, nu doar la GET)
             if (!User.IsInRole("Administrator") && art.UserId != _userManager.GetUserId(User))
             {
                 return Forbid();
             }
 
+            ModelState.Remove("UserId");
+            ModelState.Remove("Image");
+
             if (ModelState.IsValid)
             {
                 art.Title = requestArt.Title;
                 art.Content = requestArt.Content;
-                art.Image = requestArt.Image;
                 art.Price = requestArt.Price;
                 art.Stock = requestArt.Stock;
                 art.CategoryId = requestArt.CategoryId;
 
-                // LOGICA DE ROLURI
+                if (ImageFile != null && ImageFile.Length > 0)
+                {
+                    if (ImageFile.Length > 5 * 1024 * 1024)
+                    {
+                        TempData["messageArticles"] = "Imaginea este prea mare! Maxim 5MB.";
+                        requestArt.Categ = GetAllCategories();
+                        ViewBag.Source = source;
+                        return View(requestArt);
+                    }
+
+                    var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                    var fileExtension = Path.GetExtension(ImageFile.FileName).ToLower();
+                    if (!allowedExtensions.Contains(fileExtension))
+                    {
+                        TempData["messageArticles"] = "Format invalid! Doar .jpg, .png, .gif";
+                        requestArt.Categ = GetAllCategories();
+                        ViewBag.Source = source;
+                        return View(requestArt);
+                    }
+
+                    var storagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+                    if (!Directory.Exists(storagePath)) Directory.CreateDirectory(storagePath);
+
+                    var fileName = Guid.NewGuid().ToString() + "_" + ImageFile.FileName;
+                    var filePath = Path.Combine(storagePath, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await ImageFile.CopyToAsync(stream);
+                    }
+
+                    art.Image = "/images/" + fileName;
+                }
                 if (User.IsInRole("Administrator"))
                 {
                     TempData["messageArticles"] = "Articolul a fost modificat!";
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
                 }
                 else
                 {
                     art.IsApproved = false;
-
                     art.AdminFeedback = null;
-
                     TempData["messageArticles"] = "Articolul modificat așteaptă aprobare!";
-                    db.SaveChanges();
-
-                    return RedirectToAction("MyArticles");
                 }
+
+                db.SaveChanges();
+
+                if (source == "MyArticles") return RedirectToAction("MyArticles");
+                if (source == "Show") return RedirectToAction("Show", new { id = id });
+
+                return RedirectToAction("Index");
             }
             else
             {
                 requestArt.Categ = GetAllCategories();
+                ViewBag.Source = source;
                 return View(requestArt);
             }
         }

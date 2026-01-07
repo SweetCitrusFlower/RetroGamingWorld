@@ -121,7 +121,7 @@ public class WishlistController : Controller
         return View(paginatedItems);
     }
 
-    [HttpGet]
+    [HttpPost]
     public async Task<IActionResult> Add(int articleId)
     {
         var user = await _userManager.Users

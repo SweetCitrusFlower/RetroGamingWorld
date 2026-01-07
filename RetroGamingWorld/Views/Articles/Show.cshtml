@@ -64,7 +64,9 @@
                     <div class="card-footer text-center bg-white border-0 pb-4">
                         @if (User.IsInRole("Administrator") || User.Identity.Name == Model.User?.Email)
                         {
-                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning ms-2">Editează</a>
+                        <a asp-controller="Articles" asp-action="Edit" asp-route-id="@Model.Id" asp-route-source="Show" class="btn btn-warning text-white shadow-sm">
+                            <i class="bi bi-pencil-square"></i> Editează
+                        </a>
                         }
                     else if (!User.IsInRole("Admin") && !User.IsInRole("Colab"))
                         {

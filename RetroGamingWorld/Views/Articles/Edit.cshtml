@@ -1,71 +1,108 @@
 ﻿@model RetroGamingWorld.Models.Article
 
-<h2 class="text-center mt-5">Editare articol</h2>
+@{
+    ViewData["Title"] = "Modifică un articol";
+}
 
-<br />
-<br />
+<div class="row justify-content-center my-5">
+    <div class="col-md-8">
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6 offset-3">
+        @* Header Vizual *@
+        <div class="d-flex justify-content-between align-items-center mb-4 p-4 rounded-3 shadow-sm bg-white border-start border-5 border-success">
+            <div>
+                <h1 class="display-6 fw-bold mb-0">✨ Modifică un articol </h1>
+                <p class="text-muted mb-0">Schimbă ce detalii necesită modificări.</p>
+            </div>
 
-            <form method="post" asp-action="Edit" asp-controller="Articles" asp-route-id="@Model.Id">
+            @{
+                    string backUrl = "/Articles/Index"; // 1. Default (Admin sau Colaborator din Index)
 
-                <div class="form-group">
-                    <label asp-for="Title" class="form-label">Titlu </label>
-                    <br />
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger"></span>
-                    <br />
-                </div>
+                if (ViewBag.Source == "MyArticles")
+                {
+                    backUrl = "/Articles/MyArticles"; // 2. Colaborator din Articolele Mele
+                }
+                else if (ViewBag.Source == "Show")
+                {
+                    backUrl = "/Articles/Show/" + Model.Id;
+                }
+            }
 
-                <div class="form-group">
-                    <label asp-for="Content" class="form-label">Conținut </label>
-                    <br />
-                    <textarea asp-for="Content" class="form-control"></textarea>
-                    <span asp-validation-for="Content" class="text-danger"></span>
-                    <br />
-                </div>
+            <a href="@backUrl" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Renunță
+            </a>
+        </div>
 
-                <div class="form-group">
-                    <label asp-for="Image" class="form-label">Link către imagine </label>
-                    <br />
-                    <textarea asp-for="Image" class="form-control"></textarea>
-                    <span asp-validation-for="Image" class="text-danger"></span>
-                    <br />
-                </div>
+        @* Cardul Formularului *@
+        <div class="card shadow-sm border-0 rounded-3">
+            <div class="card-body p-5">
 
-                <div class="d-flex justify-content-evenly">
+                <form method="post" asp-action="Edit" asp-controller="Articles" enctype="multipart/form-data">
 
-                    <div class="form-group p-1">
-                        <label asp-for="Price" class="form-label">Preț </label>
-                        <br />
-                        <input asp-for="Price" class="form-control" />
-                        <span asp-validation-for="Price" class="text-danger"></span>
-                        <br />
+                    @* Titlu *@
+                    <div class="mb-4">
+                        <label asp-for="Title" class="form-label fw-bold">Titlu articol</label>
+                        <input asp-for="Title" class="form-control" placeholder="Ex: Nume joc..." />
+                        <span asp-validation-for="Title" class="text-danger small"></span>
                     </div>
 
-                    <div class="form-group p-1">
-                        <label asp-for="Stock" class="form-label">Stoc </label>
-                        <br />
-                        <input asp-for="Stock" class="form-control" />
-                        <span asp-validation-for="Stock" class="text-danger"></span>
-                        <br />
+                    @* Conținut *@
+                    <div class="mb-4">
+                        <label asp-for="Content" class="form-label fw-bold">Descriere</label>
+                        <textarea asp-for="Content" class="form-control" rows="6" placeholder="Adaugă aici descrierea produsului..."></textarea>
+                        <span asp-validation-for="Content" class="text-danger small"></span>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="CategoryId">Categoria</label>
-                    <br />
-                    <select name="CategoryId" asp-for="CategoryId" asp-items="Model.Categ" class="form-control">
-                        <option value="">Selectați...</option>
-                    </select>
-                    <span asp-validation-for="CategoryId" class="text-danger"></span>
-                    <br />
-                </div>
-                <br /><br />
-                <button class="btn btn-success" type="submit">Modifică articol</button>
-            </form>
+                    @* Imagine (Upload) *@
+                    <div class="mb-4">
+                        <label asp-for="ImageFile" class="form-label fw-bold">Încarcă o imagine</label>
+                        <input asp-for="ImageFile" type="file" class="form-control" accept=".png,.jpg,.jpeg,.gif" />
+                        <div class="form-text text-muted">Acceptăm: .jpg, .png, .gif (Maxim 5MB)</div>
+                        <span asp-validation-for="ImageFile" class="text-danger small"></span>
+                    </div>
+
+                    @* Rând: Preț și Stoc (Pe aceeași linie) *@
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label asp-for="Price" class="form-label fw-bold">Preț</label>
+                            <div class="input-group">
+                                <input asp-for="Price" class="form-control" placeholder="0.00" />
+                                <span class="input-group-text bg-light text-muted fw-bold">RON</span>
+                            </div>
+                            <span asp-validation-for="Price" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Stock" class="form-label fw-bold">Stoc disponibil</label>
+                            <input asp-for="Stock" class="form-control" placeholder="0" />
+                            <span asp-validation-for="Stock" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    @* Categorie *@
+                    <div class="mb-5">
+                        <label asp-for="CategoryId" class="form-label fw-bold">Categoria</label>
+                        <select asp-for="CategoryId" asp-items="Model.Categ" class="form-select">
+                            <option value="">Selectează categoria</option>
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                    </div>
+
+                    @* Buton Submit *@
+                    <div class="d-grid">
+                        <button class="btn btn-success btn-lg shadow-sm" type="submit">
+                            <i class="bi bi-check-lg"></i> Aplică modificările
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

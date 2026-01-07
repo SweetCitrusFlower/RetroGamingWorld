@@ -1,54 +1,75 @@
-﻿
-<br />
-<br />
-
-<div class="row">
-@foreach (var user in ViewBag.UsersList)
+﻿@if (TempData.ContainsKey("message"))
 {
-    <div class="col-4 mb-4">
-            <div class="card" style="height:100%; width: 100%;">
-        
-            <div class="card-body d-flex justify-content-between flex-column">
-                <div>
-                    <p><i class="bi bi-person"> </i> UserName: @user.User.UserName</p>
+    <h2 class="alert alert-success p-3 rounded-3 text-center mb-5">@TempData["message"]</h2>
+}
 
-                    <p><i class="bi bi-envelope"></i> Email utilizator: @user.User.Email</p>
+<div class="d-flex justify-content-between align-items-center mb-5 p-4 rounded-3 shadow-sm bg-white border-start border-5 border-danger">
+    <div>
+        <h1 class="display-6 fw-bold mb-0">👤 Moderare Utilizatori</h1>
+        <p class="text-muted mb-0">Schimbă rolul unui utilizator.</p>
+    </div>
+</div>
 
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    @foreach (var user in ViewBag.UsersList)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column">
 
-                    @if (@user.User.FirstName != null)
-                    {
-                            <p><i class="bi bi-person"> </i> Nume utilizator: @user.User.FirstName</p>
-                    }
-
-
-                    @if (@user.User.LastName != null)
-                    {
-                            <p><i class="bi bi-person"> </i> Prenume utilizator: @user.User.LastName</p>
-                    }
-
-
-                    @if (@user.User.PhoneNumber != null)
-                    {
-                            <p><i class="bi bi-phone"></i> Telefon utilizator: @user.User.PhoneNumber</p>
-                    }
-
+                    <div class="alert alert-light border text-center fw-bold mb-3">
+                        <i class="bi bi-person-circle text-primary me-2"></i> @user.User.UserName
                     </div>
 
-                    <p><i class="bi bi-person"></i> Rol utilizator:</p>
-                        <span class="rounded-pill bg-dark mr-2 px-4 py-2 text-white">@user.RoleName</span>
-                <div class="d-flex flex-row justify-content-between p-3">
+                    <div class="mb-3 small text-muted">
+                        <p class="mb-1">
+                            <i class="bi bi-envelope-at text-secondary"></i>
+                            <span class="fw-semibold">Email:</span> @user.User.Email
+                        </p>
 
-                    <div>
-                        <a asp-controller="Users" asp-action="Edit" asp-route-id="@user.User.Id" class="btn btn-sm btn-success">Editare utilizator</a>
+                        @if (user.User.FirstName != null)
+                        {
+                            <p class="mb-1">
+                                <i class="bi bi-person text-secondary"></i>
+                                <span class="fw-semibold">Nume:</span> @user.User.FirstName
+                            </p>
+                        }
+
+                        @if (user.User.LastName != null)
+                        {
+                            <p class="mb-1">
+                                <i class="bi bi-person text-secondary"></i>
+                                <span class="fw-semibold">Prenume:</span> @user.User.LastName
+                            </p>
+                        }
+
+                        @if (user.User.PhoneNumber != null)
+                        {
+                            <p class="mb-1">
+                                <i class="bi bi-phone text-secondary"></i>
+                                <span class="fw-semibold">Telefon:</span> @user.User.PhoneNumber
+                            </p>
+                        }
                     </div>
+
+                    <div class="mt-auto text-center mb-3">
+                        <span class="text-uppercase small text-muted d-block mb-1">Rol Curent</span>
+                        <span class="badge rounded-pill bg-dark px-3 py-2">
+                            @user.RoleName
+                        </span>
+                    </div>
+
+                    <div class="d-grid">
+                        <a asp-controller="Users" asp-action="Edit" asp-route-id="@user.User.Id" class="btn btn-warning shadow-sm text-white">
+                            <i class="bi bi-pencil-square"></i> Editare Rol
+                        </a>
+                    </div>
+
                 </div>
             </div>
-         </div>
-    </div>
-}
-   
+        </div>
+    }
 </div>
 
 <br />
 <br />
-
