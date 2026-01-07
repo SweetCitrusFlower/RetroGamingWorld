@@ -89,6 +89,15 @@ namespace RetroGamingWorld.Controllers
             {
                 sortOrder = ViewBag.sortOrder ?? "asc";
             }
+            var sortCateg = HttpContext.Request.Query["sortCateg"].FirstOrDefault();
+            if (!string.IsNullOrEmpty(sortCateg))
+            {
+                sortCateg = sortCateg.Trim();
+            }
+            else
+            {
+                sortCateg = ViewBag.sortCateg ?? "0";
+            }
 
             switch (sortBy.ToLower())
             {
@@ -105,9 +114,13 @@ namespace RetroGamingWorld.Controllers
                     query = sortOrder == "desc" ? query.OrderByDescending(a => a.Title) : query.OrderBy(a => a.Title);
                     break;
             }
+            if(sortCateg != "0")
+                query = query.Where(art => art.CategoryId == (int)Int32.Parse(sortCateg));
 
+            ViewBag.AllCategories = GetAllCategories();
             ViewBag.SortBy = sortBy;
             ViewBag.SortOrder = sortOrder;
+            ViewBag.sortCateg = sortCateg;
 
             // 4. PAGINARE
             int _perPage = 3;
@@ -129,8 +142,9 @@ namespace RetroGamingWorld.Controllers
             ViewBag.CurrentPage = currentPage;
 
             ViewBag.PaginationBaseUrl = "/Articles/Index/?";
-            if (!string.IsNullOrEmpty(search)) ViewBag.PaginationBaseUrl += "search=" + search + "&";
-            ViewBag.PaginationBaseUrl += "sortBy=" + sortBy + "&sortOrder=" + sortOrder + "&page";
+            if (!string.IsNullOrEmpty(search)) 
+                ViewBag.PaginationBaseUrl += "search=" + search + "&";
+            ViewBag.PaginationBaseUrl += "sortCateg=" + sortCateg + "&sortBy=" + sortBy + "&sortOrder=" + sortOrder + "&page";
 
             // 5. WISHLIST SAFE
             List<int> userWishlistIds = new List<int>();
