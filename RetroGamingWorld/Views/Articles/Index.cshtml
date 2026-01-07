@@ -116,7 +116,6 @@
                 <div class="card-img-top bg-light d-flex align-items-center justify-content-center position-relative" style="height: 300px; overflow: hidden;">
                     @if (!string.IsNullOrEmpty(article.Image))
                     {
-                        @* object-fit: cover -> Taie marginile automat ca să umple pătratul perfect *@
                         <img src="@article.Image" class="w-100 h-100" style="object-fit: cover;" alt="@article.Title">
                     }
                     else
@@ -158,95 +157,84 @@
                     </div>
                     <br/>
                 }
-                @* Footer 1: Preț și Stoc (Rămâne neschimbat) *@
-<div class="card-footer bg-white border-top-0 d-flex justify-content-evenly align-items-center pb-3">
-    <p class="card-text small mb-1">
-        <span class="fw-semibold text-danger">@article.Price.ToString()</span> RON
-    </p>
-    <p class="card-text small mb-1">
-        Stoc: <span class="fw-semibold text-danger">@article.Stock.ToString()</span>
-    </p>
-</div>
+                <div class="card-footer bg-white border-top-0 d-flex justify-content-evenly align-items-center pb-3">
+                    <p class="card-text small mb-1">
+                        <span class="fw-semibold text-danger">@article.Price.ToString()</span> RON
+                    </p>
+                    <p class="card-text small mb-1">
+                        Stoc: <span class="fw-semibold text-danger">@article.Stock.ToString()</span>
+                    </p>
+                </div>
 
-@* Footer 2: Butoane (Aici am adăugat Coșul) *@
-<div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center pb-3">
-    <small class="text-muted">
-        📅 @article.Date.ToString("dd MMM yyyy")
-    </small>
+                <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center pb-3">
+                    <small class="text-muted">
+                        📅 @article.Date.ToString("dd MMM yyyy")
+                    </small>
 
-    <div class="btn-group">
-        @* 1. Buton AFIȘEAZĂ (Existent) *@
-        <a href="/Articles/Show/@article.Id" class="btn btn-sm btn-outline-secondary" title="Vezi detalii">
-                                <i class="bi bi-eye"></i>
-                            </a>
+                    <div class="btn-group">
+                        <a href="/Articles/Show/@article.Id" class="btn btn-sm btn-outline-secondary" title="Vezi detalii">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
 
-        @* 2. Buton ADAUGĂ ÎN COȘ (NOU - Inserat aici) *@
-        @if (!User.IsInRole("Admin") && !User.IsInRole("Colab"))
+                        @if (User.IsInRole("User"))
+                        {
+                            @if (article.Stock > 0)
+                            {
+                                <form method="post" asp-controller="Cart" asp-action="Add" asp-route-articleId="@article.Id">
+                                    <button type="submit" class="btn btn-sm btn-success shadow-sm" title="Mută în coș">
+                                        <i class="bi bi-cart-plus"></i>
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                <button class="btn btn-sm btn-outline-secondary disabled" title="Stoc Epuizat">
+                                    🚫
+                                </button>
+                            }
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @if (User.IsInRole("User"))
                                 {
-                                    @if (article.Stock > 0)
+                                    @if (wishlistIds.Contains(article.Id))
                                     {
-                                        <form method="post" asp-controller="Cart" asp-action="Add" asp-route-articleId="@article.Id">
-                                            <button type="submit" class="btn btn-sm btn-success shadow-sm" title="Mută în coș">
-                                                <i class="bi bi-cart-plus"></i>
+                                        <form method="post" asp-controller="Wishlist" asp-action="Remove" asp-route-articleId="@article.Id" class="d-inline">
+                                            <button type="submit" class="btn btn-sm wishlist-btn added" title="Scoate din Wishlist">
+                                                💖
                                             </button>
                                         </form>
                                     }
                                     else
                                     {
-                                        <button class="btn btn-sm btn-outline-secondary disabled" title="Stoc Epuizat">
-                                            🚫
-                                        </button>
-                                    }
-
-                                    @* 3. Buton WISHLIST (Logica ta originală intactă) *@
-                                    @if (User.Identity.IsAuthenticated)
-                                    {
-                                        @if (User.IsInRole("User"))
-                                        {
-                                            @if (wishlistIds.Contains(article.Id))
-                                            {
-                                                <form method="post" asp-controller="Wishlist" asp-action="Remove" asp-route-articleId="@article.Id" class="d-inline">
-                                                    <button type="submit" class="btn btn-sm wishlist-btn added" title="Scoate din Wishlist">
-                                                        💖
-                                                    </button>
-                                                </form>
-                                            }
-                                            else
-                                            {
-                                                <a class="btn btn-sm wishlist-btn" 
-                                                asp-controller="Wishlist" 
-                                                asp-action="Add" 
-                                                asp-route-articleId="@article.Id"
-                                                title="Adaugă în Wishlist">
-                                                    ❤️
-                                                </a>
-                                            }
-
-                                        }
-
-                                    }
-                                    else
-                                    {
-                                        <a class="btn btn-sm wishlist-btn" href="/Identity/Account/Login">
+                                        <a class="btn btn-sm wishlist-btn" 
+                                        asp-controller="Wishlist" 
+                                        asp-action="Add" 
+                                        asp-route-articleId="@article.Id"
+                                        title="Adaugă în Wishlist">
                                             ❤️
                                         </a>
                                     }
-
-                                    @if (User.Identity.IsAuthenticated)
-                                    {
-                                        @if (article.User != null && (User.Identity.Name == article.User.UserName || User.IsInRole("Administrator")))
-                                        {
-                                            <form method="post" asp-action="Delete" asp-controller="Articles" class="d-inline">
-                                                <input type="hidden" name="Id" value="@article.Id" />
-                                                <button class="btn btn-sm btn-danger" type="submit"><i class="bi bi-trash"></i></button>
-                                            </form>
-                                        }
-
-                                    }
-
                                 }
-                            </div>
-</div>
+                            }
+                            else
+                            {
+                                <a class="btn btn-sm wishlist-btn" href="/Identity/Account/Login">
+                                    ❤️
+                                </a>
+                            }
+                                <p>@User.Identity.Name</p>
+                                <p>@article.User.UserName</p>
+                                <p>@User.IsInRole("Admin")</p>
+                                @if (User.Identity.Name == article.User.UserName || User.IsInRole("Admin"))
+                                {
+                                    <form method="post" asp-action="Delete" asp-controller="Articles" class="d-inline">
+                                        <input type="hidden" name="Id" value="@article.Id" />
+                                        <button class="btn btn-sm btn-danger" type="submit"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                }
+                        }
+                    </div>
+                </div>
             </div>
         </div>
         }

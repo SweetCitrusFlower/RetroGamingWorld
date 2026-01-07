@@ -131,6 +131,7 @@ namespace RetroGamingWorld.Models
                         UserId = "8e445865-a24d-4543-a6c6-9443d048cdb4"
                     }
                 );
+                context.SaveChanges();
 
                 context.Categories.AddRange(
                     new Category
@@ -139,7 +140,7 @@ namespace RetroGamingWorld.Models
                     },
                     new Category
                     {
-                        CategoryName = "PS5",
+                        CategoryName = "PS5"
                     },
                     new Category
                     {
@@ -162,6 +163,7 @@ namespace RetroGamingWorld.Models
                         CategoryName = "Sega Genesis"
                     }
                 );
+                context.SaveChanges();
 
                 context.Articles.AddRange(
                     new Article
@@ -172,7 +174,7 @@ namespace RetroGamingWorld.Models
                         Image = "https://m.media-amazon.com/images/M/MV5BMzg3OGY0MzMtMWM1My00YzBmLTg4ZTktZTk0ZWU1ODY3YmU2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
                         Price = (decimal)109.00,
                         Stock = 50,
-                        Rating = 0,
+                        Rating = 3,
                         IsApproved = true,
                         AdminFeedback = null,
                         CategoryId = 7,
@@ -187,7 +189,7 @@ namespace RetroGamingWorld.Models
                         Price = (decimal)89.00,
                         Stock = 50,
                         Rating = 0,
-                        IsApproved = true,
+                        IsApproved = false,
                         AdminFeedback = null,
                         CategoryId = 7,
                         UserId = "8e445865-a24d-4543-a6c6-9443d048cdb1"
@@ -200,7 +202,7 @@ namespace RetroGamingWorld.Models
                         Image = "https://upload.wikimedia.org/wikipedia/en/f/f7/PokemonEmeraldBox.jpg",
                         Price = (decimal)129.99,
                         Stock = 5,
-                        Rating = 0,
+                        Rating = 4,
                         IsApproved = true,
                         AdminFeedback = null,
                         CategoryId = 5,
@@ -250,6 +252,71 @@ namespace RetroGamingWorld.Models
                     //    UserId = ""
                     //}
 
+                );
+                context.SaveChanges();
+
+                context.Comments.AddRange(
+                    new Comment
+                    {
+                        Content = "Cel mai tare joc EVER!!!!",
+                        Date = DateTime.ParseExact("19-03-1998", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                        ArticleId = 1,
+                        Rating = 5,
+                        UserID = "8e445865-a24d-4543-a6c6-9443d048cdb2"
+                    },
+                    new Comment
+                    {
+                        Content = "Ești bătut în cap vere",
+                        Date = DateTime.ParseExact("22-03-1998", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                        ArticleId = 1,
+                        Rating = 1,
+                        UserID = "8e445865-a24d-4543-a6c6-9443d048cdb3"
+                    },
+                    new Comment
+                    {
+                        Content = "Mă jucam acest joc cu verișoara mea când aveam 11 ani și am primit de Crăciun primul meu Gameboy Advanced. Brings back memories :D",
+                        Date = DateTime.ParseExact("22-09-2006", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                        ArticleId = 3,
+                        Rating = 4,
+                        UserID = "8e445865-a24d-4543-a6c6-9443d048cdb1"
+                    }
+                );
+                context.ArticleFAQs.AddRange(
+                    new ArticleFAQ
+                    {
+                        Question = "Acest joc este bun pentru copii?",
+                        Answer = "Da, acest joc este potrivit pentru toate vârstele.",
+                        ArticleId = 1,
+                        AskedCount = 3
+                    },
+                    new ArticleFAQ
+                    {
+                        Question = "Acest joc este bun pentru copii?",
+                        Answer = "Nu, acest joc nu este bun pentru copii, ci doar pentru oameni cu vârsta minimă de 69 de ani.",
+                        ArticleId = 4,
+                        AskedCount = 3
+                    },
+                    new ArticleFAQ
+                    {
+                        Question = "Este jocul original?",
+                        Answer = "Da, este jocul original, nu o copie.",
+                        ArticleId = 1,
+                        AskedCount = 2
+                    },
+                    new ArticleFAQ
+                    {
+                        Question = "Jocul vine cu cutia și manualul?",
+                        Answer = "Da, jocul vine cu cutia și manualul originale.",
+                        ArticleId = 3,
+                        AskedCount = 4
+                    },
+                    new ArticleFAQ
+                    {
+                        Question = "Funcționează pe toate modelele de Gameboy Advanced?",
+                        Answer = "Da, jocul este compatibil cu toate modelele de Gameboy Advanced.",
+                        ArticleId = 3,
+                        AskedCount = 16
+                    }
                 );
                 context.SaveChanges();
             }

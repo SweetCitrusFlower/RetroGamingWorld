@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RetroGamingWorld.Data;
 using RetroGamingWorld.Models;
@@ -55,6 +56,10 @@ public class WishlistController : Controller
                 (article.Comments != null && article.Comments.Any(c => c.Content.ToLower().Contains(searchTerm)))
             );
         }
+        else
+        {
+            search = ""; // Asiguram ca nu e null pentru View
+        }
 
         ViewBag.SearchString = search;
 
@@ -63,8 +68,18 @@ public class WishlistController : Controller
         var sortOrder = HttpContext.Request.Query["sortOrder"].FirstOrDefault();
 
         // Setăm valorile default
-        if (string.IsNullOrEmpty(sortBy)) sortBy = "rating"; // Default: Rating
-        if (string.IsNullOrEmpty(sortOrder)) sortOrder = "desc"; // Default: Cele mai bune primele
+        if (string.IsNullOrEmpty(sortBy)) sortBy = "title";
+        if (string.IsNullOrEmpty(sortOrder)) sortOrder = "asc";
+
+        var sortCateg = HttpContext.Request.Query["sortCateg"].FirstOrDefault();
+        if (!string.IsNullOrEmpty(sortCateg))
+        {
+            sortCateg = sortCateg.Trim();
+        }
+        else
+        {
+            sortCateg = ViewBag.sortCateg ?? "0";
+        }
 
         // Switch simplificat: Doar Preț și Rating
         switch (sortBy.ToLower())
@@ -90,9 +105,13 @@ public class WishlistController : Controller
                 query = query.OrderByDescending(a => a.Rating);
                 break;
         }
+        if (sortCateg != "0")
+            query = query.Where(art => art.CategoryId == (int)Int32.Parse(sortCateg));
 
+        ViewBag.AllCategories = GetAllCategories();
         ViewBag.SortBy = sortBy;
         ViewBag.SortOrder = sortOrder;
+        ViewBag.sortCateg = sortCateg;
 
         // 4. PAGINARE
         int _perPage = 3;
@@ -160,6 +179,23 @@ public class WishlistController : Controller
         }
 
         return RedirectToAction("Index");
+    }
+
+    [NonAction]
+    public IEnumerable<SelectListItem> GetAllCategories()
+    {
+        var selectList = new List<SelectListItem>();
+        var categories = from cat in _context.Categories select cat;
+
+        foreach (var category in categories)
+        {
+            selectList.Add(new SelectListItem
+            {
+                Value = category.Id.ToString(),
+                Text = category.CategoryName
+            });
+        }
+        return selectList;
     }
 
 }
