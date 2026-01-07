@@ -22,7 +22,6 @@ namespace RetroGamingWorld.Controllers
             _userManager = userManager;
         }
 
-        // 1. LISTA DE ARTICOLE (INDEX)
         [HttpGet]
         public IActionResult Index()
         {
@@ -31,20 +30,21 @@ namespace RetroGamingWorld.Controllers
                 ViewBag.message = TempData["messageArticles"].ToString();
             }
 
+            // --- PASUL 1: CRITIC PENTRU LOGICA BUTOANELOR ---
+            ViewBag.CurrentUserId = _userManager.GetUserId(User);
+
             // QUERY DE BAZA
             var query = db.Articles
-               .Include(a => a.Category)
-               .Include(a => a.User)
-               .AsQueryable();
+                .Include(a => a.Category)
+                .Include(a => a.User)
+                .AsQueryable();
 
             // 1. SEARCH SAFE
-            // Folosim FirstOrDefault() care nu crapa daca parametrul lipseste
             var search = HttpContext.Request.Query["search"].FirstOrDefault();
 
             if (!string.IsNullOrEmpty(search))
             {
                 search = search.Trim();
-
                 // Cautare complexa
                 List<int> articleIds = db.Articles.Where(at => at.Title.Contains(search) || at.Content.Contains(search)).Select(a => a.Id).ToList();
                 List<int> commentIds = db.Comments.Where(c => c.Content.Contains(search)).Select(c => c.ArticleId).ToList();
@@ -61,7 +61,7 @@ namespace RetroGamingWorld.Controllers
             }
             else
             {
-                search = ""; // Asiguram ca nu e null pentru View
+                search = "";
             }
 
             ViewBag.SearchString = search;
@@ -122,7 +122,6 @@ namespace RetroGamingWorld.Controllers
             if (currentPage < 1) currentPage = 1;
 
             var offset = (currentPage - 1) * _perPage;
-
             var paginatedArticles = query.Skip(offset).Take(_perPage).ToList();
 
             ViewBag.lastPage = Math.Ceiling((float)totalItems / (float)_perPage);
@@ -137,7 +136,6 @@ namespace RetroGamingWorld.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var currentUserId = _userManager.GetUserId(User);
-
                 var userWithWishlist = db.Users
                     .Include(u => u.Wishlist)
                     .FirstOrDefault(u => u.Id == currentUserId);
@@ -402,16 +400,15 @@ namespace RetroGamingWorld.Controllers
         }
 
         // 7. STERGERE (DELETE)
-        [Authorize(Roles = "Administrator,Colaborator")] // 1. Deschidem ușa și pentru Colaboratori
+        [Authorize(Roles = "Administrator,Colaborator")]
         [HttpPost]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id, string? source) // <--- (1) Am adăugat parametrul 'source'
         {
             Article article = db.Articles.Find(id);
 
             if (article != null)
             {
-                // 2. VERIFICARE DE SECURITATE (Foarte important!)
-                // Dacă NU ești Admin ȘI NU ești proprietarul articolului -> STOP
+                // Verificare securitate
                 if (!User.IsInRole("Administrator") && article.UserId != _userManager.GetUserId(User))
                 {
                     TempData["messageArticles"] = "Nu ai dreptul să ștergi acest articol!";
@@ -421,13 +418,15 @@ namespace RetroGamingWorld.Controllers
                 db.Articles.Remove(article);
                 db.SaveChanges();
                 TempData["messageArticles"] = "Articolul a fost șters!";
-
-                if (User.IsInRole("Colaborator"))
-                {
-                    return RedirectToAction("MyArticles");
-                }
             }
 
+            // --- (2) LOGICA DE REDIRECTIONARE INTELIGENTĂ ---
+            if (source == "MyArticles")
+            {
+                return RedirectToAction("MyArticles");
+            }
+
+            // Default: ne întoarcem la Index (magazinul principal)
             return RedirectToAction("Index");
         }
         private void UpdateArticleRating(int ArticleId)

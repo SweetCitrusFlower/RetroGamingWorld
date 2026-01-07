@@ -3,38 +3,38 @@
     ViewData["Title"] = "Articole";
     var wishlistIds = (ViewBag.UserWishlist as List<int>) ?? new List<int>();
 }
+
+@* 1. ZONA MESAJE *@
 @if (ViewBag.message is not null)
 {
-<div class="d-flex justify-content-center align-items-center mb-5 p-4 rounded-3 shadow-sm bg-success text-black-50">@ViewBag.message</div>
+    <div class="d-flex justify-content-center align-items-center mb-5 p-4 rounded-3 shadow-sm bg-success text-black-50">
+        @ViewBag.message
+    </div>
 }
 
+@* 2. HEADER PAGINĂ (Fără butonul de Adaugă Articol) *@
 <div class="d-flex justify-content-between align-items-center mb-5 p-4 rounded-3 shadow-sm bg-white border-start border-5 border-danger">
     <div>
         <h1 class="display-6 fw-bold mb-0">📚 Colecția de Articole</h1>
-        <p class="text-muted mb-0">Exploarează istoria gaming-ului.</p>
+        <p class="text-muted mb-0">Explorează istoria gaming-ului.</p>
     </div>
-    
-    @if (User.Identity.IsAuthenticated)
-    {
-        <a class="btn btn-retro" href="/Articles/New">
-            <i class="bi bi-plus-lg"></i> Adaugă Articol
-        </a>
-    }
+    @* Butonul a fost șters de aici conform cerinței *@
 </div>
+
+@* 3. ZONA DE SEARCH ȘI FILTRARE (Layout-ul tău original) *@
 <div class="row align-items-center mb-4 g-2">
-    
     <div class="col">
         <form method="GET" asp-action="Index" asp-controller="Articles">
             <div class="input-group">
-                
-                <input type="text" class="form-control" 
-                       placeholder="Caută după numele, categoria sau autorul articolului..." 
+                <input type="text" class="form-control"
+                       placeholder="Caută după numele, categoria sau autorul articolului..."
                        name="search"
                        value="@ViewBag.SearchString">
 
                 <select name="sortBy" class="form-select" style="max-width: 110px;">
                     <option value="rating" selected="@(ViewBag.SortBy == "rating")">Rating</option>
                     <option value="price" selected="@(ViewBag.SortBy == "price")">Preț</option>
+                    <option value="date" selected="@(ViewBag.SortBy == "date")">Data</option>
                 </select>
 
                 <select name="sortOrder" class="form-select" style="max-width: 110px;">
@@ -47,200 +47,211 @@
         </form>
     </div>
 
+    @* PAGINARE SUS *@
+    <div class="col-auto">
+        <nav aria-label="Page navigation">
+            <ul class="pagination mb-0">
+                <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+                    <a class="page-link border-secondary text-dark"
+                       href="@ViewBag.PaginationBaseUrl=@(ViewBag.CurrentPage - 1)" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
 
-        <div class="col-auto">
-            <nav aria-label="Page navigation">
-                <ul class="pagination mb-0">
-                    
-                    <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-                        <a class="page-link border-secondary text-dark" 
-                           href="@ViewBag.PaginationBaseUrl=@(ViewBag.CurrentPage - 1)" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
+                @for (int i = 1; i <= ViewBag.lastPage; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                        <a class="page-link border-secondary @(i == ViewBag.CurrentPage ? "bg-danger border-danger text-white" : "text-dark")"
+                           href="@ViewBag.PaginationBaseUrl=@i">
+                            @i
                         </a>
                     </li>
+                }
 
-                    @for (int i = 1; i <= ViewBag.lastPage; i++)
-                    {
-                        <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-                            <a class="page-link border-secondary @(i == ViewBag.CurrentPage ? "bg-danger border-danger text-white" : "text-dark")" 
-                               href="@ViewBag.PaginationBaseUrl=@i">
-                                @i
-                            </a>
-                        </li>
-                    }
-
-                    <li class="page-item @(ViewBag.CurrentPage == ViewBag.lastPage ? "disabled" : "")">
-                        <a class="page-link border-secondary text-dark" 
-                           href="@ViewBag.PaginationBaseUrl=@(ViewBag.CurrentPage + 1)" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+                <li class="page-item @(ViewBag.CurrentPage == ViewBag.lastPage ? "disabled" : "")">
+                    <a class="page-link border-secondary text-dark"
+                       href="@ViewBag.PaginationBaseUrl=@(ViewBag.CurrentPage + 1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 <br />
 
+@* 4. LISTA DE ARTICOLE (GRID) *@
 <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
-    @if(ViewBag.nrArticles == 0)
+    @if (ViewBag.nrArticles == 0)
     {
         <p>Niciun articol nu se potrivește căutărilor.</p>
     }
     else
-    @foreach (Article article in ViewBag.articles)
     {
-        if(article is not null)
+        @foreach (Article article in ViewBag.articles)
         {
-            <div class="col">
-            <div class="card h-100 shadow-sm border-0 card-hover-effect position-relative">
-                
-                @if(article.Category != null)
-                    {
-                        <span class="position-absolute top-0 end-0 badge bg-danger m-3 shadow-sm" style="z-index: 10;">
-                            @article.Category.CategoryName
-                        </span>
-                    }
-                <div class="card-img-top bg-light d-flex align-items-center justify-content-center position-relative" style="height: 300px; overflow: hidden;">
-                    @if (!string.IsNullOrEmpty(article.Image))
-                    {
-                        @* object-fit: cover -> Taie marginile automat ca să umple pătratul perfect *@
-                        <img src="@article.Image" class="w-100 h-100" style="object-fit: cover;" alt="@article.Title">
-                    }
-                    else
-                    {
-                        <span class="text-muted">Fără Imagine</span>
-                    }
-                </div>
+            if (article is not null)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 card-hover-effect position-relative">
 
-                <div class="card-body">
-                    @if (article.IsApproved == false)
-                    {
-                        <span class="badge bg-warning text-dark mb-2">În Așteptare</span>
-                    }
-                    
-                    <h5 class="card-title fw-bold text-dark mt-2">@article.Title</h5>
-                    
-                    <p class="card-text small mb-1">
-                        De: <span class="fw-semibold text-danger">@(article.User?.UserName ?? "Necunoscut")</span>
-                    </p>
-                    
-                    <p class="card-text text-muted small">
-                        @if (!string.IsNullOrEmpty(article.Content) && article.Content.Length > 100)
+                        @* Badge Categorie *@
+                        @if (article.Category != null)
                         {
-                            @article.Content.Substring(0, 100) <span class="text-danger">...</span>
+                            <span class="position-absolute top-0 end-0 badge bg-danger m-3 shadow-sm" style="z-index: 10;">
+                                @article.Category.CategoryName
+                            </span>
                         }
-                        else
-                        {
-                            @article.Content
-                        }
-                    </p>
-                </div>
-                @if (User.IsInRole("Administrator") && article.IsApproved == false)
-                {
-                    <div class="d-flex justify-content-center">
-                        <form method="post" asp-action="Approve" asp-controller="Articles">
-                        <input type="hidden" name="Id" value="@article.Id" />
-                        <button class="btn btn-success" type="submit">Aprobă articol</button>
-                        </form>
-                    </div>
-                    <br/>
-                }
-                @* Footer 1: Preț și Stoc (Rămâne neschimbat) *@
-<div class="card-footer bg-white border-top-0 d-flex justify-content-evenly align-items-center pb-3">
-    <p class="card-text small mb-1">
-        <span class="fw-semibold text-danger">@article.Price.ToString()</span> RON
-    </p>
-    <p class="card-text small mb-1">
-        Stoc: <span class="fw-semibold text-danger">@article.Stock.ToString()</span>
-    </p>
-</div>
 
-@* Footer 2: Butoane (Aici am adăugat Coșul) *@
-<div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center pb-3">
-    <small class="text-muted">
-        📅 @article.Date.ToString("dd MMM yyyy")
-    </small>
+                        @* Imagine *@
+                        <div class="card-img-top bg-light d-flex align-items-center justify-content-center position-relative" style="height: 300px; overflow: hidden;">
+                            @if (!string.IsNullOrEmpty(article.Image))
+                            {
+                                <img src="@article.Image" class="w-100 h-100" style="object-fit: cover;" alt="@article.Title">
+                            }
+                            else
+                            {
+                                <span class="text-muted">Fără Imagine</span>
+                            }
+                        </div>
 
-    <div class="btn-group">
-        @* 1. Buton AFIȘEAZĂ (Existent) *@
-        <a href="/Articles/Show/@article.Id" class="btn btn-sm btn-outline-secondary" title="Vezi detalii">
-                                <i class="bi bi-eye"></i>
-                            </a>
+                        <div class="card-body">
+                            @* Badge Așteptare *@
+                            @if (article.IsApproved == false)
+                            {
+                                <span class="badge bg-warning text-dark mb-2">În Așteptare</span>
+                            }
 
-        @* 2. Buton ADAUGĂ ÎN COȘ (NOU - Inserat aici) *@
-        @if (!User.IsInRole("Admin") && !User.IsInRole("Colab"))
+                            <h5 class="card-title fw-bold text-dark mt-2">@article.Title</h5>
+
+                            <p class="card-text small mb-1">
+                                De: <span class="fw-semibold text-danger">@(article.User?.UserName ?? "Necunoscut")</span>
+                            </p>
+
+                            <p class="card-text text-muted small">
+                                @if (!string.IsNullOrEmpty(article.Content) && article.Content.Length > 100)
                                 {
-                                    @if (article.Stock > 0)
+                                    @article.Content.Substring(0, 100) <span class="text-danger">...</span>
+                                }
+                                else
+                                {
+                                    @article.Content
+                                }
+                            </p>
+                        </div>
+
+                        @* Buton Aprobare (Doar Admin) *@
+                        @if (User.IsInRole("Administrator") && article.IsApproved == false)
+                        {
+                            <div class="d-flex justify-content-center">
+                                <form method="post" asp-action="Approve" asp-controller="Articles">
+                                    <input type="hidden" name="Id" value="@article.Id" />
+                                    <button class="btn btn-success" type="submit">Aprobă articol</button>
+                                </form>
+                            </div>
+                            <br />
+                        }
+
+                        @* Footer 1: Preț și Stoc *@
+                        <div class="card-footer bg-white border-top-0 d-flex justify-content-evenly align-items-center pb-3">
+                            <p class="card-text small mb-1">
+                                <span class="fw-semibold text-danger">@article.Price.ToString()</span> RON
+                            </p>
+                            <p class="card-text small mb-1">
+                                Stoc: <span class="fw-semibold text-danger">@article.Stock.ToString()</span>
+                            </p>
+                        </div>
+
+                        @* Footer 2: BUTOANE ACȚIUNE (LOGICA FINALĂ) *@
+                        <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center pb-3">
+                            <small class="text-muted">
+                                📅 @article.Date.ToString("dd MMM yyyy")
+                            </small>
+
+                            <div class="btn-group">
+                                @* 1. DETALII (Toți) *@
+                                <a href="/Articles/Show/@article.Id" class="btn btn-sm btn-outline-secondary" title="Vezi detalii">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+
+                                @* 2. VIZITATOR (Redirect Login) *@
+                                @if (!User.Identity.IsAuthenticated)
+                                {
+                                    <a href="/Identity/Account/Login" class="btn btn-sm btn-success shadow-sm"><i class="bi bi-cart-plus"></i></a>
+                                    <a href="/Identity/Account/Login" class="btn btn-sm btn-danger"><i class="bi bi-heart"></i></a>
+                                }
+
+                                @* 3. USER (Cumpărător) *@
+                                else if (User.IsInRole("User"))
+                                {
+                                    /* COȘ */
+                                    if (article.Stock > 0)
                                     {
                                         <form method="post" asp-controller="Cart" asp-action="Add" asp-route-articleId="@article.Id">
-                                            <button type="submit" class="btn btn-sm btn-success shadow-sm" title="Mută în coș">
-                                                <i class="bi bi-cart-plus"></i>
-                                            </button>
+                                            <button type="submit" class="btn btn-sm btn-success shadow-sm"><i class="bi bi-cart-plus"></i></button>
                                         </form>
                                     }
                                     else
                                     {
-                                        <button class="btn btn-sm btn-outline-secondary disabled" title="Stoc Epuizat">
-                                            🚫
-                                        </button>
+                                        <button class="btn btn-sm btn-secondary disabled">🚫</button>
                                     }
 
-                                    @* 3. Buton WISHLIST (Logica ta originală intactă) *@
-                                    @if (User.Identity.IsAuthenticated)
+                                    /* WISHLIST */
+                                    if (wishlistIds.Contains(article.Id))
                                     {
-                                        @if (User.IsInRole("User"))
-                                        {
-                                            @if (wishlistIds.Contains(article.Id))
-                                            {
-                                                <form method="post" asp-controller="Wishlist" asp-action="Remove" asp-route-articleId="@article.Id" class="d-inline">
-                                                    <button type="submit" class="btn btn-sm wishlist-btn added" title="Scoate din Wishlist">
-                                                        💖
-                                                    </button>
-                                                </form>
-                                            }
-                                            else
-                                            {
-                                                <a class="btn btn-sm wishlist-btn" 
-                                                asp-controller="Wishlist" 
-                                                asp-action="Add" 
-                                                asp-route-articleId="@article.Id"
-                                                title="Adaugă în Wishlist">
-                                                    ❤️
-                                                </a>
-                                            }
-
-                                        }
-
+                                        <form method="post" asp-controller="Wishlist" asp-action="Remove" asp-route-articleId="@article.Id">
+                                            <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-heart-fill"></i></button>
+                                        </form>
                                     }
                                     else
                                     {
-                                        <a class="btn btn-sm wishlist-btn" href="/Identity/Account/Login">
-                                            ❤️
-                                        </a>
+                                        <form method="post" asp-controller="Wishlist" asp-action="Add" asp-route-articleId="@article.Id">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger"><i class="bi bi-heart"></i></button>
+                                        </form>
                                     }
+                                }
 
-                                    @if (User.Identity.IsAuthenticated)
+                                @* 4. COLABORATOR *@
+                                else if (User.IsInRole("Colaborator"))
+                                {
+                                    // Dacă e produsul MEU -> Văd Edit și Delete
+                                    if (article.UserId == ViewBag.CurrentUserId)
                                     {
-                                        @if (article.User != null && (User.Identity.Name == article.User.UserName || User.IsInRole("Administrator")))
-                                        {
-                                            <form method="post" asp-action="Delete" asp-controller="Articles" class="d-inline">
-                                                <input type="hidden" name="Id" value="@article.Id" />
-                                                <button class="btn btn-sm btn-danger" type="submit"><i class="bi bi-trash"></i></button>
-                                            </form>
-                                        }
+                                        <a asp-controller="Articles" asp-action="Edit" asp-route-id="@article.Id" class="btn btn-sm btn-warning text-white"><i class="bi bi-pencil"></i></a>
 
+                                        <form method="post" asp-controller="Articles" asp-action="Delete" asp-route-id="@article.Id" asp-route-source="Index" class="d-inline">
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Șterge Articol">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
                                     }
+                                    // Dacă e produsul ALTUIA -> Nu văd nimic (doar detalii)
+                                }
 
+                                @* 5. ADMIN *@
+                                else if (User.IsInRole("Administrator"))
+                                {
+                                    <a asp-controller="Articles" asp-action="Edit" asp-route-id="@article.Id" class="btn btn-sm btn-warning text-white">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+    
+                                    <form method="post" asp-controller="Articles" asp-action="Delete" asp-route-id="@article.Id" asp-route-source="Index" class="d-inline">
+                                        <button type="submit" class="btn btn-sm btn-danger" title="Șterge Forțat">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
                                 }
                             </div>
-</div>
-            </div>
-        </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
         }
     }
 </div>
 
-                                
+@* 5. PAGINARE JOS *@
 <div class="d-flex justify-content-center">
     <p>@ViewBag.CurrentPage / @ViewBag.LastPage</p>
 </div>
