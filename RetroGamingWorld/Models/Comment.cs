@@ -6,7 +6,7 @@ namespace RetroGamingWorld.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Content { get; set; }
+        public string? Content { get; set; } = string.Empty;
         public DateTime Date { get; set; }
         public int ArticleId { get; set; }
         [Range(1, 5)]

@@ -20,7 +20,6 @@
 </div>
 
 <div class="row align-items-center mb-4 g-2">
-    
     <div class="col">
         <form method="GET" asp-action="Index" asp-controller="Wishlist">
             <div class="input-group">
@@ -30,14 +29,28 @@
                        name="search"
                        value="@ViewBag.SearchString">
 
-                <select name="sortBy" class="form-select" style="max-width: 110px;">
+                <select name="sortCateg" class="form-select" style="max-width: 195px;">
+                    <option value = "0" selected = "@(Int32.Parse(ViewBag.sortCateg) == 0)">
+                        Toate consolele
+                    </option>
+                    @foreach(var catId in ViewBag.AllCategories)
+                    {
+                        <option value="@catId.Value" 
+                        selected="@(ViewBag.sortCateg == @catId.Value)">
+                            @catId.Text
+                        </option>
+                    }
+                </select>
+
+
+                <select name="sortBy" class="form-select" style="max-width: 100px;">
                     <option value="rating" selected="@(ViewBag.SortBy == "rating")">Rating</option>
                     <option value="price" selected="@(ViewBag.SortBy == "price")">Preț</option>
                 </select>
 
-                <select name="sortOrder" class="form-select" style="max-width: 110px;">
-                    <option value="desc" selected="@(ViewBag.SortOrder == "desc")">Descresc.</option>
-                    <option value="asc" selected="@(ViewBag.SortOrder == "asc")">Cresc.</option>
+                <select name="sortOrder" class="form-select" style="max-width: 145px;">
+                    <option value="desc" selected="@(ViewBag.SortOrder == "desc")">Descrescător</option>
+                    <option value="asc" selected="@(ViewBag.SortOrder == "asc")">Crescător</option>
                 </select>
 
                 <button class="btn btn-outline-danger" type="submit">Search</button>

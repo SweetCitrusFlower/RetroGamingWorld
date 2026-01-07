@@ -193,7 +193,8 @@ namespace RetroGamingWorld.Controllers
         {
             comment.Date = DateTime.Now;
             comment.UserID = _userManager.GetUserId(User);
-
+            if (comment.Content is null)
+                comment.Content = "";
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);
