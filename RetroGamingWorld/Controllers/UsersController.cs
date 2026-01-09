@@ -96,16 +96,13 @@ namespace RetroGamingWorld.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    // Cautam toate rolurile din baza de date
                     var roles = db.Roles.ToList();
 
                     foreach (var role in roles)
                     {
-                        // Scoatem userul din rolurile anterioare
                         await _userManager.RemoveFromRoleAsync(user, role.Name);
                     }
 
-                    // Adaugam noul rol selectat
                     var roleName = await _roleManager.FindByIdAsync(newRole);
                     await _userManager.AddToRoleAsync(user, roleName.ToString());
 
@@ -128,7 +125,6 @@ namespace RetroGamingWorld.Controllers
                             .Where(u => u.Id == id)
                             .First();
 
-            // Delete user comments
             if (user.Comments.Count > 0)
             {
                 foreach (var comment in user.Comments)
@@ -137,7 +133,6 @@ namespace RetroGamingWorld.Controllers
                 }
             }
 
-            // Delete user articles
             if (user.Articles.Count > 0)
             {
                 foreach (var article in user.Articles)
