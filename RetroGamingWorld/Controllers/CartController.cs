@@ -7,7 +7,7 @@ using RetroGamingWorld.Models;
 
 namespace RetroGamingWorld.Controllers
 {
-    [Authorize(Roles = "User")] // Doar utilizatorii pot accesa coșul
+    [Authorize(Roles = "User")]
     public class CartController : Controller
     {
         private readonly AppDbContext _context;
@@ -19,19 +19,17 @@ namespace RetroGamingWorld.Controllers
             _userManager = userManager;
         }
 
-        // 1. AFIȘAREA COȘULUI
+        // AFISARE
         [HttpGet]
         public IActionResult Index()
         {
             var userId = _userManager.GetUserId(User);
 
-            // Aducem produsele din coș + detaliile despre Articol (Preț, Imagine, Titlu, Stoc)
             var cartItems = _context.CartItems
                 .Include(c => c.Article)
                 .Where(c => c.ApplicationUserId == userId)
                 .ToList();
 
-            // Putem transmite mesaje de eroare/succes către View
             if (TempData["message"] != null)
             {
                 ViewBag.Message = TempData["message"];
@@ -40,7 +38,7 @@ namespace RetroGamingWorld.Controllers
             return View(cartItems);
         }
 
-        // 2. ADĂUGAREA ÎN COȘ (Se apelează din pagina de Articole sau Wishlist)
+        // ADAUGARE
         [HttpPost]
         public IActionResult Add(int articleId)
         {
@@ -52,21 +50,17 @@ namespace RetroGamingWorld.Controllers
                 return NotFound();
             }
 
-            // A. Verificare STOC Epuizat
             if (article.Stock <= 0)
             {
                 TempData["message"] = "Ne pare rău, acest produs nu mai este pe stoc!";
                 return RedirectToAction("Index", "Articles");
             }
 
-            // B. Căutăm dacă userul are deja acest produs în coș
             var cartItem = _context.CartItems
                 .FirstOrDefault(c => c.ApplicationUserId == userId && c.ArticleId == articleId);
 
             if (cartItem != null)
             {
-                // CAZ 1: Produsul există -> Creștem cantitatea
-                // Verificăm să nu depășim stocul fizic
                 if (cartItem.Quantity < article.Stock)
                 {
                     cartItem.Quantity++;
@@ -80,7 +74,6 @@ namespace RetroGamingWorld.Controllers
             }
             else
             {
-                // CAZ 2: Produsul nu e în coș -> Îl creăm (Cantitate 1)
                 var newCartItem = new CartItem
                 {
                     ApplicationUserId = userId,
@@ -93,30 +86,23 @@ namespace RetroGamingWorld.Controllers
                 TempData["message"] = "Produsul a fost adăugat în coș!";
             }
 
-            // După adăugare, mergem la pagina coșului să vedem rezultatul
             return RedirectToAction("Index");
         }
 
-        // 3. ACTUALIZARE CANTITATE (+ / -)
+        // ACTUALIZARE CANTITATE
         [HttpPost]
         public IActionResult UpdateQuantity(int cartItemId, int change)
         {
-            // Aducem și Articolul ca să știm stocul maxim
             var cartItem = _context.CartItems
                                    .Include(c => c.Article)
                                    .FirstOrDefault(c => c.Id == cartItemId);
 
             var userId = _userManager.GetUserId(User);
 
-            // Securitate: modificăm doar dacă e coșul userului curent
             if (cartItem != null && cartItem.ApplicationUserId == userId)
             {
-                // Calculăm noua cantitate (curentă + 1 sau curentă - 1)
                 int newQuantity = cartItem.Quantity + change;
 
-                // Reguli:
-                // 1. Să fie minim 1
-                // 2. Să nu depășească stocul din depozit (Article.Stock)
                 if (newQuantity >= 1 && newQuantity <= cartItem.Article.Stock)
                 {
                     cartItem.Quantity = newQuantity;
@@ -130,7 +116,7 @@ namespace RetroGamingWorld.Controllers
             return RedirectToAction("Index");
         }
 
-        // 4. ȘTERGERE DIN COȘ
+        // STERGERE
         [HttpPost]
         public IActionResult Remove(int cartItemId)
         {
@@ -147,7 +133,7 @@ namespace RetroGamingWorld.Controllers
             return RedirectToAction("Index");
         }
 
-        // 5. PLASAREA COMENZII (Detaliată)
+        // PLASARE COMANDA
         [HttpPost]
         public IActionResult PlaceOrder(string firstName, string lastName, string phoneNumber, string county, string city, string addressDetails)
         {
@@ -163,19 +149,16 @@ namespace RetroGamingWorld.Controllers
                 return RedirectToAction("Index");
             }
 
-            // 1. Construim adresa completă din câmpurile formularului
-            // Formatăm textul ca să arate bine pe comandă
             string fullAddress = $"Destinatar: {firstName} {lastName}\n" +
                                  $"Telefon: {phoneNumber}\n" +
                                  $"Locație: {county}, {city}\n" +
                                  $"Stradă/Detalii: {addressDetails}";
 
-            // 2. Creăm comanda
             var order = new Order
             {
                 ApplicationUserId = userId,
                 Date = DateTime.Now,
-                DeliveryAddress = fullAddress, // Salvăm textul compus mai sus
+                DeliveryAddress = fullAddress,
                 Status = "În procesare",
                 TotalAmount = 0
             };
@@ -185,7 +168,6 @@ namespace RetroGamingWorld.Controllers
 
             decimal finalTotal = 0;
 
-            // 3. Procesăm produsele (la fel ca înainte)
             foreach (var item in cartItems)
             {
                 if (item.Article.Stock < item.Quantity)

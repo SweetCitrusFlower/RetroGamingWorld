@@ -14,7 +14,6 @@ namespace RetroGamingWorld.Models
         public virtual ICollection<Article> Wishlist { get; set; } = new List<Article>();
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
-        //public virtual ICollection<Article>? Cart { get; set; }
         [NotMapped]
         public IEnumerable<SelectListItem>? AllRoles { get; set; }
     }

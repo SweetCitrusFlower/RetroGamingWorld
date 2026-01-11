@@ -24,7 +24,6 @@ public class WishlistController : Controller
     {
         var currentUserId = _userManager.GetUserId(User);
 
-        // 1. Încărcăm tot wishlist-ul cu toate datele necesare pentru căutare
         var user = _context.Users
             .Include(u => u.Wishlist).ThenInclude(a => a.User)  
             .Include(u => u.Wishlist).ThenInclude(a => a.Category) 
@@ -38,16 +37,14 @@ public class WishlistController : Controller
 
         var query = user.Wishlist.AsQueryable();
 
-        // 2. SEARCH (Logica "Search Safe" adaptată)
+        // SEARCH
         var search = HttpContext.Request.Query["search"].FirstOrDefault();
 
         if (!string.IsNullOrEmpty(search))
         {
             search = search.Trim();
-            // Convertim ce ai scris tu în litere mici (ex: "Fire" -> "fire")
             var searchTerm = search.ToLower();
 
-            // Filtrăm lista, dar transformăm și titlul/conținutul în litere mici înainte de verificare
             query = query.Where(article =>
                 (article.Title != null && article.Title.ToLower().Contains(searchTerm)) ||
                 (article.Content != null && article.Content.ToLower().Contains(searchTerm)) ||
@@ -58,16 +55,15 @@ public class WishlistController : Controller
         }
         else
         {
-            search = ""; // Asiguram ca nu e null pentru View
+            search = "";
         }
 
         ViewBag.SearchString = search;
 
-        // 3. SORTARE
+        // SORTARE
         var sortBy = HttpContext.Request.Query["sortBy"].FirstOrDefault();
         var sortOrder = HttpContext.Request.Query["sortOrder"].FirstOrDefault();
 
-        // Setăm valorile default
         if (string.IsNullOrEmpty(sortBy)) sortBy = "title";
         if (string.IsNullOrEmpty(sortOrder)) sortOrder = "asc";
 
@@ -81,11 +77,9 @@ public class WishlistController : Controller
             sortCateg = ViewBag.sortCateg ?? "0";
         }
 
-        // Switch simplificat: Doar Preț și Rating
         switch (sortBy.ToLower())
         {
             case "price":
-                // Acum sortăm după preț
                 if (sortOrder == "desc")
                     query = query.OrderByDescending(a => a.Price);
                 else
@@ -93,7 +87,6 @@ public class WishlistController : Controller
                 break;
 
             case "rating":
-                // Sortare după Rating
                 if (sortOrder == "desc")
                     query = query.OrderByDescending(a => a.Rating);
                 else
@@ -101,7 +94,6 @@ public class WishlistController : Controller
                 break;
 
             default:
-                // Fallback: Dacă apare ceva ciudat, ordonăm după Rating descrescător
                 query = query.OrderByDescending(a => a.Rating);
                 break;
         }
@@ -113,7 +105,7 @@ public class WishlistController : Controller
         ViewBag.SortOrder = sortOrder;
         ViewBag.sortCateg = sortCateg;
 
-        // 4. PAGINARE
+        // PAGINARE
         int _perPage = 3;
         int totalItems = query.Count();
 

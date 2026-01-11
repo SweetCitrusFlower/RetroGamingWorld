@@ -30,16 +30,14 @@ namespace RetroGamingWorld.Controllers
                 ViewBag.message = TempData["messageArticles"].ToString();
             }
 
-            // --- PASUL 1: CRITIC PENTRU LOGICA BUTOANELOR ---
             ViewBag.CurrentUserId = _userManager.GetUserId(User);
 
-            // QUERY DE BAZA
             var query = db.Articles
                 .Include(a => a.Category)
                 .Include(a => a.User)
                 .AsQueryable();
 
-            // 1. SEARCH SAFE
+            // SEARCH SAFE
             var search = HttpContext.Request.Query["search"].FirstOrDefault();
 
             if (!string.IsNullOrEmpty(search))
@@ -66,10 +64,10 @@ namespace RetroGamingWorld.Controllers
 
             ViewBag.SearchString = search;
 
-            // 2. AFISAREA DOAR A ARTICOLELOR APROBATE
+            // AFISAREA DOAR A ARTICOLELOR APROBATE
             query = query.Where(a => a.IsApproved == true);
 
-            // 3. SORTARE SAFE
+            // SORTARE SAFE
             var sortBy = HttpContext.Request.Query["sortBy"].FirstOrDefault();
             if (!string.IsNullOrEmpty(sortBy))
             {
@@ -122,7 +120,7 @@ namespace RetroGamingWorld.Controllers
             ViewBag.SortOrder = sortOrder;
             ViewBag.sortCateg = sortCateg;
 
-            // 4. PAGINARE
+            // PAGINARE
             int _perPage = 3;
             int totalItems = query.Count();
 
@@ -145,7 +143,7 @@ namespace RetroGamingWorld.Controllers
                 ViewBag.PaginationBaseUrl += "search=" + search + "&";
             ViewBag.PaginationBaseUrl += "sortCateg=" + sortCateg + "&sortBy=" + sortBy + "&sortOrder=" + sortOrder + "&page";
 
-            // 5. WISHLIST SAFE
+            // WISHLIST SAFE
             List<int> userWishlistIds = new List<int>();
             if (User.Identity.IsAuthenticated)
             {
@@ -167,7 +165,7 @@ namespace RetroGamingWorld.Controllers
             return View();
         }
 
-        // 2. AFISAREA UNUI ARTICOL
+        // AFISAREA UNUI ARTICOL
         [HttpGet]
         public IActionResult Show(int id)
         {
@@ -186,7 +184,7 @@ namespace RetroGamingWorld.Controllers
             return View(article);
         }
 
-        // 3. ADAUGARE COMENTARIU (NOU)
+        // ADAUGARE COMENTARIU
         [HttpPost]
         [Authorize]
         public IActionResult AddComment([FromForm] Comment comment)
@@ -207,12 +205,12 @@ namespace RetroGamingWorld.Controllers
             return RedirectToAction("Show", new { id = comment.ArticleId });
         }
 
-        // 8. LISTA DE AȘTEPTARE (GET) - Trebuie să vedem articolele înainte să le aprobăm
+        // LISTA DE AȘTEPTARE
         [Authorize(Roles = "Administrator")]
         [HttpGet]
         public async Task<IActionResult> PendingArticles()
         {
-            var pendingArticles = await db.Articles // Folosim 'db' cum ai tu în cod
+            var pendingArticles = await db.Articles
                                           .Include(a => a.Category)
                                           .Include(a => a.User)
                                           .Where(a => a.IsApproved == false)
@@ -222,7 +220,7 @@ namespace RetroGamingWorld.Controllers
             return View(pendingArticles);
         }
 
-        // 9. APROBARE (Modificarea lui Alex)
+        // APROBARE
         [Authorize(Roles = "Administrator")]
         [HttpPost]
         public IActionResult Approve(int id)
@@ -232,18 +230,16 @@ namespace RetroGamingWorld.Controllers
             {
                 article.IsApproved = true;
 
-                // ADAUGAT: Ștergem motivul respingerii anterioare, dacă există
                 article.AdminFeedback = null;
 
                 db.SaveChanges();
                 TempData["messageArticles"] = "Articolul \"" + article.Title + "\" a fost aprobat!";
             }
 
-            // MODIFICAT: Ne întoarcem la lista de așteptare, nu în magazin
             return RedirectToAction("PendingArticles");
         }
 
-        // 10. RESPINGERE (Nou)
+        // RESPINGERE
         [Authorize(Roles = "Administrator")]
         [HttpPost]
         public IActionResult Reject(int id, string reason)
@@ -251,8 +247,8 @@ namespace RetroGamingWorld.Controllers
             var article = db.Articles.Find(id);
             if (article != null)
             {
-                article.IsApproved = false; // Rămâne neaprobat
-                article.AdminFeedback = reason; // Salvăm motivul (Ex: "Poza neclară")
+                article.IsApproved = false;
+                article.AdminFeedback = reason;
 
                 db.SaveChanges();
                 TempData["messageArticles"] = "Articolul a fost respins. Feedback trimis!";
@@ -261,7 +257,7 @@ namespace RetroGamingWorld.Controllers
             return RedirectToAction("PendingArticles");
         }
 
-        // 5. CREARE ARTICOL (NEW)
+        // CREARE ARTICOL
         [Authorize(Roles = "Colaborator")]
         [HttpGet]
         public IActionResult New()
@@ -279,30 +275,25 @@ namespace RetroGamingWorld.Controllers
 
         [Authorize(Roles = "Colaborator")]
         [HttpPost]
-        // 1. Am facut metoda ASYNC pentru a putea salva fisierul
         public async Task<IActionResult> New(Article article, IFormFile? ImageFile)
         {
             if (User.IsInRole("Administrator")) return RedirectToAction("Index");
 
-            // Setările tale standard
             article.Date = DateTime.Now;
             article.UserId = _userManager.GetUserId(User);
             article.Rating = 0;
             article.IsApproved = false;
             article.AdminFeedback = null;
 
-            // --- LOGICA NOUĂ: UPLOAD POZĂ ---
             if (ImageFile != null && ImageFile.Length > 0)
             {
-                // A. Validare Dimensiune (Maxim 5 MB)
                 if (ImageFile.Length > 5 * 1024 * 1024)
                 {
                     TempData["messageArticles"] = "Imaginea este prea mare! Maxim 5MB.";
-                    article.Categ = GetAllCategories(); // Reîncărcăm categoriile ca să nu crape pagina
+                    article.Categ = GetAllCategories();
                     return View(article);
                 }
 
-                // B. Validare Extensie
                 var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
                 var fileExtension = Path.GetExtension(ImageFile.FileName).ToLower();
 
@@ -313,7 +304,6 @@ namespace RetroGamingWorld.Controllers
                     return View(article);
                 }
 
-                // C. Salvare Fizică (wwwroot/images)
                 var storagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
                 if (!Directory.Exists(storagePath)) Directory.CreateDirectory(storagePath);
 
@@ -325,33 +315,30 @@ namespace RetroGamingWorld.Controllers
                     await ImageFile.CopyToAsync(stream);
                 }
 
-                // D. Salvăm calea în baza de date
                 article.Image = "/images/" + fileName;
             }
-            // --------------------------------
 
             ModelState.Remove(nameof(article.Image));
 
             if (ModelState.IsValid)
             {
                 db.Articles.Add(article);
-                await db.SaveChangesAsync(); // Am pus async si aici daca tot e metoda async
+                await db.SaveChangesAsync();
                 TempData["messageArticles"] = "Articolul a fost trimis spre aprobare!";
 
                 return RedirectToAction("MyArticles");
             }
             else
             {
-                // Logica ta pentru când formularul nu e valid
                 article.Categ = GetAllCategories();
                 return View(article);
             }
         }
 
-        // 6. EDITARE (GET)
+        // EDITARE (GET)
         [Authorize]
         [HttpGet]
-        public IActionResult Edit(int id, string? source) // <--- (1) Parametru sursă adăugat
+        public IActionResult Edit(int id, string? source)
         {
             Article article = db.Articles.Include(a => a.Category).FirstOrDefault(a => a.Id == id);
             if (article == null) return NotFound();
@@ -363,13 +350,12 @@ namespace RetroGamingWorld.Controllers
 
             article.Categ = GetAllCategories();
 
-            // (2) Salvăm sursa în ViewBag ca să o trimitem la View (pentru butonul Renunță)
             ViewBag.Source = source;
 
             return View(article);
         }
 
-        // 6. EDITARE (POST)
+        // EDITARE (POST)
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, Article requestArt, IFormFile? ImageFile, string? source)
@@ -452,16 +438,15 @@ namespace RetroGamingWorld.Controllers
             }
         }
 
-        // 7. STERGERE (DELETE)
+        // DELETE
         [Authorize(Roles = "Administrator,Colaborator")]
         [HttpPost]
-        public IActionResult Delete(int id, string? source) // <--- (1) Am adăugat parametrul 'source'
+        public IActionResult Delete(int id, string? source)
         {
             Article article = db.Articles.Find(id);
 
             if (article != null)
             {
-                // Verificare securitate
                 if (!User.IsInRole("Administrator") && article.UserId != _userManager.GetUserId(User))
                 {
                     TempData["messageArticles"] = "Nu ai dreptul să ștergi acest articol!";
@@ -473,13 +458,11 @@ namespace RetroGamingWorld.Controllers
                 TempData["messageArticles"] = "Articolul a fost șters!";
             }
 
-            // --- (2) LOGICA DE REDIRECTIONARE INTELIGENTĂ ---
             if (source == "MyArticles")
             {
                 return RedirectToAction("MyArticles");
             }
 
-            // Default: ne întoarcem la Index (magazinul principal)
             return RedirectToAction("Index");
         }
         private void UpdateArticleRating(int ArticleId)
@@ -494,14 +477,13 @@ namespace RetroGamingWorld.Controllers
             }
         }
 
-        // 8. ARTICOLELE MELE (Pentru Colaboratori)
+        // ARTICOLELE COLABORATORI
         [Authorize(Roles = "Colaborator")]
         [HttpGet]
         public IActionResult MyArticles()
         {
             var userId = _userManager.GetUserId(User);
 
-            // Luăm articolele userului curent, indiferent dacă sunt aprobate sau nu
             var articles = db.Articles
                              .Include(a => a.Category)
                              .Where(a => a.UserId == userId)

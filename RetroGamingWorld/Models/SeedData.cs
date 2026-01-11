@@ -152,7 +152,7 @@ namespace RetroGamingWorld.Models
                     },
                     new Category
                     {
-                        CategoryName = "Gameboy Advanced"
+                        CategoryName = "Gameboy Advance"
                     },
                     new Category
                     {
