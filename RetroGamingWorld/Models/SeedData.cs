@@ -236,21 +236,6 @@ namespace RetroGamingWorld.Models
                         CategoryId = 3,
                         UserId = "8e445865-a24d-4543-a6c6-9443d048cdb3"
                     }
-                    //,
-                    //new Article
-                    //{
-                    //    Title = "",
-                    //    Content = "",
-                    //    Date = DateTime.ParseExact("", "dd-MM-yyyy", CultureInfo.InvariantCulture),
-                    //    Image = "",
-                    //    Price = (decimal)89.00,
-                    //    Stock = 50,
-                    //    Rating = 0,
-                    //    IsApproved = true,
-                    //    AdminFeedback = null,
-                    //    CategoryId = ,
-                    //    UserId = ""
-                    //}
 
                 );
                 context.SaveChanges();
