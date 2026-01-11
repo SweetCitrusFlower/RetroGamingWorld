@@ -152,22 +152,28 @@ public class WishlistController : Controller
 
     [Authorize]
     [HttpPost]
+    [HttpPost]
     public IActionResult Remove(int articleId)
     {
-        var currentUserId = _userManager.GetUserId(User);
-
+        var userId = _userManager.GetUserId(User);
         var user = _context.Users
             .Include(u => u.Wishlist)
-            .FirstOrDefault(u => u.Id == currentUserId);
+            .FirstOrDefault(u => u.Id == userId);
 
-        if (user != null)
+        var article = _context.Articles.Find(articleId);
+
+        if (user != null && article != null)
         {
-            var articleToRemove = user.Wishlist.FirstOrDefault(a => a.Id == articleId);
-            if (articleToRemove != null)
-            {
-                user.Wishlist.Remove(articleToRemove);
-                _context.SaveChanges();
-            }
+            user.Wishlist.Remove(article);
+            _context.SaveChanges();
+            TempData["message"] = "Articolul a fost eliminat din wishlist!";
+        }
+
+        var refererUrl = Request.Headers["Referer"].ToString();
+
+        if (!string.IsNullOrEmpty(refererUrl))
+        {
+            return Redirect(refererUrl);
         }
 
         return RedirectToAction("Index");

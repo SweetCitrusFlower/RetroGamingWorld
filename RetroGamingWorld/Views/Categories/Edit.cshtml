@@ -1,28 +1,46 @@
 ﻿@model RetroGamingWorld.Models.Category
 
-<h2 class="text-center mt-5">Editare categorie</h2>
+@{
+    ViewData["Title"] = "Editează categorie";
+}
 
-<br />
-<br />
+<div class="row justify-content-center my-5">
+    <div class="col-md-8">
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-6 offset-3">
+        <div class="d-flex justify-content-between align-items-center mb-4 p-4 rounded-3 shadow-sm bg-white border-start border-5 border-warning">
+            <div>
+                <h1 class="display-6 fw-bold mb-0">✏️ Editează Categorie</h1>
+                <p class="text-muted mb-0">Modifică detaliile categoriei existente.</p>
+            </div>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Înapoi
+            </a>
+        </div>
 
-            <form method="post" asp-action="Edit" asp-controller="Categories" asp-route-id="@Model.Id">
+        <div class="card shadow-sm border-0 rounded-3">
+            <div class="card-body p-5">
+                <form method="post" asp-action="Edit" asp-controller="Categories" asp-route-id="@Model.Id">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                <div class="form-group">
-                    <label asp-for="CategoryName" class="form-label">Denumire categorie</label>
-                    <input asp-for="CategoryName" class="form-control" />
-                    <span asp-validation-for="CategoryName" class="text-danger"></span>
-                    <br />
-                    <br />
-                </div>
-                <br/>
-                <button class="btn btn-success" type="submit">Modifica categoria</button>
-            </form>
+                    <div class="mb-4">
+                        <label asp-for="CategoryName" class="form-label fw-bold">Denumire categorie</label>
+                        <input asp-for="CategoryName" class="form-control form-control-lg" />
+                        <span asp-validation-for="CategoryName" class="text-danger small"></span>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-warning text-white btn-lg shadow-sm">
+                            <i class="bi bi-save"></i> Salvează Modificările
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
-
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

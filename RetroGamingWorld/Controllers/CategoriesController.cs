@@ -75,8 +75,12 @@ namespace RetroGamingWorld.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Category categ = db.Categories.Find(id);
-            return View(categ);
+            var category = db.Categories.Find(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
         }
 
         [HttpPost]

@@ -170,7 +170,7 @@ namespace RetroGamingWorld.Models
                     {
                         Title = "Sonic the Hedgehog 2",
                         Content = "Sonic the Hedgehog 2 este un joc platformă din 1992 dezvoltat de Institutul Tehnic Sega (STI) pentru Sega Genesis. Jucătorii îl controlează pe Sonic în timp ce încearcă să-l împiedice pe Doctor Robotnik să fure Chaos Emeralds pentru a-și alimenta stația spațială, Death Egg. La fel ca primul Sonic the Hedgehog (1991), jucătorii parcurg niveluri de defilare laterală cu viteză mare în timp ce colectează inele, înving inamicii și luptă cu șefii. Sonic 2 îl prezintă pe prietenul lui Sonic, Miles „Tails” Prower și oferă un joc mai rapid, niveluri mai mari, un mod multiplayer și etape speciale cu grafică 3D pre-redată.",
-                        Date = DateTime.ParseExact("21-11-1992", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                        Date = DateTime.ParseExact("21-11-2024", "dd-MM-yyyy", CultureInfo.InvariantCulture),
                         Image = "https://m.media-amazon.com/images/M/MV5BMzg3OGY0MzMtMWM1My00YzBmLTg4ZTktZTk0ZWU1ODY3YmU2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
                         Price = (decimal)109.00,
                         Stock = 50,
@@ -184,7 +184,7 @@ namespace RetroGamingWorld.Models
                     {
                         Title = "Sonic the Hedgehog 1",
                         Content = "Sonic the Hedgehog este un joc platformă din 1991 dezvoltat și publicat de Sega pentru Sega Genesis. Jucătorul îl controlează pe Sonic, un arici care poate alerga la viteze supersonice. Povestea îl urmărește pe Sonic în timp ce acesta își propune să dejuteze planurile omului de știință nebun Doctor Eggman de a căuta puternicele Smaralde Chaos. Jocul implică colectarea inelelor ca formă de sănătate și o schemă simplă de control, cu sărituri și atacuri controlate de un singur buton.",
-                        Date = DateTime.ParseExact("21-06-1991", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                        Date = DateTime.ParseExact("21-06-2025", "dd-MM-yyyy", CultureInfo.InvariantCulture),
                         Image = "https://i1.sndcdn.com/artworks-000256259864-uuqj58-t500x500.jpg",
                         Price = (decimal)89.00,
                         Stock = 50,
@@ -198,7 +198,7 @@ namespace RetroGamingWorld.Models
                     {
                         Title = "Pokémon Emerald",
                         Content = "Pokémon Emerald este un joc video de rol din 2004 dezvoltat de Game Freak și publicat de The Pokémon Company și Nintendo pentru Game Boy Advance. Jucătorii controlează un antrenor Pokémon dintr-o perspectivă de deasupra capului. Obiectivul general al jucătorului este să exploreze regiunea Hoenn și să cucerească o serie de opt săli de sport Pokémon pentru a-i provoca pe Elite Four și pe Campionul Ligii Pokémon din Hoenn, în timp ce subplotul principal este să învingă două organizații criminale care încearcă să valorifice puterea unui Pokémon legendar pentru propriile lor obiective.",
-                        Date = DateTime.ParseExact("16-09-2004", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                        Date = DateTime.ParseExact("16-09-2024", "dd-MM-yyyy", CultureInfo.InvariantCulture),
                         Image = "https://upload.wikimedia.org/wikipedia/en/f/f7/PokemonEmeraldBox.jpg",
                         Price = (decimal)129.99,
                         Stock = 5,
@@ -212,7 +212,7 @@ namespace RetroGamingWorld.Models
                     {
                         Title = "Super Mario World",
                         Content = "Super Mario World este un joc platformă dezvoltat și publicat de Nintendo pentru Super Nintendo Entertainment System (SNES). Jucătorul îl controlează pe Mario în încercarea sa de a salva Prințesa Peach și Dinosaur Land de antagonistul seriei Bowser și Koopalings. Jucătorii îl controlează pe Mario printr-o serie de niveluri în care scopul este să ajungă la stâlpul porții la final. Super Mario World îl prezintă pe Yoshi, un dinozaur care poate fi călărit, care poate mânca dușmani și îi poate scuipa pe unii ca proiectile.",
-                        Date = DateTime.ParseExact("21-11-1990", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                        Date = DateTime.ParseExact("21-11-2025", "dd-MM-yyyy", CultureInfo.InvariantCulture),
                         Image = "https://i.ebayimg.com/images/g/-P0AAOSw0theMQfB/s-l1200.jpg",
                         Price = (decimal)59.00,
                         Stock = 80,
@@ -226,7 +226,7 @@ namespace RetroGamingWorld.Models
                     {
                         Title = "Super Metroid",
                         Content = "Super Metroid este un joc de acțiune și aventură din 1994, dezvoltat de Nintendo și Intelligent Systems și publicat de Nintendo pentru Super Nintendo Entertainment System (SNES). Este al treilea joc Metroid, după jocul Game Boy Metroid II: Return of Samus (1991). Jucătorul îl controlează pe vânătorul de recompense Samus Aran, care călătorește pe planeta Zebes pentru a recupera o creatură Metroid furată de liderul piraților spațiali Ridley.",
-                        Date = DateTime.ParseExact("19-03-1994", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                        Date = DateTime.ParseExact("19-03-2024", "dd-MM-yyyy", CultureInfo.InvariantCulture),
                         Image = "https://assets-prd.ignimgs.com/2021/12/07/supermetroid-1638920229201.jpg",
                         Price = (decimal)89.00,
                         Stock = 50,
@@ -244,7 +244,7 @@ namespace RetroGamingWorld.Models
                     new Comment
                     {
                         Content = "Cel mai tare joc EVER!!!!",
-                        Date = DateTime.ParseExact("19-03-1998", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                        Date = DateTime.ParseExact("19-03-2025", "dd-MM-yyyy", CultureInfo.InvariantCulture),
                         ArticleId = 1,
                         Rating = 5,
                         UserID = "8e445865-a24d-4543-a6c6-9443d048cdb2"
@@ -252,18 +252,18 @@ namespace RetroGamingWorld.Models
                     new Comment
                     {
                         Content = "Ești bătut în cap vere",
-                        Date = DateTime.ParseExact("22-03-1998", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                        Date = DateTime.ParseExact("22-03-2025", "dd-MM-yyyy", CultureInfo.InvariantCulture),
                         ArticleId = 1,
                         Rating = 1,
-                        UserID = "8e445865-a24d-4543-a6c6-9443d048cdb3"
+                        UserID = "8e445865-a24d-4543-a6c6-9443d048cdb4"
                     },
                     new Comment
                     {
                         Content = "Mă jucam acest joc cu verișoara mea când aveam 11 ani și am primit de Crăciun primul meu Gameboy Advanced. Brings back memories :D",
-                        Date = DateTime.ParseExact("22-09-2006", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                        Date = DateTime.ParseExact("22-09-2025", "dd-MM-yyyy", CultureInfo.InvariantCulture),
                         ArticleId = 3,
                         Rating = 4,
-                        UserID = "8e445865-a24d-4543-a6c6-9443d048cdb1"
+                        UserID = "8e445865-a24d-4543-a6c6-9443d048cdb2"
                     }
                 );
                 context.ArticleFAQs.AddRange(
@@ -297,8 +297,8 @@ namespace RetroGamingWorld.Models
                     },
                     new ArticleFAQ
                     {
-                        Question = "Funcționează pe toate modelele de Gameboy Advanced?",
-                        Answer = "Da, jocul este compatibil cu toate modelele de Gameboy Advanced.",
+                        Question = "Funcționează pe toate modelele de Gameboy Advance?",
+                        Answer = "Da, jocul este compatibil cu toate modelele de Gameboy Advance.",
                         ArticleId = 3,
                         AskedCount = 16
                     }

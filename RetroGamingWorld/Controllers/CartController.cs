@@ -7,7 +7,7 @@ using RetroGamingWorld.Models;
 
 namespace RetroGamingWorld.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Authorize]
     public class CartController : Controller
     {
         private readonly AppDbContext _context;
@@ -19,7 +19,6 @@ namespace RetroGamingWorld.Controllers
             _userManager = userManager;
         }
 
-        // AFISARE
         [HttpGet]
         public IActionResult Index()
         {
@@ -35,10 +34,15 @@ namespace RetroGamingWorld.Controllers
                 ViewBag.Message = TempData["message"];
             }
 
+            if (TempData["OrderSuccess"] != null && (bool)TempData["OrderSuccess"] == true)
+            {
+                ViewBag.OrderSuccess = true;
+                ViewBag.LastOrderId = TempData["LastOrderId"];
+            }
+
             return View(cartItems);
         }
 
-        // ADAUGARE
         [HttpPost]
         public IActionResult Add(int articleId)
         {
@@ -89,7 +93,6 @@ namespace RetroGamingWorld.Controllers
             return RedirectToAction("Index");
         }
 
-        // ACTUALIZARE CANTITATE
         [HttpPost]
         public IActionResult UpdateQuantity(int cartItemId, int change)
         {
@@ -116,7 +119,6 @@ namespace RetroGamingWorld.Controllers
             return RedirectToAction("Index");
         }
 
-        // STERGERE
         [HttpPost]
         public IActionResult Remove(int cartItemId)
         {
@@ -133,7 +135,6 @@ namespace RetroGamingWorld.Controllers
             return RedirectToAction("Index");
         }
 
-        // PLASARE COMANDA
         [HttpPost]
         public IActionResult PlaceOrder(string firstName, string lastName, string phoneNumber, string county, string city, string addressDetails)
         {

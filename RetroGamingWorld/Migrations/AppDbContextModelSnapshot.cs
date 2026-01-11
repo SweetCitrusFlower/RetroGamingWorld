@@ -299,7 +299,6 @@ namespace RetroGamingWorld.Migrations
                     b.ToTable("Articles");
                 });
 
-
             modelBuilder.Entity("RetroGamingWorld.Models.ArticleFAQ", b =>
                 {
                     b.Property<int>("Id")
@@ -328,7 +327,6 @@ namespace RetroGamingWorld.Migrations
 
                     b.ToTable("ArticleFAQs");
                 });
-
 
             modelBuilder.Entity("RetroGamingWorld.Models.CartItem", b =>
                 {
@@ -389,7 +387,6 @@ namespace RetroGamingWorld.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Date")
@@ -636,6 +633,11 @@ namespace RetroGamingWorld.Migrations
                 {
                     b.Navigation("Articles");
 
+                    b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("RetroGamingWorld.Models.Article", b =>
+                {
                     b.Navigation("Comments");
                 });
 

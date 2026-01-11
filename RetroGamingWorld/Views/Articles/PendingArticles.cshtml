@@ -52,7 +52,7 @@
                                 </div>
                                 <h4 class="fw-bold">@item.Title</h4>
                                 <p class="text-muted small mb-3">
-                                    Autor: <strong class="text-dark">@item.User?.UserName</strong> (Email: @item.User?.Email)
+                                    Autor: <strong class="text-dark">@item.User?.UserName</strong>
                                 </p>
                                 <a asp-action="Show" asp-route-id="@item.Id" target="_blank" class="btn btn-sm btn-outline-dark rounded-pill">
                                     <i class="bi bi-box-arrow-up-right me-1"></i>Verifică Articolul Complet
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="col-md-4 bg-light border-start p-4 d-flex flex-column justify-content-center">
-                                <h6 class="fw-bold text-muted mb-3">Acțiuni Administrator</h6>
+                                <h6 class="fw-bold text-muted mb-3">Acțiuni administrator</h6>
 
                                 <form asp-action="Approve" method="post" class="mb-3">
                                     <input type="hidden" name="id" value="@item.Id" />

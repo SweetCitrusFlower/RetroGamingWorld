@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RetroGamingWorld.Migrations
 {
     /// <inheritdoc />
-    public partial class NewColab : Migration
+    public partial class FinalTest : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -227,6 +227,7 @@ namespace RetroGamingWorld.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
             migrationBuilder.CreateTable(
                 name: "ArticleFAQs",
                 columns: table => new
@@ -283,7 +284,7 @@ namespace RetroGamingWorld.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ArticleId = table.Column<int>(type: "int", nullable: false),
                     Rating = table.Column<int>(type: "int", nullable: false),
@@ -358,6 +359,11 @@ namespace RetroGamingWorld.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_ArticleFAQs_ArticleId",
+                table: "ArticleFAQs",
+                column: "ArticleId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Articles_CategoryId",
                 table: "Articles",
                 column: "CategoryId");
@@ -400,17 +406,11 @@ namespace RetroGamingWorld.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ArticleFAQs_ArticleId",
-                table: "ArticleFAQs",
-                column: "ArticleId");
-
-            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartItems_ApplicationUserId",
@@ -456,6 +456,8 @@ namespace RetroGamingWorld.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ArticleFAQs");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -483,9 +485,6 @@ namespace RetroGamingWorld.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserWishlist");
-
-            migrationBuilder.DropTable(
-                name: "ArticleFAQs");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

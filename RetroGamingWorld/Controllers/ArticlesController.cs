@@ -170,15 +170,30 @@ namespace RetroGamingWorld.Controllers
         public IActionResult Show(int id)
         {
             Article? article = db.Articles
-                                 .Include(a => a.Category)
-                                 .Include(a => a.User)
-                                 .Include(a => a.Comments)
+                                .Include(a => a.Category)
+                                .Include(a => a.User)
+                                .Include(a => a.Comments)
                                     .ThenInclude(c => c.User)
-                                 .FirstOrDefault(a => a.Id == id);
+                                .FirstOrDefault(a => a.Id == id);
 
             if (article == null)
             {
                 return NotFound();
+            }
+
+            ViewBag.IsWishlisted = false;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = _userManager.GetUserId(User);
+                var user = db.Users
+                             .Include(u => u.Wishlist)
+                             .FirstOrDefault(u => u.Id == userId);
+
+                if (user != null && user.Wishlist.Any(a => a.Id == id))
+                {
+                    ViewBag.IsWishlisted = true;
+                }
             }
 
             return View(article);

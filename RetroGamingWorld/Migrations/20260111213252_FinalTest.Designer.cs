@@ -12,8 +12,8 @@ using RetroGamingWorld.Data;
 namespace RetroGamingWorld.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260106160436_NewColab")]
-    partial class NewColab
+    [Migration("20260111213252_FinalTest")]
+    partial class FinalTest
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -302,6 +302,35 @@ namespace RetroGamingWorld.Migrations
                     b.ToTable("Articles");
                 });
 
+            modelBuilder.Entity("RetroGamingWorld.Models.ArticleFAQ", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Answer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AskedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ArticleId");
+
+                    b.ToTable("ArticleFAQs");
+                });
+
             modelBuilder.Entity("RetroGamingWorld.Models.CartItem", b =>
                 {
                     b.Property<int>("Id")
@@ -361,7 +390,6 @@ namespace RetroGamingWorld.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Date")
@@ -527,6 +555,17 @@ namespace RetroGamingWorld.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("RetroGamingWorld.Models.ArticleFAQ", b =>
+                {
+                    b.HasOne("RetroGamingWorld.Models.Article", "Article")
+                        .WithMany()
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Article");
+                });
+
             modelBuilder.Entity("RetroGamingWorld.Models.CartItem", b =>
                 {
                     b.HasOne("RetroGamingWorld.Models.ApplicationUser", "User")
@@ -597,6 +636,11 @@ namespace RetroGamingWorld.Migrations
                 {
                     b.Navigation("Articles");
 
+                    b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("RetroGamingWorld.Models.Article", b =>
+                {
                     b.Navigation("Comments");
                 });
 
