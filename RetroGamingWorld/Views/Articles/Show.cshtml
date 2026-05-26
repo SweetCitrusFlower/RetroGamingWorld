@@ -92,7 +92,7 @@
                                     </button>
                                 </form>
                             }
-                            else
+                            else if (ViewBag.IsWishlisted == false)
                             {
                                 @* Nu e in Wishlist *@
                                 <form method="post" asp-controller="Wishlist" asp-action="Add">
